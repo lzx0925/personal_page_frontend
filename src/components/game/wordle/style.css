@@ -1,0 +1,154 @@
+.keyboard,
+.input-box,
+.title {
+  margin: 1vh 0;
+}
+
+.words,
+.keyboard-row,
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.word {
+  height: 55px;
+  width: 55px;
+  border: solid 3px rgb(217, 217, 250);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyboard-button {
+  height: 55px;
+  width: 55px;
+  background-color: #a2c9fb;
+  border: 3px solid;
+  border-color: #8bbdff;
+  margin: 8px 10px;
+  border-radius: 5px;
+}
+
+.delete,
+.submit {
+  width: 70px;
+}
+
+.keyboard-button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: #8bbdff;
+}
+
+@keyframes reverse-board-1 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotateY(180deg);
+    background: #cbeb7c;
+    border-color: #b7eb39;
+  }
+}
+
+@keyframes reverse-board-2 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotateY(180deg);
+    background: #d3d4d2;
+    border-color: #c9c9c9;
+  }
+}
+
+@keyframes reverse-board-3 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotateY(180deg);
+    background: rgb(255, 219, 106);
+    border-color: #ffd348;
+  }
+}
+
+@keyframes reverse-letter {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+.summary-container.wordle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: rgb(254, 255, 241);
+  height: 500px;
+  width: 400px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 10px #8d8d8d6d;
+}
+
+.summary-container .wordle .close-button {
+  text-align: right;
+  font-size: 30px;
+  font-weight: bolder;
+  padding-right: 5px;
+}
+
+.summary-container .wordle .close-button:hover {
+  cursor: pointer;
+  color: #0e75fb;
+}
+
+.title {
+  font-weight: bolder;
+}
+
+.message {
+  font-size: 20px;
+  text-align: center;
+}
+
+.stage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0px;
+}
+
+.progress-bar {
+  border: 3px solid black;
+  width: 200px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+.percent {
+  width: 0px;
+  height: 20px;
+  background-color: hotpink;
+}
+
+@keyframes progress-change {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: var(--progress-percent);
+  }
+}

@@ -1,0 +1,117 @@
+/*-----profile-nav-----*/
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  background: var(--container-normal);
+  min-height: 100vh;
+  height: auto;
+  margin: 3vh 2vw;
+}
+
+.profile-nav {
+  display: flex;
+  width: 100%;
+  background-color: var(--navi-bg);
+  flex-direction: row;
+  height: 10vh;
+}
+
+.profile-nav button {
+  flex: 1;
+  font-weight: bolder;
+}
+
+.profile-nav button:hover {
+  cursor: pointer;
+}
+
+/*-----profile-nav-----*/
+
+/*-------Summary------*/
+.profile-left {
+  margin: 2vh 0;
+  margin-left: 1vw;
+  max-width: fit-content;
+}
+
+.summary-headshot {
+  height: 80px;
+  width: 80px;
+  border: var(--navi-home) 5px solid;
+  border-radius: 50%;
+}
+
+.profile-left div {
+  margin-right: 1vw;
+}
+/*-----Summary-----*/
+
+/*-------edit-------*/
+.modify-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1vh;
+}
+
+.modify-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2vh;
+}
+
+/*.modify-form .form-group label,
+.modify-form .form-group .display-email {
+}*/
+
+.modify-form .form-group input {
+  border: var(--container-light) 3px solid;
+}
+.modify-form .form-group input:focus {
+  outline: var(--container-dark) 3px solid;
+}
+
+/*-------Summary------*/
+
+/*------headshot-------*/
+.headshot-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1vw;
+  margin-top: 2vh;
+}
+.edit-headshot {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-right: 2vw;
+  border: var(--text-dark) 4px solid;
+}
+
+.headshot-box {
+  border: var(--container-dark) 4px solid;
+  background-color: rgba(255, 255, 255, 0.412);
+  border-radius: 5px;
+  width: fit-content;
+  height: 150px;
+  padding: 1vh 1vw;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  overflow: scroll;
+  flex-wrap: wrap;
+}
+.headshot-box button {
+  width: 60px;
+  height: 60px;
+  margin: 2px 2px;
+  border: var(--text-light) 3px solid;
+  border-radius: 50%;
+}
+/*------headshot-------*/

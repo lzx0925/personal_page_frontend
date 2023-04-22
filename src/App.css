@@ -1,0 +1,142 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  font-size: 40px;
+}
+:root {
+  /*-------- navigation --------*/
+  --navi-bg: rgb(217, 250, 72); /*navi-button(same)*/
+  --navi-home: rgb(183, 222, 10);
+  --navi-home-hover: rgb(167, 205, 2);
+  --navi-button-hover: rgb(194, 235, 12); /*extend-bar-bg(same)*/
+  /*-------- navigation --------*/
+
+  /*-------- extend-navi --------*/
+  --extend-list-bg: rgb(234, 246, 211);
+  --box-shadow: rgba(53, 128, 0, 0.5);
+  --extend-line: rgba(157, 191, 7, 0.8);
+  /* extend-navi */
+
+  /*-------- main background --------*/
+  --main-bg: url("../public/homepage.jpg");
+  --game-bg: ;
+  --intro-bg: ;
+  --message-bg: ;
+  --profile-bg: ;
+  /*-------- main background --------*/
+
+  /*-------- container color --------*/
+  --container-dark: rgb(92, 108, 46);
+  --container-normal: rgb(214, 240, 143);
+  --container-light: white;
+  --main-container: rgb(255, 255, 255, 0.5);
+  /*-------- container color --------*/
+
+  /*-----inputbox----*/
+  --inputbox1:rgb(196, 196, 196);
+  --inputbox2:rgb(214, 240, 143);
+  --inputbox3:rgb(191, 223, 105);
+    /*-----inputbox----*/
+  /*-------- text color --------*/
+  --text-dark: rgb(0, 0, 0);
+  --text-normal: rgb(30, 30, 30);
+  --text-light: rgb(95, 95, 95);
+  --text-warning: rgb(218, 43, 43);
+  --text-hyper: blue;
+  /*-------- text color --------*/
+  /*-------- icon color --------*/
+  --grey-icon: rgb(87, 85, 85);
+  --grey-icon-hover: rgb(77, 175, 2);
+  --other-icon: ;
+  --other-icon-hover: ;
+  /*-------- text color --------*/
+}
+
+* {
+  font-size:20px;
+}
+
+h1 {
+  /*---hello,iam Zixin Li-----unusual use-----*/
+
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+h2 {
+  /*-------sub text------navigate----------*/
+  font-family: cursive;
+  font-size: 22px;
+}
+
+h3 {
+  /*------- ----------*/
+ 
+}
+
+h4 {
+  /*------- label: username....----------*/
+
+}
+
+h5 {
+  /*------- text input....----------*/
+
+}
+
+icon {
+  /*---------icon .... ----------*/
+  font-size: 30px;
+}
+
+button {
+  border-color: transparent;
+  background-color: transparent;
+  text-align: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+/*------default------*/
+
+/*-----Navigation-----*/
+
+/*-----Navigation-----*/

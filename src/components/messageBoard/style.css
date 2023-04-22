@@ -1,0 +1,226 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: rgb(223, 247, 201);
+}
+
+.message-board-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  margin: 3vh 3vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  display: flex;
+  flex: 2;
+  min-height: 30vh;
+  width: 500px;
+  flex-direction: column;
+  border: 8px solid white;
+  background: white;
+  box-shadow: 0px 2px 10px 0px rgba(89, 147, 2, 0.553);
+}
+
+.input-message {
+  flex: 4;
+  background-color: rgb(252, 253, 253);
+  border: rgba(189, 217, 118, 0.813) 2px solid;
+  margin-bottom: 2vh;
+
+
+  text-align: left;
+  vertical-align: top;
+  padding-bottom: 10vh;
+}
+
+.function {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(194, 237, 109, 0.617);
+  padding: 5px;
+}
+
+.l {
+  flex: 1;
+  display: flex;
+}
+
+.clear {
+  color: black;
+  background-color: rgb(174, 223, 77);
+  border-radius: 10%;
+  border: rgb(169, 226, 46) solid 3px;
+}
+
+.m {
+  flex: 1;
+  display: flex;
+}
+
+.r {
+  flex: 1;
+  display: flex;
+}
+
+.emoji {
+  color: black;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  margin-right: 15px;
+}
+
+.font {
+  color: black;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  margin-right: 10px;
+}
+
+.camera {
+  color: black;
+  background-color: transparent;
+  border: none;
+  margin-right: 10px;
+}
+
+.message-board-container .submit {
+  color: black;
+  background-color: rgb(174, 223, 77);
+  border-radius: 10%;
+  border: rgb(169, 226, 46) solid 3px;
+}
+.image {
+  flex: 2;
+  display: flex;
+  min-height: 0;
+  max-width: 500px;
+  flex-direction: column;
+}
+
+.all-posts {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 3vh;
+}
+
+.posts-header {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.sub-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fa.fa-chevron-circle-left,
+.fa.fa-chevron-circle-right,
+.page {
+  margin-right: 10px;
+}
+.fa.fa-chevron-circle-left,
+.fa.fa-chevron-circle-right {
+  color: rgb(85, 133, 15);
+}
+
+.fa.fa-chevron-circle-left:hover,
+.fa.fa-chevron-circle-right:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.numbers {
+  margin: 0 10px;
+}
+
+.sort {
+  background-color: rgb(174, 223, 77);
+}
+
+.every-post {
+  flex: 1;
+  display: flex;
+  width: 500px;
+  height: 50px;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border: 8px solid white;
+  background-color: rgb(252, 253, 253);
+  box-shadow: 0px 2px 5px 0px rgba(89, 147, 2, 0.553);
+}
+
+.post-username {
+  border-bottom: rgb(194, 237, 109) solid 1px;
+}
+.post-content {
+  flex: 3;
+  min-height: 100px;
+}
+.post-function {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(194, 237, 109);
+  padding: 5px;
+  justify-content: space-between;
+}
+.post-date {
+  display: flex;
+  justify-content: right;
+}
+
+.fa.fa-trash,
+.fa.fa-thumbs-up,
+.fa.fa-thumbs-down {
+  color: black;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  margin-right: 15px;
+}
+
+.message-board-container .submit:hover {
+  cursor: pointer;
+  background-color: rgb(144, 199, 33);
+  border: rgb(144, 199, 33);
+}
+
+.message-board-container .clear:hover {
+  cursor: pointer;
+  background-color: rgb(144, 199, 33);
+  border: rgb(144, 199, 33) solid 3px;
+}
+
+.font:hover,
+.camera:hover,
+.emoji:hover {
+  cursor: pointer;
+  transform: scale(1.4);
+  color: rgb(126, 160, 13);
+}
+
+.message-board-container .delete:hover,
+.fa.fa-trash:hover,
+.fa.fa-thumbs-up:hover,
+.fa.fa-thumbs-down:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}

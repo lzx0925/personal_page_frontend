@@ -1,0 +1,126 @@
+/*------LoginPage & RegisterPage-------*/
+.action-container {
+  display: flex;
+  flex-direction: row;
+}
+.open-register {
+  border: transparent;
+  background-color: transparent;
+  color: var(--text-hyper);
+}
+.open-register:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.open-login {
+  border: transparent;
+  background-color: transparent;
+  color: var(--text-hyper);
+}
+/*----------login & register ----------------*/
+.register-func,
+.login-func {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-top: 5vh;
+  margin-left: 5vw;
+  margin-right: 2.5vw;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--container-light);
+  border: transparent solid 5px;
+  border-radius: 4%;
+  box-shadow: 2px 2px 10px var(--box-shadow);
+}
+
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-form h1,
+.register-form h1 {
+  text-align: center;
+}
+
+.login-form .form-group,
+.register-form .form-group {
+  height: auto;
+  width: auto;
+  min-width: 30vw;
+  display: flex;
+  flex-direction: column;
+
+  margin: 1vh 1vw;
+}
+
+.login-form .form-group label,
+.register-form .form-group label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.error {
+  color: var(--text-warning);
+  margin-left: 10px;
+  text-align: left;
+}
+
+.login-form .form-group input,
+.register-form .form-group input {
+  border: var(--inputbox2) solid 2px; /*rgb(209, 239, 141, 0.6) */
+  border-radius: 2%;
+  min-height: 30px;
+  height: 7vh;
+}
+
+.login-form .form-group input:focus,
+.register-form .form-group input:focus {
+  outline: var(--inputbox3) solid 3px; /*rgb(209, 239, 141, 0.6) */
+}
+
+.confirm-register,/*button*/
+.confirm-login {
+  height: 40px;
+  width: 100px;
+  border: transparent solid 1px;
+  border-radius: 10%;
+  margin: 1vh 1vw;
+  background-color: var(--navi-bg);
+  font-weight: bolder;
+}
+
+.confirm-register:hover,
+.confirm-login:hover {
+  cursor: pointer;
+  background-color: var(--navi-button-hover);
+}
+
+.open-login:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.fa.fa-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: transparent;
+  background-color: transparent;
+  color: var(--navi-bg);
+}
+.fa.fa-close:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: var(--navi-button-hover);
+}
+
+/*-------profile--------*/
+
+
+/*-------profile--------*/

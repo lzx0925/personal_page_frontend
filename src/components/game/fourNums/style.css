@@ -1,0 +1,310 @@
+.fournums {
+  border: solid 10px #a3a09c;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  background: #f1f7ed;
+  height: auto;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.fournums * {
+  margin: 15px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  border-bottom: solid 2px #a3a09c6e;
+  justify-content: flex-end;
+}
+
+.header * {
+  flex: 1;
+}
+
+.fa.fa-question-circle-o {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.fa.fa-question-circle-o:focus {
+  color: #d8b93e;
+}
+
+.poker {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.fournums .poker-container {
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.fournums .poker-back,
+.fournums .poker1,
+.fournums .poker2,
+.fournums .poker3,
+.fournums .poker4 {
+  position: absolute;
+  width: 100px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #d5ac0b;
+  color: #54494b;
+  font-size: 60px;
+  transform-style: preserve-3d;
+  perspective: 400px;
+  border: solid 5px #d8b93e;
+}
+
+.fournums .poker-back {
+  background-color: #d8b93e;
+  border: solid 5px #c7a51d;
+  color: #54494b;
+  z-index: 2;
+  font-size: 60px;
+}
+
+/* .r2 {
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  color: rgba(245, 36, 36, 0.366);
+  font-size: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.fournums .get-card-button,
+.fournums .get-ans {
+  background-color: #b33951;
+  border: 4px solid #912137;
+  font-size: 20px;
+  width: fit-content;
+  align-self: center;
+  padding: 10px 10px;
+  border-radius: 5px;
+  /*margin-bottom: 10px;*/
+}
+.fournums .get-card-button:hover,
+.fournums .get-ans:hover {
+  transform: scale(1.03);
+}
+
+.fournums .expression-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+.fournums .expression-container .num-box,
+.fournums .expression-container .symbol-box,
+.fournums .expression-container .paran {
+  height: 140px;
+  width: 100px;
+  margin: 0 15px;
+  border: 5px dashed #a3a09c;
+  position: relative;
+}
+
+.fournums .expression-container .paran {
+  border: none;
+}
+
+.fournums .expression-container .paran {
+  width: 20px;
+  display: none;
+  font-size: 60px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.fournums .expression-container .symbol-box {
+  height: 50px;
+  width: 50px;
+}
+
+.fournums .expression-container .num-box * {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+}
+.fournums .expression-container .symbol-box * {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  margin: 0 0;
+}
+
+.symbol-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.symbol {
+  margin: 0 10px;
+  background-color: #91c7b1;
+  border: 5px solid #59ac8b;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 30px;
+}
+
+.fournums .symbol:hover,
+.fournums .poker1:hover,
+.fournums .poker2:hover,
+.fournums .poker3:hover,
+.fournums .poker4:hover {
+  cursor: grab;
+}
+
+
+@keyframes assign-card1 {
+  0% {
+    background-color: #d8b93e;
+    color: transparent;
+  }
+  20% {
+    color: transparent;
+  }
+  100% {
+    transform: translateX(-280px) rotateY(-180deg) scale(-1, 1);
+    background-color: #e3d081;
+    color: #54494b;
+  }
+}
+
+/* @keyframes assign-card-text1 {
+  0% {
+    color: transparent;
+  }
+  20% {
+    color: transparent;
+  }
+  100% {
+    transform: translateX(-100px) rotateY(-180deg) scale(-1, 1);
+    border: black solid 5px;
+    color: #54494b;
+  }
+} */
+@keyframes assign-card2 {
+  0% {
+    background-color: #d8b93e;
+    color: transparent;
+  }
+  20% {
+    color: transparent;
+  }
+  100% {
+    transform: translateX(-90px) rotateY(-180deg) scale(-1, 1); /*scaleX(-1);*/
+    background: #e3d081;
+    background-size: 75px;
+    color: #54494b;
+  }
+}
+@keyframes assign-card3 {
+  0% {
+    background-color: #d8b93e;
+    color: transparent;
+  }
+  20% {
+    color: transparent;
+  }
+  100% {
+    transform: translateX(90px) rotateY(180deg) scale(-1, 1);
+    background-color: #e3d081;
+    color: #54494b;
+  }
+}
+@keyframes assign-card4 {
+  0% {
+    background-color: #d8b93e;
+    color: transparent;
+  }
+  20% {
+    color: transparent;
+  }
+  100% {
+    transform: translateX(280px) rotateY(180deg) scale(-1, 1);
+    background-color: #e3d081;
+    color: #54494b;
+  }
+}
+
+/*==============Summary=============*/
+.summary-container.fournums {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-45%);
+  background-color: #f1f7ed;
+  border-color: #54494bb2;
+  height: 450px;
+  width: 800px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 10px 20px #8d8d8d6d;
+  z-index: 9999;
+}
+
+.summary-container.fournums * {
+  margin: 10px;
+}
+
+.title {
+  font-weight: bolder;
+}
+
+.message {
+  font-size: 20px;
+  text-align: center;
+}
+
+.instruction {
+  text-align: left;
+}
+
+.back-button,
+.new-game-button {
+  background-color: #d8b93e;
+  border: #c7a51d solid 3px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.back-button:hover,
+.new-game-button:hover {
+  transform: scale(1.03);
+  background-color: #d8b93e;
+  border: #c7a51d solid 3px;
+}
+/*==============Summary=============*/
