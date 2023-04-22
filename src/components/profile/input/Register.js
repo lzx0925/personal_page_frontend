@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
 const emailValidator = require("email-validator");
+const {backend_url} = require("../../../config")
 
 export default function Register(props) {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ export default function Register(props) {
       setWarning("Invalid data exists.");
     } else {
       axios
-        .post("http://localhost:5000/register", { registerData: registerData })
+        .post(backend_url+"/register", { registerData: registerData })
         .then((response) => {
           console.log(response.data);
           if (response.data.error) {

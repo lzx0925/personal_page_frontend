@@ -2,13 +2,14 @@ import React from "react";
 import "./style.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+const {backend_url} = require("../../../config")
 export default function Symbol(props) {
   const [getCard, setGetCard] = useState(false);
   const [value, setValue] = useState({ 1: "", 2: "", 3: "", 4: "" });
   const [type, setType] = useState({ 1: "", 2: "", 3: "", 4: "" });
   async function handleGetCard() {
     axios
-      .post("http://localhost:5000/fourNums", {})
+      .post(backend_url+"/fourNums", {})
       .then((res) => {
         setGetCard(true);
         res.data.nums.forEach((num, index) => {

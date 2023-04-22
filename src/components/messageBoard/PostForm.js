@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+const {backend_url} = require("../../config")
+
 
 export default function PostForm() {
   const { user } = useSelector((state) => ({ ...state }));
@@ -12,7 +14,7 @@ export default function PostForm() {
   function handleSubmit() {
     console.log(message);
     axios
-      .post("http://localhost:5000/sendmessage", {
+      .post(backend_url+"/sendmessage", {
         username: user.username,
         content: message,
         image: null,

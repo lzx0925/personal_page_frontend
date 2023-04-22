@@ -5,6 +5,7 @@ import NavigatorBar from "../../navi/NavigationBar.js";
 import Summary from "./Summary";
 import SingleLine from "./SingleLine.js";
 import axios from "axios";
+const {backend_url} = require("../../../config")
 
 export default function Wordle() {
   const [line, setLine] = useState(0);
@@ -22,7 +23,7 @@ export default function Wordle() {
     if (name === "Enter") {
       if (words[line].length === 5) {
         axios
-          .post("http://localhost:5000/wordle", { word: words[line] })
+          .post(backend_url+"/wordle", { word: words[line] })
           .then((response) => {
             if (response.data.result) {
               showResult(response.data.result);

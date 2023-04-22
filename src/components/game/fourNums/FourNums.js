@@ -7,7 +7,7 @@ import NavigationBar from "../../navi/NavigationBar";
 import Symbol from "./Symbol";
 import Card from "./Card";
 import Summary from "./Summary";
-
+const {backend_url} = require("../../../config")
 export default function FourNums() {
   const [expression, setExpression] = useState(["", "", "", "", "", "", ""]);
   const [paranthesis, setParanthesis] = useState(null);
@@ -156,41 +156,44 @@ export default function FourNums() {
 
   function submitAns() {
     console.log("submit");
-    axios
-      .post("http://localhost:5000/checkFourNums", {
-        email: user.email,
-        expression: expression,
-        paranthesis: paranthesis ? Object.values(paranthesis) : null,
-        chance: chance,
-      })
-      .then((response) => {
-        if (response.data.result === 24) {
-          console.log("Success");
-          setSummary({
-            status: response.data.result,
-            chance: chance,
-            gameData: response.data.gameData,
-          });
-        } else {
-          if (chance === 1) {
-            console.log("no chance!");
+    if(user)
+    {
+      axios
+        .post(backend_url+"/checkFourNums", {
+          email: user.email,
+          expression: expression,
+          paranthesis: paranthesis ? Object.values(paranthesis) : null,
+          chance: chance,
+        })
+        .then((response) => {
+          if (response.data.result === 24) {
+            console.log("Success");
             setSummary({
               status: response.data.result,
               chance: chance,
               gameData: response.data.gameData,
             });
           } else {
-            console.log("more chance!", chance);
-            setSummary({
-              status: response.data.result,
-              chance: chance,
-              gameData: null,
-            });
+            if (chance === 1) {
+              console.log("no chance!");
+              setSummary({
+                status: response.data.result,
+                chance: chance,
+                gameData: response.data.gameData,
+              });
+            } else {
+              console.log("more chance!", chance);
+              setSummary({
+                status: response.data.result,
+                chance: chance,
+                gameData: null,
+              });
+            }
+            setChance(chance - 1);
+            console.log("after -1", chance);
           }
-          setChance(chance - 1);
-          console.log("after -1", chance);
-        }
-      });
+        });
+    }
     console.log(6666, summary);
   }
 

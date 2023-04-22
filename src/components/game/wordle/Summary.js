@@ -2,23 +2,26 @@ import "./style.css";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+const {backend_url} = require("../../../config")
 export default function Summary(props) {
   const { user } = useSelector((state) => ({ ...state }));
   const { stage, setStage } = useState();
+  console.log(user);
   useEffect(() => {
-    axios
-      .post("http://localhost:5000/save_wordle", {
-        email: user.email,
-        stage: props.stage,
-      })
-      .then((response) => {
-        console.log(response.data);
-        showProgress(response.data.total, JSON.parse(response.data.record));
-      })
-      .catch((error) => {
-        return error;
-      });
+    if (user) {
+      axios
+        .post(backend_url+"/save_wordle", {
+          email: user.email,
+          stage: props.stage,
+        })
+        .then((response) => {
+          console.log(response.data);
+          showProgress(response.data.total, JSON.parse(response.data.record));
+        })
+        .catch((error) => {
+          return error;
+        });
+    }
   }, []);
 
   function showProgress(total, record) {
@@ -49,19 +52,34 @@ export default function Summary(props) {
       <div className="message">{props.message ? props.message : ""}</div>
       <div className="history">
         <div className="stage">
-          1<div className="progress-bar"><div className="percent" id="stage1"></div></div>
+          1
+          <div className="progress-bar">
+            <div className="percent" id="stage1"></div>
+          </div>
         </div>
         <div className="stage">
-          2<div className="progress-bar"><div className="percent" id="stage2"></div></div>
+          2
+          <div className="progress-bar">
+            <div className="percent" id="stage2"></div>
+          </div>
         </div>
         <div className="stage">
-          3<div className="progress-bar"><div className="percent" id="stage3"></div></div>
+          3
+          <div className="progress-bar">
+            <div className="percent" id="stage3"></div>
+          </div>
         </div>
         <div className="stage">
-          4<div className="progress-bar"><div className="percent" id="stage4"></div></div>
+          4
+          <div className="progress-bar">
+            <div className="percent" id="stage4"></div>
+          </div>
         </div>
         <div className="stage">
-          5<div className="progress-bar"><div className="percent" id="stage5"></div></div>
+          5
+          <div className="progress-bar">
+            <div className="percent" id="stage5"></div>
+          </div>
         </div>
       </div>
     </div>

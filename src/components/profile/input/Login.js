@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
+const {backend_url} = require("../../../config")
 
 const emailValidator = require("email-validator");
 
@@ -31,7 +32,7 @@ export default function Login(props) {
       setWarning("Invalid data exists.");
     } else {
       axios
-        .post("http://localhost:5000/login", { loginData: loginData })
+        .post(backend_url+"/login", { loginData: loginData })
         .then((response) => {
           if (!response.data.user) {
             if (response.data.error) setWarning(response.data.error);

@@ -15,6 +15,7 @@ import Warning from "../input/Warning";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
+const {backend_url} = require("../../../config")
 
 export default function Edit() {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ export default function Edit() {
 
   function handleUpdate() {
     axios
-      .post("http://localhost:5000/update", { updateData: updateData })
+      .post(backend_url+"/update", { updateData: updateData })
       .then((response) => {
         if (response.data.error) {
           setWarning(response.data.error);

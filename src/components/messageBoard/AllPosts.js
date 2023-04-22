@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
+const {backend_url} = require("../../config")
 
 export default function AllPosts() {
   const [numbers, setNumbers] = useState(5);
@@ -17,7 +18,7 @@ export default function AllPosts() {
 
   function getAllPosts() {
     axios
-      .post("http://localhost:5000/allmessage", {
+      .post(backend_url+"/allmessage", {
         page: page,
         numbers: numbers,
         sort: sort,
