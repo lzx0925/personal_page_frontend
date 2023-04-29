@@ -1,12 +1,41 @@
+:root {
+  --game-title-size: 3rem;
+  --wordle-size: 60px;
+}
+.container {
+  position: relative;
+  top: var(--nav-height);
+  width: 100vw;
+  height: calc(100vh - var(--nav-height));
+}
+#wordle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 3vh;
+}
+#wordle button {
+  transition: background-color 0.2s ease-in, transform 0.2s ease-in;
+}
+
+.game-title {
+  font-weight: bolder;
+  font-size: var(--game-title-size);
+  text-align: center;
+  border-bottom: rgba(0, 0, 0, 0.35) solid 1.5px;
+}
+
 .keyboard,
-.input-box,
-.title {
-  margin: 1vh 0;
+.input {
+  /* border: solid black 3px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .words,
-.keyboard-row,
-.title {
+.keyboard-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -14,8 +43,8 @@
 }
 
 .word {
-  height: 55px;
-  width: 55px;
+  height: var(--wordle-size);
+  width: var(--wordle-size);
   border: solid 3px rgb(217, 217, 250);
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
@@ -26,8 +55,8 @@
 }
 
 .keyboard-button {
-  height: 55px;
-  width: 55px;
+  height: var(--wordle-size);
+  width: var(--wordle-size);
   background-color: #a2c9fb;
   border: 3px solid;
   border-color: #8bbdff;
@@ -41,7 +70,6 @@
 }
 
 .keyboard-button:hover {
-  cursor: pointer;
   transform: scale(1.05);
   background-color: #8bbdff;
 }
@@ -88,7 +116,7 @@
   }
 }
 
-.summary-container.wordle{
+.summary-container.wordle {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -152,3 +180,5 @@
     width: var(--progress-percent);
   }
 }
+
+/*new css*/

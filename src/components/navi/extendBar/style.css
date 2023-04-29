@@ -1,129 +1,105 @@
 /*-----------Common-------------*/
-.extendbar-lists {
-  display: flex;
-  flex-direction: row;
-  height: auto;
-  margin-bottom: 1vh;
+:root {
+  --list-normal-width: 150px;
+  --list-normal-height: 200px;
 }
 
-.list {
+.extend-game,
+.extend-profile {
   display: flex;
-  flex-direction: column;
-  margin: 2vh 2vw;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+  height:var(--extend-height);
+  gap: 2vw;
+  padding: 0 2vw;
+  /* border: solid black 3px; */
 }
 
 .list-name {
-  font-size: clamp(15px, 3vw, 18px);
+  font-size: 1.3rem;
+  text-align: center;
 }
 
+.list .normal {
+  width: var(--list-normal-width);
+}
 /*-----------Common-------------*/
 
 /*------GameExtendBar----------*/
-.game-lists {
-  flex-grow: 1;
+#game {
   justify-content: flex-start;
 }
 
-.list-img {
-  height: 25vh;
-  object-fit: contain;
-  border-radius: 5%;
+#game .list {
+  height: var(--extend-list-height);
+  width: auto;
+  gap: 5px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border: solid black 3px;  */
 }
 
-.list-img:hover {
-  cursor:pointer;
-  filter: drop-shadow(2px 2px 4px var(--extend-game-shadow));
+.game-img {
+  position: relative;
+  height: var(--extend-game-img-height);
+  width: var(--extend-game-img-width);
+  border-radius: 3%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  animation: show-extend-content 1s ease-in-out forwards;
 }
-
+.game-img:hover {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4),
+    0px 10px 13px -3px rgba(0, 0, 0, 0.3), inset 0px -3px 0px rgba(0, 0, 0, 0.2);
+  transform: translateZ(0.5rem);
+  cursor: pointer;
+}
 /*------GameExtendBar----------*/
 
 /*------ProfileExtendBar----------*/
-.profile-lists {
+#profile {
   justify-content: flex-end;
 }
 
-.user-info,
-.func-info {
-  width: auto;
+#profile .user-headshot {
+  background: linear-gradient(180deg, pink, pink 50%, white 50%, white);
   display: flex;
-  flex-direction: column;
-  min-height: 200px;
-  background-color: var(--extend-list-bg);
-  border-radius: 10px;
-  justify-content: flex-end;
-  position: relative;
-}
-
-.func-info {
   justify-content: center;
 }
 
-.head-photo {
-  position: absolute;
-  height: 70px;
-  width: 70px;
+#profile .user-info {
+  background-color: rgb(228, 143, 143);
+}
+#profile .user-info * {
+  padding: 1rem;
+}
+
+#profile img {
+  padding: 3rem 4rem;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  border: transparent;
-}
-
-.head-photo:hover {
-  cursor: pointer;
-  filter: brightness(0.8);
-}
-
-.name-gender {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
 }
 
-.email {
-  margin: 0 1vw;
-  margin-bottom: 2vh;
-}
-.line {
-  position: absolute;
-  width: 100%;
-  height: 40%;
-  background-color: var(--extend-line);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  top: 0;
+#profile .function-list {
+  width: var(--list-normal-width);
+  justify-content: start;
 }
 
-.fa.fa-genderless,
-.fa.fa-female,
-.fa.fa-male {
-  font-weight: 900;
-}
-.username {
-  margin: 0 5px;
+#profile button {
+  padding: 1rem 1.5rem;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-.extendbar-register,
-.extendbar-logout,
-.extendbar-login,
-.extendbar-manage {
-  margin: 1vh 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: transparent;
-  background-color: transparent;
-  color: var(--text-dark);
+#profile button:hover {
+  background-color: rgb(228, 143, 143);
+  color: rgb(55, 11, 11);
 }
 
-.extendbar-register:hover,
-.extendbar-logout:hover,
-.extendbar-login:hover,
-.extendbar-manage:hover {
-  font-weight: bold;
-  background-color: transparent;
-  color: var(--text-light);
-}
 /*------ProfileExtendBar----------*/

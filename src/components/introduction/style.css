@@ -1,16 +1,16 @@
 .test {
   position: absolute;
-  top: 120px;
+  top: 0px;
+  left: 0px;
   font-size: 30px;
-  height: 50px;
-  width: 300px;
   border: solid black 3px;
   z-index: 3;
 }
 /*------IntroContent----------*/
-.intro-container {
+#introduction {
   position: absolute;
-  top: 70px;
+  top: 0;
+  left: 0;
   height: auto;
   width: 100%;
 }
@@ -27,34 +27,15 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   z-index: 2;
   position: fixed;
+  transition: width 0.5s ease-in-out, border-top-right-radius 0.5s ease-in-out,
+    border-bottom-right-radius 0.5s ease-in-out;
+}
+.left-navigation:hover {
+  width: 100px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
-@keyframes open-navigation {
-  from {
-  }
-  to {
-    width: 100px;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-  }
-}
-
-@keyframes close-navigation {
-  from {
-    width: 100px;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-  }
-  to {
-    width: 16px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-}
-/* section {
-  scroll-margin-top: 50vh;
-  scroll-margin-bottom: 50vh;
-} */
 #img1 {
   background: linear-gradient(
       217deg,
@@ -65,51 +46,45 @@
     linear-gradient(127deg, rgb(157, 255, 0), rgba(0, 255, 0, 0) 70.71%),
     linear-gradient(70deg, rgb(252, 0, 63), rgba(0, 0, 255, 0) 70.71%);
   /* background: url("https://images.unsplash.com/photo-1447966058635-afc12501f7b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2225&q=80"); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
 }
 
 #img2 {
   background: url(../../../public/photo-background.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
 }
 
 #img3 {
   background: url(../../../public/crochet-background.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
 }
 
 #img4 {
   background: url(../../../public/crochet-background.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
 }
 
 #img5 {
   background: url("https://images.unsplash.com/photo-1532501854787-31ce43c2b281?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+}
+
+#img1,
+#img2,
+#img3,
+#img4,
+#img5 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
 }
 
-section {
-  height: 100vh; /* set the height to whatever you want */
-  width: 100%; /* set the width to whatever you want */
+#introduction section {
+  /*section here is every img like project crochet....*/
+  height: 100vh;
+  width: 100%;
   overflow: hidden;
 }
 /*------IntroContent----------*/
-
+:root {
+  --albums-height: 240px;
+}
 /*--------Projects-----------*/
 #img1 {
   perspective: 1500px;
@@ -117,31 +92,28 @@ section {
   flex-direction: row;
   justify-content: center;
   gap: 0;
-}
+} /* 
 #img1 .left-section {
   display: flex;
   width: 50%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: solid goldenrod 3px; */
 }
 #img1 .content {
-  /* border: solid 5px rgba(255, 255, 255, 0.37); */
-  /* background-color: rgba(255, 255, 255, 0.186); */
+
   height: 40px;
   width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  top:-30px;
+  top: -30px;
 }
 #img1 .content p {
   font-size: 90px;
   font-weight: bolder;
   color: rgba(34, 33, 46, 0.847);
-  /* text-shadow: -6px 2px 0 #7a7a7a49, -40px -5px 10px rgba(0, 0, 0, 0); */
 }
 
 #img1 .main-content {
@@ -153,7 +125,6 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: solid 5px black; */
   transform-style: preserve-3d;
   perspective: 1500px;
   transform: rotateX(-0deg) rotateY(-0deg) scale3d(0.72, 0.63, 0.6);
@@ -167,7 +138,7 @@ section {
   height: 0;
   width: 0;
   transform-origin: center;
-  transform: rotateY(22.5deg) translateZ(411px); /*67.5 Y*/
+  transform: rotateY(22.5deg) translateZ(411px); 
   transform-style: preserve-3d;
   animation: front-spin 80s linear infinite;
 }
@@ -181,7 +152,7 @@ section {
   gap: 100px;
   transform-style: preserve-3d;
   transform-origin: center;
-  transform: rotateY(202.5deg) translateZ(411px); /* rotateY(67.5deg); */
+  transform: rotateY(202.5deg) translateZ(411px); 
   animation: end-spin 80s linear infinite;
 }
 
@@ -335,7 +306,7 @@ section {
 }
 .introduction-title {
   font-size: 40px;
-  /* border:solid black 2px; */
+ 
   font-weight: bold;
   opacity: 0;
   animation: content-appear 0.2s ease-in forwards;
@@ -344,7 +315,7 @@ section {
 .introduction-content {
   position: relative;
   left: 10px;
-  /* border:solid black 2px; */
+
   font-size: 25px;
   opacity: 0;
   animation: content-appear 0.4s ease-in forwards;
@@ -371,32 +342,32 @@ section {
     transform: translateY(0);
     opacity: 1;
   }
-}
+} */
 
 /*--------Projects-----------*/
 
 /*--------Photographs-----------*/
-#img2 .content {
-  position: relative;
-  top: 0;
-  left: 0;
-  /* border: solid 5px rgba(255, 255, 255, 0.37);
-  background-color: rgba(255, 255, 255, 0.186); */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#img2 {
+  border: solid 3px black;
+  padding: 0;
 }
-#img2 .content p {
-  font-size: 100px;
+#img2 .img-title {
+  font-size: 5rem;
   font-weight: bolder;
   color: rgb(255, 255, 255);
+  border: solid 3px black;
+  width: auto;
+  height: auto;
   text-shadow: -6px 2px 0 #7a7a7af2, -40px -5px 10px rgba(0, 0, 0, 0);
-}
-#img2 .main-content {
+  margin: 0;
   position: relative;
-  top: 0;
   left: 0;
-  height: 300px;
+  top: 0;
+}
+
+#img2 .main-content {
+  border: solid 3px black;
+  height: auto;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -407,36 +378,28 @@ section {
 }
 
 .albums {
-  height: 240px;
-  width: 180px;
+  height: var(--albums-height);
+  width: calc(var(--albums-height) * 0.75);
   border: solid 0px transparent;
-  margin: 0 40px;
-  border-radius: 15px;
+  margin: 0 calc(var(--albums-height) * 0.2);
+  border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.7) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   cursor: pointer;
 }
-.albums-collection:nth-child(1) {
-  transform: rotateY(-6deg);
-}
-.albums-collection:nth-child(2) {
-  transform: rotateY(-8deg);
-}
-.albums-collection:nth-child(3) {
-  transform: rotateY(-12deg);
-}
+
 .albums-collection:hover {
-  transform: scale(1.2) rotateY(0deg);
+  transform: scale(1.2);
   margin: 50px;
-  transition: 0.6s;
+  transition: 0.6s ease-in-out;
 }
 .albums-collection:not(:hover) {
-  transition: 0.6s;
+  transition: 0.6s ease-in-out;
 }
 
 .albums-collection p {
-  margin-top: 5px;
-  font-size: 25px;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
   color: white;
   text-shadow: 3px 3px 3px black;
   text-align: center;
@@ -445,20 +408,16 @@ section {
 
 #landscape {
   background: url("../../../public/landscape-album.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
 }
 
 #pet {
   background: url(../../../public/pets-album.JPG);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
 }
 
 #portrait {
   background: url("../../../public/portrait-album.JPG");
+}
+#img2 .albums {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

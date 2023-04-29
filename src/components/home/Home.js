@@ -3,6 +3,7 @@ import "./style.css";
 import { useState } from "react";
 import NavigationBar from "../navi/NavigationBar";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const { user } = useSelector((state) => ({ ...state }));
@@ -13,28 +14,38 @@ export default function Home() {
         rel="stylesheet"
         type="text/css"
       />
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <div className="home-content">
-        {!user && <h1 className="greeting-title">Hi! I'm Zixin,</h1>}
-        {user && (
-          <h1 className="greeting-title">Welcome back, {user.username}</h1>
-        )}
-        <h2 className="greeting-content">
-          Welcome to my personal webpage!
-          <br />
-          <br />
-          Everything you see here, from the code to the emoticons, was crafted
-          by my own two hands.
-          <br />
-          <br />I hope you can see the love that went into every pixel and enjoy
-          your stay!
-        </h2>
+        <div className="greeting">
+          <b>{user ? "Welcome back, {user.username}" : "Hi! I'm Zixin,"}</b>
+          <p>Welcome to my personal webpage!</p>
+          <p>
+            Everything you see here, from the code to the emoticons, was crafted
+            by my own two hands.
+          </p>
+          <p>
+            I hope you can see the love that went into every pixel and enjoy
+            your stay!
+          </p>
+        </div>
         <div className="contact">
-          <button className="icon fa fa-instagram"></button>
-          <button className="icon fa fa-linkedin-square"></button>
-          <button className="icon fa fa-envelope"></button>
-          <button className="icon fa fa-mobile-phone"></button>
-          <button className="icon fa fa-facebook"></button>
+          <Link to="https://www.instagram.com/gwen_995/" target="_blank">
+            <button className="icon fa fa-instagram" id="instagram"></button>
+          </Link>
+          <Link
+            to="https://www.linkedin.com/in/zixin-li-724642184/"
+            target="_blank"
+          >
+            <button
+              className="icon fa fa-linkedin-square"
+              id="linkedin"
+            ></button>
+          </Link>
+          <button className="icon fa fa-envelope" id="envelope"></button>
+          <button className="icon fa fa-mobile-phone" id="mobile"></button>
+          <Link to="https://github.com/lzx0925" target="_blank">
+            <button className="icon fa fa-github" id="github"></button>
+          </Link>
         </div>
       </div>
     </div>

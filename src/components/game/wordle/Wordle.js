@@ -123,10 +123,9 @@ export default function Wordle() {
   }
 
   return (
-    <div className="container">
-      <NavigatorBar />
-      <div className="title">Wordle</div>
-      <div className="input-box">
+    <div className="container" id="wordle">
+      <div className="game-title">Wordle</div>
+      <div className="input">
         <SingleLine line={0} />
         <SingleLine line={1} />
         <SingleLine line={2} />

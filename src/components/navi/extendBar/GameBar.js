@@ -1,20 +1,29 @@
 import React from "react";
 import "./style.css";
-import { useState } from "react";
-// onClick={() => (window.location.href = "/wordle")}
+import { useState, useEffect } from "react";
+
 export default function GameBar() {
-  return (
-    <div className="extend-bar game">
-      <div className="extendbar-lists game-lists">
-        <div className="list">
-          <div className="list-name">Wordle</div>
-          <img className="list-img" src="/wordle.png" alt="" onClick={() => (window.location.href = "/wordle")}/>
-        </div>
-        <div className="list">
-          <div className="list-name">More...</div>
-          <img className="list-img" src="/explore.png" alt="" />
-        </div>
+  const [gameList, setGameList] = useState([
+    { name: "Wordle", img: "/wordle.png" },
+    { name: "24 Points", img: "/24points.png" },
+  ]);
+
+  function generateGameList() {
+    return gameList.map((game, index) => (
+      <div key={index} className="list">
+        <div
+          className="game-img"
+          onClick={() => (window.location.href = "/wordle")}
+          style={{ backgroundImage: "url(".concat(game.img).concat(")") }}
+        ></div>
+        <div className="list-name">{game.name}</div>
       </div>
+    ));
+  }
+
+  return (
+    <div className="extend-game" id="game">
+      {generateGameList()}
     </div>
   );
 }
