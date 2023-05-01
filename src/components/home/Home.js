@@ -14,10 +14,9 @@ export default function Home() {
         rel="stylesheet"
         type="text/css"
       />
-      {/* <NavigationBar /> */}
       <div className="home-content">
         <div className="greeting">
-          <b>{user ? "Welcome back, {user.username}" : "Hi! I'm Zixin,"}</b>
+          <b>{user ? "Welcome back, ".concat(user.username) : "Hi! I'm Zixin,"}</b>
           <p>Welcome to my personal webpage!</p>
           <p>
             Everything you see here, from the code to the emoticons, was crafted

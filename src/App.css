@@ -1,5 +1,5 @@
 * {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 body {
@@ -61,5 +61,9 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+#app-container{
+  transition: 0.3s ease-in-out;
 }
 /*------default------*/

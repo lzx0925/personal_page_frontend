@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 
 export default function GameBar() {
   const [gameList, setGameList] = useState([
-    { name: "Wordle", img: "/wordle.png" },
-    { name: "24 Points", img: "/24points.png" },
+    { name: "Wordle", img: "/wordle.png", url:"/wordle" },
+    { name: "24 Points", img: "/24points.png", url:"/FourNums" },
   ]);
 
   function generateGameList() {
@@ -13,7 +13,7 @@ export default function GameBar() {
       <div key={index} className="list">
         <div
           className="game-img"
-          onClick={() => (window.location.href = "/wordle")}
+          onClick={() => (window.location.href = game.url)}
           style={{ backgroundImage: "url(".concat(game.img).concat(")") }}
         ></div>
         <div className="list-name">{game.name}</div>

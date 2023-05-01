@@ -1,6 +1,6 @@
 .test {
   position: absolute;
-  top: 0px;
+  top: var(--nav-height);
   left: 0px;
   font-size: 30px;
   border: solid black 3px;
@@ -37,6 +37,7 @@
 }
 
 #img1 {
+  top: 0;
   background: linear-gradient(
       217deg,
       rgb(0, 255, 187),
@@ -49,18 +50,22 @@
 }
 
 #img2 {
+  top: 100vh;
   background: url(../../../public/photo-background.jpeg);
 }
 
 #img3 {
+  top: 200vh;
   background: url(../../../public/crochet-background.jpg);
 }
 
 #img4 {
-  background: url(../../../public/crochet-background.jpg);
+  top: 300vh;
+  background: url(../../../public/photo-background.jpeg);
 }
 
 #img5 {
+  top: 400vh;
   background: url("https://images.unsplash.com/photo-1532501854787-31ce43c2b281?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
 }
 
@@ -80,11 +85,11 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  position: absolute;
+  left: 0;
 }
 /*------IntroContent----------*/
-:root {
-  --albums-height: 240px;
-}
+
 /*--------Projects-----------*/
 #img1 {
   perspective: 1500px;
@@ -346,84 +351,6 @@
 
 /*--------Projects-----------*/
 
-/*--------Photographs-----------*/
-#img2 {
-  border: solid 3px black;
-  padding: 0;
-}
-#img2 .img-title {
-  font-size: 5rem;
-  font-weight: bolder;
-  color: rgb(255, 255, 255);
-  border: solid 3px black;
-  width: auto;
-  height: auto;
-  text-shadow: -6px 2px 0 #7a7a7af2, -40px -5px 10px rgba(0, 0, 0, 0);
-  margin: 0;
-  position: relative;
-  left: 0;
-  top: 0;
-}
-
-#img2 .main-content {
-  border: solid 3px black;
-  height: auto;
-  width: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  /* transform-style: preserve-3d;
-  perspective: 600px; */
-}
-
-.albums {
-  height: var(--albums-height);
-  width: calc(var(--albums-height) * 0.75);
-  border: solid 0px transparent;
-  margin: 0 calc(var(--albums-height) * 0.2);
-  border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.7) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  cursor: pointer;
-}
-
-.albums-collection:hover {
-  transform: scale(1.2);
-  margin: 50px;
-  transition: 0.6s ease-in-out;
-}
-.albums-collection:not(:hover) {
-  transition: 0.6s ease-in-out;
-}
-
-.albums-collection p {
-  margin-top: 0.5rem;
-  font-size: 1.5rem;
-  color: white;
-  text-shadow: 3px 3px 3px black;
-  text-align: center;
-  transform: rotateY(-10deg);
-}
-
-#landscape {
-  background: url("../../../public/landscape-album.jpg");
-}
-
-#pet {
-  background: url(../../../public/pets-album.JPG);
-}
-
-#portrait {
-  background: url("../../../public/portrait-album.JPG");
-}
-#img2 .albums {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-/*--------Photographs-----------*/
 
 /*--------Painting-----------*/
 #img4 .content {

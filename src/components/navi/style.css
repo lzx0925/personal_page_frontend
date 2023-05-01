@@ -1,23 +1,23 @@
 :root {
-  --nav-height: 60px;
+  --nav-height: 55px;
   --nav-img: calc(var(--nav-height) * 0.7);
   --nav-icon: 2.5rem;
   --extend-height: 330px;
   --extend-list-height: calc(var(--extend-height) * 0.9);
   --extend-game-img-height: calc(var(--extend-height) * 0.65);
   --extend-game-img-width: calc(var(--extend-height) * 0.65 / 11 * 10);
+  --nav-color-light: rgb(90, 82, 82, 0.6);
+  --nav-color-dark: rgb(224, 213, 213, 0.95);
 }
 /*------NavigationBar----------*/
 nav {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: var(--nav-height);
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  background: rgba(255, 192, 203, 0);
+  background: var(--nav-color-light);
   border: none;
   z-index: 999;
 }
@@ -30,10 +30,11 @@ nav .right {
   height: var(--nav-height);
   display: flex;
   z-index: 3;
+  background: var(--nav-color-light);
 }
 nav .middle {
   flex: 1;
-  background: rgba(255, 192, 203, 0.8);
+  
 }
 nav .right {
   justify-content: flex-end;
@@ -48,34 +49,17 @@ nav .right button {
   align-items: center;
   background: linear-gradient(
     to bottom,
-    rgba(255, 192, 203, 0.8),
-    rgba(255, 192, 203, 0.8) 50%,
-    rgb(253, 146, 164, 1) 50%,
-    rgb(253, 146, 164, 1)
+    var(--nav-color-light)
+    var(--nav-color-light) 50%,
+    var(--nav-color-dark) 50%,
+    var(--nav-color-dark)
   );
   background-size: 100% 200%;
   /* transition: background-position 0.1s ease-in-out 0.1s; */
 }
-nav .setting {
+nav .setting{
   font-size: var(--nav-icon);
 }
-/* @keyframes hover-in-bar {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 -100%;
-  }
-}
-
-@keyframes hover-out-bar {
-  from {
-    background-position: 0 -100%;
-  }
-  to {
-    background-position: 0 0;
-  }
-}  */
 
 nav .profile .headshot {
   height: var(--nav-img);
@@ -85,7 +69,7 @@ nav .profile .headshot {
 
 #extend-nav {
   position: absolute;
-  background-color: rgb(253, 146, 164);
+  background-color: var(--nav-color-dark);
   /* top:0; */
   transform: translateY(
     calc(var(--nav-height) * -1 + var(--extend-height) * -1)
@@ -102,20 +86,11 @@ nav .profile .headshot {
 @keyframes open-extend {
   from {
     transform: translateY(var(--nav-lower-height));
-    background-color: linear-gradient(
-      to top,
-      rgba(255, 122, 122, 1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
+
   }
   to {
     transform: translateY(var(--nav-higher-height));
-    height: auto;
-    background-color: linear-gradient(
-      to top,
-      rgba(255, 122, 122, 1) 100%,
-      rgba(255, 255, 255, 0) 0%
-    );
+
   }
 }
 

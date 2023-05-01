@@ -6,15 +6,7 @@ import GameBar from "./extendBar/GameBar";
 import ProfileBar from "./extendBar/ProfileBar";
 import SettingBar from "./extendBar/SettingBar";
 
-const linearColor = `linear-gradient(
-  to bottom,
-  rgba(255, 192, 203, 0.8),
-  rgba(255, 192, 203, 0.8) 50%,
-  rgb(253, 146, 164) 50%,
-  rgb(253, 146, 164)
-) 0 -100% / 100% 200%`;
-
-export default function NavigationBar() {
+export default function NavigationBar(props) {
   const { user } = useSelector((state) => ({ ...state }));
   const property = getComputedStyle(document.documentElement);
   const minTop =
@@ -40,11 +32,13 @@ export default function NavigationBar() {
   }, [bar]);
 
   useEffect(() => {
+    const top = elRef.current.getBoundingClientRect().top;
     console.log(
       open ? "open" : "close",
-      bar ? document.getElementsByClassName("extend-" + bar[0])[0] : "none"
+      bar ? document.getElementsByClassName("extend-" + bar[0])[0] : "none",
+      "now top is",
+      top
     );
-    const top = elRef.current.getBoundingClientRect().top;
     if (open && bar) {
       document.documentElement.style.setProperty(
         "--nav-lower-height",
@@ -77,7 +71,10 @@ export default function NavigationBar() {
   function openExtendNav() {}
 
   return (
-    <nav className="navigation-bar" id="nav">
+    <nav
+      className="navigation-bar"
+      id="nav"
+    >
       <div className="left">
         <button className="home" onClick={() => (window.location.href = "/")}>
           Home
@@ -95,10 +92,12 @@ export default function NavigationBar() {
             setBar(["game", <GameBar />]);
             setOpen(true);
             setOnBar(true);
+            props.blur();
           }}
           onMouseOut={() => {
             setOpen(false);
             setOnBar(false);
+            props.unblur();
           }}
           onClick={() => (window.location.href = "/games")}
         >
@@ -121,13 +120,15 @@ export default function NavigationBar() {
             setBar(["setting", <SettingBar />]);
             setOpen(true);
             setOnBar(true);
+            props.blur();
           }}
           onMouseOut={() => {
             setOpen(false);
             setOnBar(false);
+            props.unblur();
           }}
         >
-          &#x2699;
+          {/* &#x2699; */}
         </button>
         <button
           className="profile"
@@ -136,10 +137,12 @@ export default function NavigationBar() {
             setBar(["profile", <ProfileBar />]);
             setOpen(true);
             setOnBar(true);
+            props.blur();
           }}
           onMouseOut={() => {
             setOpen(false);
             setOnBar(false);
+            props.unblur();
           }}
         >
           <img
@@ -157,12 +160,14 @@ export default function NavigationBar() {
         onMouseOver={() => {
           setOpen(true);
           setOnExtend(true);
+          props.blur();
           // document.getElementById("extend-nav").style.animationPlayState =
           //   "paused";
         }}
         onMouseOut={() => {
           setOpen(false || onBar);
           setOnExtend(false);
+          false || onBar ? props.blur(): props.unblur();
         }}
       >
         <div className="space"></div>
