@@ -209,7 +209,7 @@ export default function FourNums() {
       <div className="fournums" id="fournums">
         <div className="header">
           <div className="null"></div>
-          <div className="title">FourNums</div>
+          <div className="game-title">FourNums</div>
           <i className="fa fa-question-circle-o" onClick={helpHandler}></i>
         </div>
         <Card />

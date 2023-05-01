@@ -10,8 +10,6 @@
   gap: auto;
   width: 100vw;
   height: auto;
-  position: absolute;
-  top: var(--nav-height);
   gap: 3vh;
 }
 
@@ -23,6 +21,9 @@
   font-weight: bolder;
   font-size: var(--game-title-size);
   text-align: center;
+}
+
+#wordle .game-title {
   border-bottom: rgba(0, 0, 0, 0.35) solid 1.5px;
 }
 
