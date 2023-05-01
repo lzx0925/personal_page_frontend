@@ -48,7 +48,6 @@ export default function Password(props) {
   }
   return (
     <div>
-      <div className="form-group">
         <label> {props.modify ? "Old" : ""} Password</label>
         {warning && <Warning context={warning} />}
         <input
@@ -59,7 +58,6 @@ export default function Password(props) {
           onChange={(event) => handleChange(event)}
           onBlur={() => checkFormat()}
         ></input>
-      </div>
       {goNew && <NewPassword />}
     </div>
   );

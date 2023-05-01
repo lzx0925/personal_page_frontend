@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
-const {backend_url} = require("../../../config")
+const { backend_url } = require("../../../config");
 
 const emailValidator = require("email-validator");
 
@@ -32,7 +32,7 @@ export default function Login(props) {
       setWarning("Invalid data exists.");
     } else {
       axios
-        .post(backend_url+"/login", { loginData: loginData })
+        .post(backend_url + "/login", { loginData: loginData })
         .then((response) => {
           if (!response.data.user) {
             if (response.data.error) setWarning(response.data.error);
@@ -67,26 +67,28 @@ export default function Login(props) {
   }
 
   return (
-    <div className="login-func">
-      <div className="login-form">
-        {checkButton()}
-        <h1>Login</h1>
-        <form>
-          <Email inputAttribute={inputAttribute} />
-          <Password inputAttribute={inputAttribute} />
-        </form>
-        {warning && <Warning context={warning} />}
-        <button
-          className="confirm-login"
-          onClick={handleSubmit}
-          onBlur={() => setWarning("")}
-        >
-          Login
+    <div id="action-form">
+      {props.button && (
+        <button className="close" onClick={props.closeLogin}>
+          X
         </button>
-        <button className="open-register" onClick={props.openRegister}>
-          Do not have account?
-        </button>
-      </div>
+      )}
+      <p>Login</p>
+      <form>
+        <Email inputAttribute={inputAttribute} />
+        <Password inputAttribute={inputAttribute} />
+      </form>
+      {warning && <Warning context={warning} />}
+      <button
+        className="confirm"
+        onClick={handleSubmit}
+        onBlur={() => setWarning("")}
+      >
+        Login
+      </button>
+      <button className="switch" onClick={props.openRegister}>
+        Do not have account?
+      </button>
     </div>
   );
 }

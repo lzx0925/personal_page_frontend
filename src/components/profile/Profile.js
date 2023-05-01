@@ -1,6 +1,5 @@
 import React from "react";
 import "./style.css";
-import NavigationBar from "../navi/NavigationBar";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -15,10 +14,9 @@ export default function Profile() {
       console.log("user not logged in");
       navigate("/login");
     }
-  }, [user, navigate]);
+  }, []);
   return (
-    <div>
-      <NavigationBar />
+    <div id="main-container">
       {user && <ProfileNav />}
     </div>
   );

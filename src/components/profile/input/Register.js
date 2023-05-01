@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
 const emailValidator = require("email-validator");
-const {backend_url} = require("../../../config")
+const { backend_url } = require("../../../config");
 
 export default function Register(props) {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function Register(props) {
       setWarning("Invalid data exists.");
     } else {
       axios
-        .post(backend_url+"/register", { registerData: registerData })
+        .post(backend_url + "/register", { registerData: registerData })
         .then((response) => {
           console.log(response.data);
           if (response.data.error) {
@@ -62,7 +62,6 @@ export default function Register(props) {
     setRegisterData({ ...registerData, [name]: value });
   }
 
-
   const checkFormat = (email, password, username) => {
     if (registerData.username.length < 3) return false;
     if (!emailValidator.validate(email)) return false;
@@ -70,17 +69,15 @@ export default function Register(props) {
     return true;
   };
 
-  function checkButton() {
-    if (props.button)
-      return (
-        <button className="fa fa-close" onClick={props.closeRegister}></button>
-      );
-  }
   return (
-    <div className="register-func">
-      <div className="register-form">
-        {checkButton()}
-        <h1>Register</h1>
+      <div id="action-form">
+        {props.button && (
+          <button
+            className="close"
+            onClick={props.closeRegister}
+          >X</button>
+        )}
+        <p>Register</p>
         <form>
           <Email inputAttribute={inputAttribute} />
           <Password inputAttribute={inputAttribute} />
@@ -88,17 +85,17 @@ export default function Register(props) {
         </form>
         {warning && <Warning context={warning} />}
         <button
-          className="confirm-register"
+          className="confirm"
           onClick={handleSubmit}
           onBlur={() => setWarning("")}
         >
           Register
         </button>
-        <button className="open-login" onClick={props.openLogin}>
+        <button className="switch" onClick={props.openLogin}>
           Already have account?
         </button>
       </div>
-    </div>
+
   );
 }
 

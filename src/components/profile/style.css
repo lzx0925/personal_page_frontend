@@ -1,5 +1,5 @@
 /*------LoginPage & RegisterPage-------*/
-.action-container {
+#action-form {
   display: flex;
   flex-direction: row;
 }
@@ -42,6 +42,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: var(--container-light);
 }
 .login-form h1,
 .register-form h1 {
@@ -107,20 +108,124 @@
 }
 
 .fa.fa-close {
-  position: absolute;
-  right: 0;
+  position: relative;
   top: 0;
+  font-size: 1rem;
+  height: fit-content;
+  width: fit-content;
   border: transparent;
-  background-color: transparent;
+  background-color: blue;
   color: var(--navi-bg);
 }
+
 .fa.fa-close:hover {
   cursor: pointer;
   transform: scale(1.1);
   color: var(--navi-button-hover);
 }
 
-/*-------profile--------*/
+#login-page {
+  width: 100vh;
+  position: absolute;
+  top: var(--navi-height);
+}
 
+/*new*/
+:root {
+  --action-form-width: 30vw;
+}
 
-/*-------profile--------*/
+.action-container {
+  position: absolute;
+  top: var(--nav-height);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10vh;
+  align-items: center;
+}
+
+.action-container > * > * {
+  /* border: solid 3px rgb(197, 104, 104); */
+}
+
+#action-form {
+  position: relative;
+  height: calc(var(--action-form-width));
+  width: var(--action-form-width);
+  background-color: rgba(255, 255, 255, 0.603);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13), 0 1px 1px 0 rgba(0, 0, 0, 0.11);
+}
+
+#action-form > * {
+  /* border: solid 3px black; */
+  margin: 0;
+}
+
+#action-form .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+}
+
+#action-form p {
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+#action-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-around;
+  /* border: solid black 3px; */
+}
+
+#action-form form > * {
+  display: flex;
+  flex-direction: column;
+}
+
+#action-form .confirm {
+  padding: 0.5rem 1.5rem;
+  width: fit-content;
+  border-radius: 0.2rem;
+  background-color: rgba(0, 0, 0, 0.328);
+}
+#action-form .switch {
+  color: blue;
+  text-decoration: underline;
+}
+
+#action-form form label {
+  font-size: 1.1rem;
+}
+#action-form form input {
+  height: 2rem;
+  border: solid 2px rgb(133, 133, 133);
+  background-color: rgb(252, 252, 252);
+  border-radius: 0.2rem;
+}
+
+#action-form form input:hover {
+  cursor: pointer;
+  height: 2rem;
+  border: solid 2px rgba(113, 172, 11, 0.913);
+  transition: 0.3s ease-in-out;
+}
+#action-form form input:focus {
+  all: unset;
+  height: 2rem;
+  background-color: rgba(247, 255, 228, 0.779);
+  border: 2px solid rgba(131, 190, 43, 0.605);
+  transition: 0.3s ease-in-out;
+}

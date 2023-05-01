@@ -9,8 +9,7 @@ import Wordle from "./components/game/wordle/Wordle.js";
 import { Routes, Route } from "react-router-dom";
 import LoggedInRoutes from "./routes/LoggedInRoutes";
 import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
-import LoginPage from "./components/profile/LoginPage";
-import RegisterPage from "./components/profile/RegisterPage";
+import ActionPage from "./components/profile/ActionPage";
 import Profile from "./components/profile/Profile";
 import Game from "./components/game/Game";
 import FourNums from "./components/game/fourNums/FourNums";
@@ -38,8 +37,8 @@ function App() {
           <Route path="/messageboard" element={<MessageBoard />} exact />
           <Route path="/wordle" element={<Wordle />} exact />
           <Route path="/profile" element={<LoggedInRoutes />} exact />
-          <Route path="/login" element={<LoginPage />} exact />
-          <Route path="/register" element={<RegisterPage />} exact />
+          <Route path="/login" element={<ActionPage action="login"/>} exact />
+          <Route path="/register" element={<ActionPage action="register" />} exact />
           <Route path="/fournums" element={<FourNums />} exact />
         </Routes>
       </div>

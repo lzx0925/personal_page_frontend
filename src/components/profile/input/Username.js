@@ -24,8 +24,7 @@ export default function Username(props) {
   }
 
   return (
-    <div>
-      <div className="form-group">
+      <div>
         <label>Username</label>
         {warning && <Warning context={warning} />}
         <input
@@ -36,6 +35,5 @@ export default function Username(props) {
           onBlur={() => checkFormat()}
         ></input>
       </div>
-    </div>
   );
 }

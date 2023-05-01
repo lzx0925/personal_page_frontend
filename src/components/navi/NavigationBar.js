@@ -71,10 +71,7 @@ export default function NavigationBar(props) {
   function openExtendNav() {}
 
   return (
-    <nav
-      className="navigation-bar"
-      id="nav"
-    >
+    <nav className="navigation-bar" id="nav">
       <div className="left">
         <button className="home" onClick={() => (window.location.href = "/")}>
           Home
@@ -128,7 +125,7 @@ export default function NavigationBar(props) {
             props.unblur();
           }}
         >
-          {/* &#x2699; */}
+          &#x2699;
         </button>
         <button
           className="profile"
@@ -167,7 +164,7 @@ export default function NavigationBar(props) {
         onMouseOut={() => {
           setOpen(false || onBar);
           setOnExtend(false);
-          false || onBar ? props.blur(): props.unblur();
+          false || onBar ? props.blur() : props.unblur();
         }}
       >
         <div className="space"></div>

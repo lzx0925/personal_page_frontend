@@ -1,9 +1,10 @@
 * {
   font-size: 16px;
+  font-family: serif;
 }
 
 body {
-  font-family: serif;
+  
 }
 :root {
   /*-------- navigation --------*/
@@ -28,7 +29,7 @@ body {
 
   /*-------- container color --------*/
   --container-dark: rgb(92, 108, 46);
-  --container-normal: rgb(214, 240, 143);
+  --container-normal: rgb(71, 89, 22);
   --container-light: white;
   --main-container: rgb(255, 255, 255, 0.5);
   /*-------- container color --------*/
@@ -63,7 +64,14 @@ button:hover {
   cursor: pointer;
 }
 
-#app-container{
+#app-container {
   transition: 0.3s ease-in-out;
 }
 /*------default------*/
+
+#main-container {
+  width: 100%;
+  min-height:100vh;
+  position: absolute;
+  top: var(--nav-height); 
+}
