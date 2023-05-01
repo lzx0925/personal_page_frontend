@@ -3,11 +3,10 @@ import "./style.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import NavigationBar from "../../navi/NavigationBar";
 import Symbol from "./Symbol";
 import Card from "./Card";
 import Summary from "./Summary";
-const {backend_url} = require("../../../config")
+const { backend_url } = require("../../../config");
 export default function FourNums() {
   const [expression, setExpression] = useState(["", "", "", "", "", "", ""]);
   const [paranthesis, setParanthesis] = useState(null);
@@ -156,10 +155,9 @@ export default function FourNums() {
 
   function submitAns() {
     console.log("submit");
-    if(user)
-    {
+    if (user) {
       axios
-        .post(backend_url+"/checkFourNums", {
+        .post(backend_url + "/checkFourNums", {
           email: user.email,
           expression: expression,
           paranthesis: paranthesis ? Object.values(paranthesis) : null,
@@ -208,7 +206,6 @@ export default function FourNums() {
 
   return (
     <div>
-      <NavigationBar />
       <div className="fournums" id="fournums">
         <div className="header">
           <div className="null"></div>

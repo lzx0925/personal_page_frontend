@@ -1,19 +1,20 @@
 :root {
   --game-title-size: 3rem;
-  --wordle-size: 60px;
+  --wordle-size: 3rem;
 }
-.container {
-  position: relative;
-  top: var(--nav-height);
-  width: 100vw;
-  height: calc(100vh - var(--nav-height));
-}
+
 #wordle {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  gap: auto;
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  top: var(--nav-height);
   gap: 3vh;
 }
+
 #wordle button {
   transition: background-color 0.2s ease-in, transform 0.2s ease-in;
 }
@@ -46,9 +47,9 @@
   height: var(--wordle-size);
   width: var(--wordle-size);
   border: solid 3px rgb(217, 217, 250);
-  border-radius: 5px;
+  border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
-  margin: 5px;
+  margin: 0.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,13 +61,13 @@
   background-color: #a2c9fb;
   border: 3px solid;
   border-color: #8bbdff;
-  margin: 8px 10px;
-  border-radius: 5px;
+  margin: 0.3rem;
+  border-radius: 0.2rem;
 }
 
 .delete,
 .submit {
-  width: 70px;
+  width: calc(var(--wordle-size) * 1.5);
 }
 
 .keyboard-button:hover {
