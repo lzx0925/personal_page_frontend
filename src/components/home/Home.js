@@ -29,21 +29,21 @@ export default function Home() {
         </div>
         <div className="contact">
           <Link to="https://www.instagram.com/gwen_995/" target="_blank">
-            <button className="icon fa fa-instagram" id="instagram"></button>
+            <button className="icon" id="instagram">&#xf16d;</button>
           </Link>
           <Link
             to="https://www.linkedin.com/in/zixin-li-724642184/"
             target="_blank"
           >
             <button
-              className="icon fa fa-linkedin-square"
+              className="icon"
               id="linkedin"
-            ></button>
+            >&#xf08c;</button>
           </Link>
-          <button className="icon fa fa-envelope" id="envelope"></button>
-          <button className="icon fa fa-mobile-phone" id="mobile"></button>
+          <button className="icon" id="envelope">&#xf0e0;</button>
+          <button className="icon" id="mobile">&#xf10b;</button>
           <Link to="https://github.com/lzx0925" target="_blank">
-            <button className="icon fa fa-github" id="github"></button>
+            <button className="icon" id="github">&#xf09b;</button>
           </Link>
         </div>
       </div>
