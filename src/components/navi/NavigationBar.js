@@ -39,10 +39,10 @@ export default function NavigationBar(props) {
   };
 
   useEffect(() => {
-    console.log("open is", open, " bar is ", bar);
+    // console.log("open is", open, " bar is ", bar);
     const extendBars = document.getElementsByClassName("extend-nav");
     const curBar = isMobile ? extendBars[1] : extendBars[0];
-    console.log("是手机吗？", isMobile, "Bar", curBar);
+    // console.log("是手机吗？", isMobile, "Bar", curBar);
     if (open && bar) {
       curBar.style.animation = "open-extend 0.6s ease-in-out forwards";
     } else if (open === false) {
