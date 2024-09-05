@@ -107,8 +107,9 @@ nav .headshot {
   transform: translateY(calc(-100%));
 }
 
+
 #mobile-mode .extend-nav {
-  height: calc(100vh - var(--nav-height));
+  height: calc(100vh - var(--nav-height));/*mobile bar高度需要占全屏*/
   flex-direction: column;
   background-color: var(--primary-color);
 }
