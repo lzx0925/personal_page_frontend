@@ -52,10 +52,7 @@ export default function NavigationBar(props) {
   }, [open, bar]);
 
   const handleResize = () => {
-    setIsMobile(
-      window.innerWidth <= 576 ||
-        (window.innerWidth > 768 && window.innerWidth < 992)
-    );
+    setIsMobile(window.innerWidth < 768);
   };
 
   useEffect(() => {
