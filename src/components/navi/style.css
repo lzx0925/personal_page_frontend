@@ -6,6 +6,12 @@
   --extend-game-img-width: calc(var(--extend-height) * 0.65 / 11 * 10);
 }
 /*------NavigationBar----------*/
+#pc-mode {
+  display: none;
+}
+#mobile-mode {
+  display: none;
+}
 nav {
   width: 100vw;
   height: var(--nav-height);
@@ -101,13 +107,13 @@ nav .headshot {
   transform: translateY(calc(-100%));
 }
 
-#extend-nav.mobile {
+#mobile-mode .extend-nav {
   height: calc(100vh - var(--nav-height));
   flex-direction: column;
   background-color: var(--primary-color);
 }
 
-#extend-nav.mobile > button {
+#mobile-mode .extend-nav > button {
   /* border: solid 1px black; */
   padding: 1rem 1.5rem;
   text-align: left;
@@ -116,7 +122,7 @@ nav .headshot {
   /* font-weight: bold; */
 }
 
-#extend-nav.mobile > button:focus {
+#mobile-mode .extend-nav > button:focus {
   background-color: aliceblue;
 }
 
@@ -164,24 +170,54 @@ nav .headshot {
   width: 80%;
 }
 
-/*--------------------------------Responsive Deisig--------------------------------*/
+/*--------------------------------Responsive Design--------------------------------*/
 /* Styles for potrait mobile devices */
 @media screen and (min-width: 0px) and (max-width: 576px) {
+  #mobile-mode {
+    display: flex;
+  }
+  #pc-mode {
+    display: none;
+  }
 }
 
 /* Styles for landscape mobile devices */
 @media screen and (min-width: 577px) and (max-width: 768px) {
+  #mobile-mode {
+    display: flex;
+  }
+  #pc-mode {
+    display: none;
+  }
 }
 
 /* Styles for ipad devices */
 @media screen and (min-width: 769px) and (max-width: 992px) {
+  #pc-mode {
+    display: flex;
+  }
+  #mobile-mode {
+    display: none;
+  }
 }
 
 /* Styles for PC devices */
 @media screen and (min-width: 993px) and (max-width: 1200px) {
+  #pc-mode {
+    display: flex;
+  }
+  #mobile-mode {
+    display: none;
+  }
 }
 
 /* Styles for Large PC devices */
 @media screen and (min-width: 1201px) {
+  #pc-mode {
+    display: flex;
+  }
+  #mobile-mode {
+    display: none;
+  }
 }
 /*--------------------------------Responsive Deisig--------------------------------*/
