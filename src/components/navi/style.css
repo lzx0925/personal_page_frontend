@@ -46,7 +46,7 @@ nav .right button {
   background: var(--primary-color);
   height: var(--nav-height);
 
-  font-size: var(--font-size);
+  font-size: 1rem;
   padding: 0 1.5rem;
   color: black;
   /* border: solid 2px paleturquoise; */
@@ -59,7 +59,7 @@ nav .headshot {
 }
 
 .navigation-bar.mobile p {
-  font-size: calc(var(--font-size) * 1.5);
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -68,7 +68,7 @@ nav .headshot {
 }
 
 #menu > * {
-  width: 2em;
+  width: 2rem;
   height: 4px;
   background-color: #333;
   margin: 3px 0;
@@ -111,7 +111,7 @@ nav .headshot {
   /* border: solid 1px black; */
   padding: 1rem 1.5rem;
   text-align: left;
-  font-size: calc(var(--font-size) * 1.5);
+  font-size: 1.5rem;
   color: black;
   /* font-weight: bold; */
 }
