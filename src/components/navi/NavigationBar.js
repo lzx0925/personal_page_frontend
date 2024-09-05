@@ -8,7 +8,7 @@ import "./style.css";
 export default function NavigationBar(props) {
   const { user } = useSelector((state) => ({ ...state }));
   const [bar, setBar] = useState();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState();
   const [isMobile, setIsMobile] = useState(false);
   const hoverTimeoutRef = useRef(null);
 
@@ -39,22 +39,16 @@ export default function NavigationBar(props) {
   };
 
   useEffect(() => {
-    console.log("now open is", open, "bar is ", bar);
     if (open && bar) {
       document.getElementById("extend-nav").style.animation =
         "open-extend 0.6s ease-in-out forwards";
-    } else if (!open && bar===false) {
+    } else if (open === false) {
       document.getElementById("extend-nav").style.animation =
         "close-extend 0.6s ease-in-out forwards";
       hoverTimeoutRef.current = setTimeout(() => {
         setBar(false);
       }, 600); //确保关闭动画完成后Bar内容清空
     }
-    // else if (open && !bar) {
-    //   //isMobile时触发bar,设置为string “mobile”
-    //   document.getElementById("extend-nav").style.animation =
-    //     "open-extend 0.6s ease-in-out forwards";
-    // }
   }, [open, bar]);
 
   const handleResize = () => {
@@ -73,10 +67,6 @@ export default function NavigationBar(props) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    console.log("resized ", window.innerWidth);
-  }, [isMobile]);
 
   return (
     <>
@@ -112,7 +102,16 @@ export default function NavigationBar(props) {
               >
                 Message Board
               </button>
-
+              <button
+                className="setting"
+                onClick={() => (window.location.href = "/setting")}
+                onMouseEnter={() =>
+                  handleMouseEnter(["setting", <SettingBar />])
+                }
+                onMouseLeave={handleMouseLeave}
+              >
+                &#x2699;
+              </button>{" "}
               <button
                 className="profile"
                 onMouseEnter={() =>
