@@ -6,7 +6,7 @@ import MessageBoard from "./components/messageBoard/MessageBoard.js";
 import Home from "./components/home/Home.js";
 import Introduction from "./components/introduction/Introduction.js";
 import Wordle from "./components/game/wordle/Wordle.js";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import LoggedInRoutes from "./routes/LoggedInRoutes";
 import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 import ActionPage from "./components/profile/ActionPage";
@@ -18,6 +18,7 @@ function App() {
   const { user } = useSelector((state) => ({ ...state }));
   const email = user ? user.email : null;
   const [blur, setBlur] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const appContainer = document.getElementById("app-container");
@@ -29,8 +30,6 @@ function App() {
     }
   }, [blur]);
 
-
-
   return (
     <>
       <link
@@ -41,9 +40,24 @@ function App() {
 
       <div id="app-container">
         <Routes>
-          <Route path={"/"} element={<Home login={user} />} exact />
-          <Route path="/about-me" element={<Introduction />} exact />
-          <Route path="/games" element={<Game />} exact />
+          <Route
+            path={"/"}
+            key={location.pathname}
+            element={<Home login={user} />}
+            exact
+          />
+          <Route
+            path="/about-me"
+            key={location.pathname}
+            element={<Introduction />}
+            exact
+          />
+          <Route
+            path="/games"
+            key={location.pathname}
+            element={<Game />}
+            exact
+          />
           <Route path="/messageboard" element={<MessageBoard />} exact />
           <Route path="/wordle" element={<Wordle />} exact />
           <Route path="/profile" element={<LoggedInRoutes />} exact />
