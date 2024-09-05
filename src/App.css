@@ -16,11 +16,9 @@ body {
   justify-content: center;
 }
 :root {
+  --primary-color: white;
   /*-------- navigation --------*/
-  --navi-bg: rgb(217, 250, 72); /*navi-button(same)*/
-  --navi-home: rgb(183, 222, 10);
-  --navi-home-hover: rgb(167, 205, 2);
-  --navi-button-hover: rgb(194, 235, 12); /*extend-bar-bg(same)*/
+  --nav-color-light: rgba(225, 255, 151, 1);
   /*-------- navigation --------*/
 
   /*-------- extend-navi --------*/
@@ -84,6 +82,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 /*------default------*/
 
@@ -99,6 +98,7 @@ button:hover {
 @media screen and (min-width: 0px) and (max-width: 576px) {
   :root {
     --font-size: 12px;
+    --nav-height: 64px;
   }
 }
 
@@ -106,6 +106,7 @@ button:hover {
 @media screen and (min-width: 577px) and (max-width: 768px) {
   :root {
     --font-size: 14px;
+    --nav-height: 64px;
   }
 }
 
@@ -113,6 +114,7 @@ button:hover {
 @media screen and (min-width: 769px) and (max-width: 992px) {
   :root {
     --font-size: 16px;
+    --nav-height: 64px;
   }
 }
 
@@ -120,6 +122,7 @@ button:hover {
 @media screen and (min-width: 993px) and (max-width: 1200px) {
   :root {
     --font-size: 18px;
+    --nav-height: 64px;
   }
 }
 
@@ -127,6 +130,7 @@ button:hover {
 @media screen and (min-width: 1201px) {
   :root {
     --font-size: 20px;
+    --nav-height: 80px;
   }
 }
 /*--------------------------------Responsive Deisig--------------------------------*/

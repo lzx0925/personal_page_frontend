@@ -20,12 +20,16 @@ function App() {
   const [blur, setBlur] = useState(false);
 
   useEffect(() => {
-    console.log("Blur state:", blur);
     const appContainer = document.getElementById("app-container");
     if (appContainer) {
-      appContainer.style.filter = blur ? "blur(8px)" : "blur(0)";
+      appContainer.style.filter = blur ? "blur(10px)" : "blur(0)";
+      appContainer.style.transform = blur
+        ? "translateY(0)"
+        : "translateY(-100%);";
     }
   }, [blur]);
+
+
 
   return (
     <>
@@ -34,6 +38,7 @@ function App() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
       <NavigationBar blur={() => setBlur(true)} unblur={() => setBlur(false)} />
+
       <div id="app-container">
         <Routes>
           <Route path={"/"} element={<Home login={user} />} exact />

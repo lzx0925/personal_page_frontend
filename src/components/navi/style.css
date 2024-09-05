@@ -1,13 +1,10 @@
 :root {
-  --nav-height: 55px;
   --nav-img: calc(var(--nav-height) * 0.7);
   --nav-icon: 2.1rem;
   --extend-height: 330px;
   --extend-list-height: calc(var(--extend-height) * 0.9);
   --extend-game-img-height: calc(var(--extend-height) * 0.65);
   --extend-game-img-width: calc(var(--extend-height) * 0.65 / 11 * 10);
-  --nav-color-light: rgba(225, 255, 151, 0.535);
-  --nav-color-dark: rgba(204, 231, 162, 0.95);
 }
 /*------NavigationBar----------*/
 nav {
@@ -17,10 +14,10 @@ nav {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
-  background: var(--nav-color-light);
+  background: var(--primary-color);
   border: none;
   z-index: 999;
-  box-shadow: rgba(89, 96, 87, 0.45) 0px 25px 20px -20px;
+  /* box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px; */
 }
 
 /*------NavigationBar----------*/
@@ -31,8 +28,7 @@ nav .right {
   height: var(--nav-height);
   display: flex;
   z-index: 3;
-  background: var(--nav-color-light);
-  box-shadow: 0px 5px 70px 0px rgba(178, 207, 156, 0.4);
+  background: var(--primary-color);
 }
 nav .middle {
   flex: 1;
@@ -43,20 +39,15 @@ nav .right {
 
 nav .left button,
 nav .right button {
+  position: relative;
   border: none;
   padding: 0rem 1.5rem;
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  background: linear-gradient(
-    to bottom,
-    var(--nav-color-light) var(--nav-color-light) 50%,
-    var(--nav-color-dark) 50%,
-    var(--nav-color-dark)
-  );
+  background: var(--primary-color);
   background-size: 100% 200%;
   color: rgb(42, 49, 16);
-  /* transition: background-position 0.1s ease-in-out 0.1s; */
 }
 nav > * > * {
   font-size: 1.1rem;
@@ -69,67 +60,60 @@ nav .profile .headshot {
   height: var(--nav-img);
   width: var(--nav-img);
   border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 #extend-nav {
   position: absolute;
-  background-color: var(--nav-color-dark);
-  /* top:0; */
-  transform: translateY(
-    calc(var(--nav-height) * -1 + var(--extend-height) * -1)
-  );
-  left: 0;
-  /* height:var(--nav-height) */
-  height: calc(var(--nav-height) + var(--extend-height));
-  width: 100%;
-  align-items: center;
+  background-color: var(--primary-color);
+
+  width: 100vw;
+  height: calc(var(--extend-height) + 16px);
   z-index: 1;
-  /* border: solid 2px blueviolet */
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
+  transform: translateY(
+    calc(-100vh + var(--extend-height) + var(--nav-height))
+  );
 }
 
 @keyframes open-extend {
   from {
-    transform: translateY(var(--nav-lower-height));
+    transform: translateY(
+      calc(-100vh + var(--extend-height) + var(--nav-height))
+    );
+    padding-top: 0;
   }
   to {
-    transform: translateY(var(--nav-higher-height));
-    box-shadow: rgba(121, 130, 118, 0.45) 0px 25px 20px -20px;
+    transform: translateY(0);
+    padding-top: var(--nav-height);
   }
 }
 
 @keyframes close-extend {
   from {
-    transform: translateY(var(--nav-higher-height));
-    box-shadow: rgba(109, 118, 106, 0.45) 0px 25px 20px -20px;
+    transform: translateY(0);
+    padding-top: var(--nav-height);
   }
   to {
-    transform: translateY(var(--nav-lower-height));
+    transform: translateY(
+      calc(-100vh + var(--extend-height) + var(--nav-height))
+    );
+    padding-top: 0;
   }
 }
 
-.space {
-  width: 100%;
-  height: var(--nav-height);
-  /* border: solid 2px blueviolet  */
-}
-/*@keyframes open-extend {
-  from {
-    height: var(--nav-lower-height);
-  }
-  to {
-    height: var(--nav-higher-height);
-  }
+#nav > * > button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transform: translateX(-50%);
+  transition: width 0.6s ease;
 }
 
-@keyframes close-extend {
-  from {
-    height: var(--nav-higher-height);
-  }
-  to {
-    height: var(--nav-lower-height);
-  }
-}*/
+#nav > * > button:hover::before {
+  width: 80%;
+}
