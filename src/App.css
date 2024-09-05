@@ -65,9 +65,9 @@ body {
   height: 100vh;
 }
 button {
-  border-color: transparent;
   background-color: transparent;
   text-align: center;
+  border: none;
 }
 
 button:hover {
@@ -82,7 +82,6 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 /*------default------*/
 

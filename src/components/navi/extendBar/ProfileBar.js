@@ -31,7 +31,7 @@ export default function ProfileBar() {
 
   return (
     <div className="extend-profile" id="profile">
-      <div className="function-list">
+      {/* <div className="function-list">
         {user && <button className="">My Message</button>}
         {user && <button className="">Game Records</button>}
         {user && <button className="">Change Password</button>}
@@ -74,7 +74,7 @@ export default function ProfileBar() {
           {user && showGender()}
           {user && <div className="email">{user.email}</div>}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

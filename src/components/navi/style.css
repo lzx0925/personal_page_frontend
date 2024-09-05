@@ -1,6 +1,5 @@
 :root {
   --nav-img: calc(var(--nav-height) * 0.7);
-  --nav-icon: 2.1rem;
   --extend-height: 330px;
   --extend-list-height: calc(var(--extend-height) * 0.9);
   --extend-game-img-height: calc(var(--extend-height) * 0.65);
@@ -9,29 +8,32 @@
 /*------NavigationBar----------*/
 nav {
   width: 100vw;
-  overflow: hidden;
   height: var(--nav-height);
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
   background: var(--primary-color);
-  border: none;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
   z-index: 999;
+
   /* box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px; */
 }
 
 /*------NavigationBar----------*/
 
 nav .left,
-nav .middle,
+nav .mid,
 nav .right {
   height: var(--nav-height);
   display: flex;
+
   z-index: 3;
-  background: var(--primary-color);
 }
-nav .middle {
+
+nav .mid {
   flex: 1;
+  background: var(--primary-color);
 }
 nav .right {
   justify-content: flex-end;
@@ -40,48 +42,93 @@ nav .right {
 nav .left button,
 nav .right button {
   position: relative;
-  border: none;
-  padding: 0rem 1.5rem;
-  height: var(--nav-height);
-  display: flex;
-  align-items: center;
+
   background: var(--primary-color);
-  background-size: 100% 200%;
-  color: rgb(42, 49, 16);
-}
-nav > * > * {
-  font-size: 1.1rem;
-}
-nav .setting {
-  font-size: var(--nav-icon);
+  height: var(--nav-height);
+
+  font-size: var(--font-size);
+  padding: 0 1.5rem;
+
+  /* border: solid 2px paleturquoise; */
 }
 
-nav .profile .headshot {
+nav .headshot {
   height: var(--nav-img);
   width: var(--nav-img);
   border-radius: 50%;
 }
 
+.navigation-bar.mobile p {
+  font-size: calc(var(--font-size) * 1.5);
+  font-weight: bold;
+}
+
+#menu {
+  color: var(--main-icon-color);
+}
+
+#menu > * {
+  width: 2em;
+  height: 4px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+.menu.change .bar1 {
+  transform: translate(0, 7px) rotate(-45deg);
+}
+
+.menu.change .bar2 {
+  opacity: 0;
+}
+
+.menu.change .bar3 {
+  transform: translate(0, -7px) rotate(45deg);
+}
+
 #extend-nav {
   position: absolute;
-  background-color: var(--primary-color);
+  inset: 0;
 
+  background-color: var(--primary-color);
   width: 100vw;
   height: calc(var(--extend-height));
+
   z-index: 1;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 
-  transform: translateY(calc(-100% + var(--nav-height)));
+  transform: translateY(calc(-100%));
+}
+
+#extend-nav.mobile {
+  height: calc(100vh - var(--nav-height));
+  flex-direction: column;
+  background-color: var(--primary-color);
+}
+
+#extend-nav.mobile > button {
+  /* border: solid 1px black; */
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: calc(var(--font-size) * 1.5);
+  /* font-weight: bold; */
+}
+
+#extend-nav.mobile > button:focus {
+  background-color: aliceblue;
 }
 
 @keyframes open-extend {
   from {
-    transform: translateY(calc(-100% + var(--nav-height)));
+    transform: translateY(calc(-100%));
     padding-top: 0;
+    display: none;
   }
   to {
     transform: translateY(0);
     padding-top: var(--nav-height);
+    display: flex;
   }
 }
 
@@ -89,21 +136,25 @@ nav .profile .headshot {
   from {
     transform: translateY(0);
     padding-top: var(--nav-height);
+    display: flex;
   }
   to {
-    transform: translateY(calc(-100% + var(--nav-height)));
+    transform: translateY(calc(-100%));
     padding-top: 0;
+    display: none;
   }
 }
 
 #nav > * > button::before {
   content: "";
+  background-color: #3498db;
   position: absolute;
+
   left: 50%;
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: #3498db;
+
   transform: translateX(-50%);
   transition: width 0.6s ease;
 }
@@ -111,3 +162,25 @@ nav .profile .headshot {
 #nav > * > button:hover::before {
   width: 80%;
 }
+
+/*--------------------------------Responsive Deisig--------------------------------*/
+/* Styles for potrait mobile devices */
+@media screen and (min-width: 0px) and (max-width: 576px) {
+}
+
+/* Styles for landscape mobile devices */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+}
+
+/* Styles for ipad devices */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+}
+
+/* Styles for PC devices */
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+}
+
+/* Styles for Large PC devices */
+@media screen and (min-width: 1201px) {
+}
+/*--------------------------------Responsive Deisig--------------------------------*/
