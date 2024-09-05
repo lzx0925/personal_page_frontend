@@ -102,16 +102,7 @@ export default function NavigationBar(props) {
               >
                 Message Board
               </button>
-              <button
-                className="setting"
-                onClick={() => (window.location.href = "/setting")}
-                onMouseEnter={() =>
-                  handleMouseEnter(["setting", <SettingBar />])
-                }
-                onMouseLeave={handleMouseLeave}
-              >
-                &#x2699;
-              </button>{" "}
+
               <button
                 className="profile"
                 onMouseEnter={() =>
