@@ -18,17 +18,21 @@ function App() {
   const { user } = useSelector((state) => ({ ...state }));
   const email = user ? user.email : null;
   const [blur, setBlur] = useState(false);
+
   useEffect(() => {
-    console.log("can I blur???", blur);
-    if (blur) {
-      document.getElementById("app-container").style.filter = "blur(8px)";
-    } else {
-      document.getElementById("app-container").style.filter = "blur(0)";
+    console.log("Blur state:", blur);
+    const appContainer = document.getElementById("app-container");
+    if (appContainer) {
+      appContainer.style.filter = blur ? "blur(8px)" : "blur(0)";
     }
   }, [blur]);
+
   return (
-    <div>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+    <>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      ></link>
       <NavigationBar blur={() => setBlur(true)} unblur={() => setBlur(false)} />
       <div id="app-container">
         <Routes>
@@ -38,12 +42,16 @@ function App() {
           <Route path="/messageboard" element={<MessageBoard />} exact />
           <Route path="/wordle" element={<Wordle />} exact />
           <Route path="/profile" element={<LoggedInRoutes />} exact />
-          <Route path="/login" element={<ActionPage action="login"/>} exact />
-          <Route path="/register" element={<ActionPage action="register" />} exact />
+          <Route path="/login" element={<ActionPage action="login" />} exact />
+          <Route
+            path="/register"
+            element={<ActionPage action="register" />}
+            exact
+          />
           <Route path="/fournums" element={<FourNums />} exact />
         </Routes>
       </div>
-    </div>
+    </>
   );
 }
 /*          <Route path="/about-me" element={<Introduction />} exact />

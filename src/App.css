@@ -1,10 +1,19 @@
 * {
-  font-size: 16px;
   font-family: serif;
+  font-size: var(--font-size);
 }
 
 body {
-  
+  width: 100%;
+  margin: 0;
+}
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 :root {
   /*-------- navigation --------*/
@@ -54,6 +63,9 @@ body {
   /*-------- text color --------*/
 }
 
+#body {
+  height: 100vh;
+}
 button {
   border-color: transparent;
   background-color: transparent;
@@ -66,12 +78,55 @@ button:hover {
 
 #app-container {
   transition: 0.3s ease-in-out;
+  width: 100%;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /*------default------*/
 
-#main-container {
+/* #main-container {
   width: 100%;
-  min-height:100vh;
+  min-height: 100vh;
   position: absolute;
-  top: var(--nav-height); 
+  top: var(--nav-height);
+} */
+
+/*--------------------------------Responsive Deisig--------------------------------*/
+/* Styles for potrait mobile devices */
+@media screen and (min-width: 0px) and (max-width: 576px) {
+  :root {
+    --font-size: 12px;
+  }
 }
+
+/* Styles for landscape mobile devices */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  :root {
+    --font-size: 14px;
+  }
+}
+
+/* Styles for ipad devices */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  :root {
+    --font-size: 16px;
+  }
+}
+
+/* Styles for PC devices */
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  :root {
+    --font-size: 18px;
+  }
+}
+
+/* Styles for Large PC devices */
+@media screen and (min-width: 1201px) {
+  :root {
+    --font-size: 20px;
+  }
+}
+/*--------------------------------Responsive Deisig--------------------------------*/

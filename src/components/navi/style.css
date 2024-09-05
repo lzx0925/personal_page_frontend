@@ -11,7 +11,8 @@
 }
 /*------NavigationBar----------*/
 nav {
-  width: 100%;
+  width: 100vw;
+  overflow: hidden;
   height: var(--nav-height);
   display: flex;
   flex-wrap: nowrap;
@@ -132,38 +133,3 @@ nav .profile .headshot {
     height: var(--nav-lower-height);
   }
 }*/
-
-/* Extra small devices (phones) */
-@media only screen and (max-width: 320px) {
-  /* Your styles here */
-}
-
-/* Small devices (landscape phones) */
-@media only screen and (min-width: 321px) and (max-width: 480px) {
-  /* Your styles here */
-}
-
-/* Medium devices (tablets) */
-@media only screen and (min-width: 481px) and (max-width: 600px) {
-  /* Your styles here */
-}
-
-/* Large devices (small laptops) */
-@media only screen and (min-width: 601px) and (max-width: 768px) {
-  /* Your styles here */
-}
-
-/* Extra large devices (laptops, desktops) */
-@media only screen and (min-width: 769px) and (max-width: 900px) {
-  /* Your styles here */
-}
-
-/* 2X Large devices (large laptops, desktops) */
-@media only screen and (min-width: 901px) and (max-width: 1024px) {
-  /* Your styles here */
-}
-
-/* 3X Large devices (large desktops) */
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
-  /* Your styles here */
-}
