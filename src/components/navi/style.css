@@ -1,6 +1,6 @@
 :root {
   --nav-img: calc(var(--nav-height) * 0.7);
-  --extend-height: 330px;
+  --extend-height: 350px;
   --extend-list-height: calc(var(--extend-height) * 0.9);
   --extend-game-img-height: calc(var(--extend-height) * 0.65);
   --extend-game-img-width: calc(var(--extend-height) * 0.65 / 11 * 10);

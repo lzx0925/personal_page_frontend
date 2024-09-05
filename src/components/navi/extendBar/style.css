@@ -12,14 +12,14 @@
   /* width: 100vw; */
   /* height: var(--extend-height); */
   height: auto;
-  gap: 2vw;
-  margin: 1rem 2vw;
-  /* background-color: pink; */
+  gap: 2rem;
+  margin: 1rem 2rem;
 }
 
 .list-name {
-  font-size: 1.3rem;
+  font-size: 1rem;
   text-align: center;
+  margin-top: 0.4rem;
   /* background-color: aquamarine; */
 }
 
@@ -36,9 +36,10 @@
 }
 
 #game-extend-bar #game-li {
-  height: auto;
+  height: fit-content;
   width: auto;
-  padding: 0.5rem 0.2rem;
+  background-color: var(--primary-color);
+  padding: 0.8rem 0.2rem;
   border-radius: 3%;
 
   transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
