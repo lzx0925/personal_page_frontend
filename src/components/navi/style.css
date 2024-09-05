@@ -48,7 +48,7 @@ nav .right button {
 
   font-size: var(--font-size);
   padding: 0 1.5rem;
-
+  color: black;
   /* border: solid 2px paleturquoise; */
 }
 
@@ -112,6 +112,7 @@ nav .headshot {
   padding: 1rem 1.5rem;
   text-align: left;
   font-size: calc(var(--font-size) * 1.5);
+  color: black;
   /* font-weight: bold; */
 }
 
