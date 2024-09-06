@@ -34,11 +34,19 @@ export async function check_wordle(word) {
         resolve({ status: true, data: response.data });
       })
       .catch((err) => {
-        console.log("Full Error Object:", err);              // 查看完整错误对象
-        console.log("Error Message:", err.message);          // 通用错误信息
-        console.log("Error Response:", err.response);        // 服务器响应（可能有错误详情）
-        console.log("Error Request:", err.request);          // 已发送请求但无响应
-        console.log("Error Config:", err.config);            // 请求的配置信息
+        console.log("Full Error Object:", err); // 查看完整错误对象
+        console.log("Error Message:", err.message); // 通用错误信息
+        console.log("Error Response:", err.response); // 服务器响应（可能有错误详情）
+        console.dir(err.request); // 展开 XMLHttpRequest 对象的属性
+        console.dir(err.config); // 展开 config 对象的属性         // 请求的配置信息
+        console.log(
+          "Error Config as JSON:",
+          JSON.stringify(err.config, null, 2)
+        );
+        console.log(
+          "Error Request as JSON:",
+          JSON.stringify(err.request, null, 2)
+        );
 
         reject({ status: false, err: err });
       });
