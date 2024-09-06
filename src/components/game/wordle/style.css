@@ -128,7 +128,7 @@
   to {
     transform: rotateY(360deg);
     -webkit-transform: rotateY(360deg);
-    background: var(--wordle-green);
+    background-color: var(--wordle-green);
     border-color: var(--wordle-green);
     backface-visibility: hidden;
   }
@@ -143,7 +143,7 @@
   to {
     transform: rotateY(360deg);
     -webkit-transform: rotateY(360deg);
-    background: var(--wordle-grey);
+    background-color: var(--wordle-grey);
     border-color: var(--wordle-grey);
     backface-visibility: hidden;
   }
@@ -158,7 +158,7 @@
   to {
     transform: rotateY(360deg);
     -webkit-transform: rotateY(360deg);
-    background: var(--wordle-yellow);
+    background-color: var(--wordle-yellow);
     border-color: var(--wordle-yellow);
     backface-visibility: hidden;
   }
