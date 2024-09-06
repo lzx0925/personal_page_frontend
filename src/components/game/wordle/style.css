@@ -10,34 +10,36 @@
   gap: auto;
   width: 100vw;
   height: auto;
+  max-height: 100vh;
   gap: 3vh;
+}
+
+#wordle > * {
+  border: solid 1px #ccc;
 }
 
 #wordle button {
   transition: background-color 0.2s ease-in, transform 0.2s ease-in;
 }
 
-.game-title {
+#wordle .title {
   font-weight: bolder;
-  font-size: var(--game-title-size);
+  font-size: 2rem;
   text-align: center;
-}
-
-#wordle .game-title {
   border-bottom: rgba(0, 0, 0, 0.35) solid 1.5px;
+  border-top: rgba(0, 0, 0, 0.35) solid 1.5px;
 }
 
-.keyboard,
-.input {
-  /* border: solid black 3px; */
+#wordle .keyboard,
+#wordle .input {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.words,
-.keyboard-row {
+#wordle .words,
+#wordle .keyboard-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -45,8 +47,8 @@
 }
 
 .word {
-  height: var(--wordle-size);
-  width: var(--wordle-size);
+  height: 2.5rem;
+  width: 2.5rem;
   border: solid 3px rgb(217, 217, 250);
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
@@ -57,13 +59,11 @@
 }
 
 .keyboard-button {
-  height: var(--wordle-size);
-  width: var(--wordle-size);
+  height: 2.5rem;
+  width: 2.5rem;
   background-color: #a2c9fb;
-  border: 3px solid;
-  border-color: #8bbdff;
+  border: 3px solid #8bbdff;
   margin: 0.3rem;
-  border-radius: 0.2rem;
 }
 
 .gn {

@@ -17,6 +17,8 @@ body {
 }
 :root {
   --primary-color: white;
+  --nav-height: 64px;
+
   /*-------- navigation --------*/
   --nav-color-light: rgba(225, 255, 151, 1);
   /*-------- navigation --------*/
@@ -97,39 +99,34 @@ button:hover {
 @media screen and (min-width: 0px) and (max-width: 576px) {
   :root {
     --font-size: 12px;
-    --nav-height: 64px;
   }
 }
 
 /* Styles for landscape mobile devices */
 @media screen and (min-width: 577px) and (max-width: 768px) {
   :root {
-    --font-size: 14px;
-    --nav-height: 64px;
+    --font-size: 12px;
   }
 }
 
 /* Styles for ipad devices */
 @media screen and (min-width: 769px) and (max-width: 992px) {
   :root {
-    --font-size: 16px;
-    --nav-height: 64px;
+    --font-size: 14px;
   }
 }
 
 /* Styles for PC devices */
 @media screen and (min-width: 993px) and (max-width: 1200px) {
   :root {
-    --font-size: 18px;
-    --nav-height: 64px;
+    --font-size: 14px;
   }
 }
 
 /* Styles for Large PC devices */
 @media screen and (min-width: 1201px) {
   :root {
-    --font-size: 20px;
-    --nav-height: 80px;
+    --font-size: 16px;
   }
 }
 /*--------------------------------Responsive Deisig--------------------------------*/

@@ -5,9 +5,6 @@ const { backend_url } = require("../config");
 export async function check_wordle(word) {
   const formData = new FormData();
   formData.append("word", word);
-  for (let pair of formData.entries()) {
-    console.log(pair[0] + ": " + pair[1]);
-  }
   return new Promise((resolve, reject) => {
     axios
       .post(backend_url + "/wordle/check_word", formData)

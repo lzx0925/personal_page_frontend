@@ -9,18 +9,12 @@ import { check_wordle } from "../../../services/wordle.js";
 export default function Wordle() {
   const [curLine, setCurLine] = useState(0);
   const [words, setWord] = useState(["", "", "", "", "", ""]);
-  const [green, setGreen] = useState(new Set());
-  const [yellow, setYellow] = useState(new Set());
   const [summary, setSummary] = useState(null);
   const [res, setRes] = useState();
   const [keyboard, setKeyboard] = useState();
 
   async function handleKeyBoardClick(name, value) {
     const newWords = [...words];
-    // if (curLine > 4) {
-    //   alert("run out of today's chance! Try tomorrow");
-    //   return;
-    // }
     if (name === "ENTER" && words[curLine].length === 5) {
       const res = await check_wordle(words[curLine]);
       const data = res.data;
@@ -43,7 +37,7 @@ export default function Wordle() {
   }
 
   useEffect(() => {
-    console.log("current line:", curLine);
+    if (curLine > 5) alert("run out of today's chance! Try tomorrow");
   }, [curLine]);
 
   useEffect(() => {
@@ -81,8 +75,8 @@ export default function Wordle() {
   }
 
   return (
-    <div className="container" id="wordle">
-      <div className="game-title">Wordle</div>
+    <div className="wordle-page" id="wordle">
+      <div className="title">Wordle</div>
       <div className="input">
         <SingleLine line={0} />
         <SingleLine line={1} />
