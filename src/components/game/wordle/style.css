@@ -71,7 +71,6 @@
 }
 
 .keyboard-button {
-  width: 8vw;
   background-color: var(--wordle-secondary-color);
 
   font-weight: bolder;
@@ -124,7 +123,6 @@
   from {
     transform: rotate(0);
     -webkit-transform: rotateY(0);
-   
   }
   to {
     transform: rotateY(180deg);
@@ -251,17 +249,21 @@
     font-size: 3rem;
   }
   .keyboard-row {
-    height: 5rem;
+    height: 3rem;
   }
-
+  .keyboard-button {
+    width: 8vw;
+  }
   .keyboard-button p {
-    font-size: 1.5rem;
+    font-size: 4rem;
   }
   .keyboard-button.enter,
   .keyboard-button.backspace {
     width: 15vw;
   }
-
+  .keyboard-button > p {
+    font-size: 1.5rem;
+  }
   .keyboard-button.enter > p {
     font-size: 1rem;
   }
@@ -270,21 +272,25 @@
 /* Styles for landscape mobile devices 横屏*/
 @media screen and (min-width: 577px) and (max-width: 767px) {
   #wordle > .input > .words > .word {
-    height: 6rem;
-    width: 6rem;
+    height: 4rem;
+    width: 4rem;
   }
   #wordle > .input > .words > .word > .letter-text {
-    font-size: 4rem;
+    font-size: 3rem;
   }
   .keyboard-row {
-    height: 6rem;
+    height: 4rem;
   }
-
+  .keyboard-button {
+    width: 5vw;
+  }
   .keyboard-button.enter,
   .keyboard-button.backspace {
     width: 15vw;
   }
-
+  .keyboard-button > p {
+    font-size: 1.5rem;
+  }
   .keyboard-button.enter > p {
     font-size: 1.5rem;
   }
@@ -293,21 +299,25 @@
 /* Styles for ipad devices */
 @media screen and (min-width: 768px) and (max-width: 992px) {
   #wordle > .input > .words > .word {
-    height: 6rem;
-    width: 6rem;
+    height: 3rem;
+    width: 3rem;
   }
   #wordle > .input > .words > .word > .letter-text {
-    font-size: 4rem;
+    font-size: 2rem;
   }
   .keyboard-row {
-    height: 6rem;
+    height: 3rem;
   }
-
+  .keyboard-button {
+    width: 3vw;
+  }
   .keyboard-button.enter,
   .keyboard-button.backspace {
-    width: 15vw;
+    width: 10vw;
   }
-
+  .keyboard-button > p {
+    font-size: 1.5rem;
+  }
   .keyboard-button.enter > p {
     font-size: 1.5rem;
   }
@@ -316,21 +326,26 @@
 /* Styles for PC devices */
 @media screen and (min-width: 993px) and (max-width: 1200px) {
   #wordle > .input > .words > .word {
-    height: 6rem;
-    width: 6rem;
+    height: 3rem;
+    width: 3rem;
   }
   #wordle > .input > .words > .word > .letter-text {
-    font-size: 4rem;
+    font-size: 2rem;
   }
   .keyboard-row {
-    height: 6rem;
+    height: 3rem;
+  }
+  .keyboard-button {
+    width: 3vw;
   }
 
   .keyboard-button.enter,
   .keyboard-button.backspace {
-    width: 15vw;
+    width: 10vw;
   }
-
+  .keyboard-button > p {
+    font-size: 1.5rem;
+  }
   .keyboard-button.enter > p {
     font-size: 1.5rem;
   }
@@ -339,23 +354,28 @@
 /* Styles for Large PC devices */
 @media screen and (min-width: 1201px) {
   #wordle > .input > .words > .word {
-    height: 6rem;
-    width: 6rem;
+    height: 3rem;
+    width: 3rem;
   }
   #wordle > .input > .words > .word > .letter-text {
-    font-size: 4rem;
+    font-size: 2rem;
   }
   .keyboard-row {
-    height: 6rem;
+    height: 3rem;
+  }
+  .keyboard-button {
+    width: 3rem;
   }
 
   .keyboard-button.enter,
   .keyboard-button.backspace {
-    width: 15vw;
+    width: 10vw;
   }
-
-  .keyboard-button.enter > p {
+  .keyboard-button > p {
     font-size: 1.5rem;
+  }
+  .keyboard-button.enter > p {
+    font-size: 1rem;
   }
 }
 /*--------------------------------Responsive Design--------------------------------*/
