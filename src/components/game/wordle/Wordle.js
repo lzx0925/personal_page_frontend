@@ -40,8 +40,9 @@ export default function Wordle() {
           }
         }, 1000);
       } catch (error) {
-        
-        setDebugMessage(`出问题啦！！ ${error.message || error}`); // Debug message 5
+        setDebugMessage(
+          `出问题啦！！! ${error.message || JSON.stringify(error)}`
+        ); // Debug message 5
       }
       // const res = await check_wordle(words[curRow]);
       // const data = res.data;
