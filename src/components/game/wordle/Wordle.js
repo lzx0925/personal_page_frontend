@@ -14,6 +14,7 @@ export default function Wordle() {
   const [keyboard, setKeyboard] = useState();
 
   async function handleKeyBoardClick(name, value) {
+    console.log(name, value);
     const newWords = [...words];
     if (name === "ENTER" && words[curLine].length === 5) {
       const res = await check_wordle(words[curLine]);
@@ -76,7 +77,6 @@ export default function Wordle() {
 
   return (
     <div className="wordle-page" id="wordle">
-      <div className="title">Wordle</div>
       <div className="input">
         <SingleLine line={0} />
         <SingleLine line={1} />
