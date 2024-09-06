@@ -34,7 +34,12 @@ export async function check_wordle(word) {
         resolve({ status: true, data: response.data });
       })
       .catch((err) => {
-        console.log(111, err, err.err, err.message);
+        console.log("Full Error Object:", err);              // 查看完整错误对象
+        console.log("Error Message:", err.message);          // 通用错误信息
+        console.log("Error Response:", err.response);        // 服务器响应（可能有错误详情）
+        console.log("Error Request:", err.request);          // 已发送请求但无响应
+        console.log("Error Config:", err.config);            // 请求的配置信息
+
         reject({ status: false, err: err });
       });
   });
