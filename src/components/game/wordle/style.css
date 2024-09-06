@@ -66,6 +66,21 @@
   border-radius: 0.2rem;
 }
 
+.gn {
+  background-color: #cbeb7c;
+  border-color: #b7eb39;
+}
+
+.gy {
+  background-color: #d3d4d2;
+  border-color: #c9c9c9;
+}
+
+.yw {
+  background-color: rgb(255, 219, 106);
+  border-color: #ffd348;
+}
+
 .delete,
 .submit {
   width: calc(var(--wordle-size) * 1.5);
@@ -76,7 +91,7 @@
   background-color: #8bbdff;
 }
 
-@keyframes reverse-board-1 {
+@keyframes reverse-board-gn {
   from {
     transform: rotate(0);
   }
@@ -87,7 +102,7 @@
   }
 }
 
-@keyframes reverse-board-2 {
+@keyframes reverse-board-gy {
   from {
     transform: rotate(0);
   }
@@ -98,7 +113,7 @@
   }
 }
 
-@keyframes reverse-board-3 {
+@keyframes reverse-board-yw {
   from {
     transform: rotate(0);
   }

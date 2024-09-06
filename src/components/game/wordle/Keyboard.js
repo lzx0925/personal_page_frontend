@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import "./style.css";
-import { useEffect, useCallback } from "react";
 
 export default function Keyboard(props) {
   const keyboard = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
-  const handleClick = (e) => {
-    props.changeTextLetter(e.target.name, e.target.value);
-  };
+
+  const handleClick = useCallback(
+    (e) => {
+      const value = e.target ? e.target.value : e.key.toUpperCase();
+      const name = e.target ? e.target.name : e.key;
+
+      // Allow only letters, Enter, and Backspace
+      if (
+        (/[A-Z]/.test(name) && name.length === 1) ||
+        name === "ENTER" ||
+        name === "BACKSPACE"
+      ) {
+        props.handleLetterClick(name, value);
+      }
+    },
+    [props]
+  );
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const key = e.key.toUpperCase();
+      handleClick({ key });
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup listener when the component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleClick]);
 
   return (
     <div className="keyboard">
@@ -19,9 +46,7 @@ export default function Keyboard(props) {
             key={letter}
             name={letter}
             value={letter}
-            onClick={(e) => {
-              handleClick(e);
-            }}
+            onClick={handleClick}
           >
             {letter}
           </button>
@@ -36,9 +61,7 @@ export default function Keyboard(props) {
             key={letter}
             name={letter}
             value={letter}
-            onClick={(e) => {
-              handleClick(e);
-            }}
+            onClick={handleClick}
           >
             {letter}
           </button>
@@ -48,9 +71,8 @@ export default function Keyboard(props) {
         <button
           className="keyboard-button submit"
           name="Enter"
-          onClick={(e) => {
-            handleClick(e);
-          }}
+          value="Enter"
+          onClick={handleClick}
         >
           Enter
         </button>
@@ -62,9 +84,7 @@ export default function Keyboard(props) {
             key={letter}
             name={letter}
             value={letter}
-            onClick={(e) => {
-              handleClick(e);
-            }}
+            onClick={handleClick}
           >
             {letter}
           </button>
@@ -73,9 +93,7 @@ export default function Keyboard(props) {
           className="keyboard-button delete"
           name="Backspace"
           value=""
-          onClick={(e) => {
-            handleClick(e);
-          }}
+          onClick={handleClick}
         >
           Del
         </button>

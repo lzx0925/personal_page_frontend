@@ -1,122 +1,80 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import Keyboard from "./Keyboard.js";
-import NavigatorBar from "../../navi/NavigationBar.js";
+
 import Summary from "./Summary";
 import SingleLine from "./SingleLine.js";
-import axios from "axios";
-const {backend_url} = require("../../../config")
+import { check_wordle } from "../../../services/wordle.js";
 
 export default function Wordle() {
-  const [line, setLine] = useState(0);
-  const [words, setWord] = useState(["", "", "", "", ""]);
+  const [curLine, setCurLine] = useState(0);
+  const [words, setWord] = useState(["", "", "", "", "", ""]);
   const [green, setGreen] = useState(new Set());
   const [yellow, setYellow] = useState(new Set());
   const [summary, setSummary] = useState(null);
+  const [res, setRes] = useState();
+  const [keyboard, setKeyboard] = useState();
 
-  function handleLetterClick(name, value) {
+  async function handleKeyBoardClick(name, value) {
     const newWords = [...words];
-    if (line > 4) {
-      alert("run out of today's chance! Try tomorrow ~");
-      return;
-    }
-    if (name === "Enter") {
-      if (words[line].length === 5) {
-        axios
-          .post(backend_url+"/wordle", { word: words[line] })
-          .then((response) => {
-            if (response.data.result) {
-              showResult(response.data.result);
-              keyboardColorHandler(JSON.parse(response.data.keyboard));
-              if (
-                JSON.stringify(response.data.result) ===
-                JSON.stringify([1, 1, 1, 1, 1])
-              ) {
-                setSummary({
-                  status: "Win",
-                  message:
-                    "Congrats! You find correct words at Stage " +
-                    (line + 1).toString() +
-                    " !",
-                  stage: line + 1,
-                });
-              } else if (line === 4) {
-                setSummary({
-                  status: "Lose",
-                  message: "Sorry, Run out of chances!",
-                  stage: line + 1,
-                });
-              }
-              setLine(line + 1);
-            } else alert("No word " + words[line] + " in dictionary!");
-          })
-          .catch((error) => {
-            console.error(error);
-            return error;
-          });
-      }
-    } else if (name === "Backspace") {
-      if (words[line].length > 0) {
-        document.getElementById(line).children[
-          words[line].length - 1
-        ].children[0].textContent = "";
-        newWords[line] = newWords[line].slice(0, -1);
-      }
-    } else {
-      if (words[line].length < 5) {
-        document.getElementById(line).children[
-          words[line].length
-        ].children[0].textContent = value;
-        newWords[line] = newWords[line].concat(value);
-      }
+    // if (curLine > 4) {
+    //   alert("run out of today's chance! Try tomorrow");
+    //   return;
+    // }
+    if (name === "ENTER" && words[curLine].length === 5) {
+      const res = await check_wordle(words[curLine]);
+      const data = res.data;
+
+      setRes(data.result);
+      setKeyboard(data.keyboard);
+      setTimeout(() => (curLine < 5 ? setCurLine(curLine + 1) : null), 2000);
+    } else if (name === "BACKSPACE" && words[curLine].length > 0) {
+      document.getElementById(curLine).children[
+        words[curLine].length - 1
+      ].children[0].textContent = "";
+      newWords[curLine] = newWords[curLine].slice(0, -1);
+    } else if (name.length === 1 && words[curLine].length < 5) {
+      document.getElementById(curLine).children[
+        words[curLine].length
+      ].children[0].textContent = value;
+      newWords[curLine] = newWords[curLine].concat(value);
     }
     setWord(newWords);
   }
 
-  function showResult(result) {
-    for (let i = 0; i < result.length; i++) {
-      const element = document.getElementById(line).children[i].style;
-      const child = document.getElementById(line).children[i].children[0].style;
-      if (result[i] === 1) {
-        element.animationName = "reverse-board-1";
-      } else if (result[i] === -1) {
-        element.animationName = "reverse-board-2";
-      } else {
-        element.animationName = "reverse-board-3";
-      }
-      element.animationDuration = "2s";
-      element.animationFillMode = "forwards";
-      child.animationName = "reverse-letter";
-      child.animationDuration = "2s";
-      child.animationFillMode = "forwards";
-    }
-  }
+  useEffect(() => {
+    console.log("current line:", curLine);
+  }, [curLine]);
 
-  function keyboardColorHandler(result) {
-    for (const key in result) {
-      const element = document.getElementById(key).style;
-      if (result[key] === 1) {
-        element.backgroundColor = "#cbeb7c";
-        element.borderColor = "#b7eb39";
-        const newSet = green;
-        newSet.add(key);
-        setGreen(newSet);
-      } else if (result[key] === 0 && green.has(key) === false) {
-        element.backgroundColor = "#ffdb6a";
-        element.borderColor = "#ffd348";
-        const newSet = yellow;
-        newSet.add(key);
-        setYellow(newSet);
-      } else if (
-        result[key] === -1 &&
-        green.has(key) === false &&
-        yellow.has(key) === false
-      ) {
-        element.backgroundColor = "#d3d4d2";
-        element.borderColor = "#c9c9c9";
+  useEffect(() => {
+    if (res) {
+      for (let i = 0; i < res.length; i++) {
+        const element = document.getElementById(curLine).children[i];
+        const child = element.children[0].style;
+        const container = element.style;
+
+        const animationType = res[i] === 1 ? "gn" : res[i] === -1 ? "gy" : "yw";
+        container.animation = `reverse-board-${animationType} 2s forwards`;
+        child.animation = "reverse-letter 2s forwards";
       }
     }
-  }
+  }, [res]);
+
+  useEffect(() => {
+    if (keyboard) {
+      const prev = "rgb(162, 201, 251)";
+
+      Object.entries(keyboard).forEach(([key, value]) => {
+        const element = document.getElementById(key.toUpperCase());
+        const bg_color = window.getComputedStyle(element).backgroundColor;
+        if (value === 1) element.className = "keyboard-button gn";
+        else if (value === 0 && bg_color === prev)
+          element.className = "keyboard-button yw";
+        else if (value === -1 && bg_color === prev)
+          element.className = "keyboard-button gy";
+      });
+    }
+  }, [keyboard]);
 
   function closeWarning() {
     setSummary(null);
@@ -131,8 +89,9 @@ export default function Wordle() {
         <SingleLine line={2} />
         <SingleLine line={3} />
         <SingleLine line={4} />
+        <SingleLine line={5} />
       </div>
-      <Keyboard changeTextLetter={handleLetterClick} />
+      <Keyboard handleLetterClick={handleKeyBoardClick} />
       {summary && (
         <Summary
           closeWarning={closeWarning}
