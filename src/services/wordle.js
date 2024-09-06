@@ -1,6 +1,6 @@
 import axios from "axios";
-// const { backend_url } = require("../../../config");
-const backend_url = "http://localhost:5000";
+const { backend_url } = require("../../../config");
+// const backend_url = "http://localhost:5000";
 
 export async function check_wordle(word) {
   const formData = new FormData();
