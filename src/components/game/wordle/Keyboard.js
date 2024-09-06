@@ -53,7 +53,7 @@ export default function Keyboard(props) {
       }`}
       id={letter}
       key={letter}
-      name={name}
+      name={letter.length > 1 ? letter.toUpperCase() : letter}
       value={letter}
       onClick={handleClick}
     >
