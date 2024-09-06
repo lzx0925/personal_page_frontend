@@ -34,8 +34,8 @@ export async function check_wordle(word) {
         resolve({ status: true, data: response.data });
       })
       .catch((err) => {
-        console.log(err);
-        reject({ status: false, err: err.message });
+        console.log(111, err, err.err, err.message);
+        reject({ status: false, err: err });
       });
   });
 }
