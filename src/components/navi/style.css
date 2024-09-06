@@ -86,6 +86,7 @@ nav .headshot {
 
 .menu.change .bar1 {
   transform: translate(0, 7px) rotate(-45deg);
+  -webkit-transform: translate(0, 7px) rotate(-45deg);
 }
 
 .menu.change .bar2 {
@@ -109,6 +110,7 @@ nav .headshot {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 
   transform: translateY(calc(-100%));
+  -webkit-transform: translateY(calc(-100%));
 }
 
 #mobile-mode .extend-nav {
@@ -134,11 +136,13 @@ nav .headshot {
 @keyframes open-extend {
   from {
     transform: translateY(calc(-100%));
+    -webkit-transform: translateY(calc(-100%));
     padding-top: 0;
     display: none;
   }
   to {
     transform: translateY(0);
+    -webkit-transform: translateY(0);
     padding-top: var(--nav-height);
     display: flex;
   }
@@ -147,11 +151,13 @@ nav .headshot {
 @keyframes close-extend {
   from {
     transform: translateY(0);
+    -webkit-transform: translateY(0);
     padding-top: var(--nav-height);
     display: flex;
   }
   to {
     transform: translateY(calc(-100%));
+    -webkit-transform: translateY(calc(-100%));
     padding-top: 0;
     display: none;
   }
@@ -168,6 +174,7 @@ nav .headshot {
   height: 2px;
 
   transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
   transition: width 0.6s ease;
 }
 

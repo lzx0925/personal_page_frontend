@@ -68,15 +68,15 @@ export default function Keyboard(props) {
 
   const renderButton = (letter) => (
     <button
-      className={`keyboard-button ${
-        letter.length > 1 ? letter.toLowerCase() : ""
-      } ${
+      className={`keyboard-button${
+        letter.length > 1 ? " " + letter.toLowerCase() : ""
+      }${
         color[letter] === 1
-          ? "gn"
+          ? " gn"
           : color[letter] === 0
-          ? "yw"
+          ? " yw"
           : color[letter] === -1
-          ? "gy"
+          ? " gy"
           : ""
       }`}
       id={letter}
@@ -86,7 +86,8 @@ export default function Keyboard(props) {
       onClick={handleClick}
     >
       {letter === "BACKSPACE" ? (
-        <p className="fa fa-window-close-o" />
+        // <p className="fa fa-window-close-o" />
+        <p className="fa fa-delete-left" />
       ) : (
         <p>{letter}</p>
       )}
