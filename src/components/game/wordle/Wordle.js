@@ -7,69 +7,71 @@ import SingleLine from "./SingleLine.js";
 import { check_wordle } from "../../../services/wordle.js";
 
 export default function Wordle() {
-  const [curLine, setCurLine] = useState(0);
+  const [curRow, setCurRow] = useState(0);
   const [words, setWord] = useState(["", "", "", "", "", ""]);
   const [summary, setSummary] = useState(null);
-  const [res, setRes] = useState();
+  const [res, setRes] = useState(["", "", "", "", "", ""]);
   const [keyboard, setKeyboard] = useState();
 
-  async function handleKeyBoardClick(name, value) {
-    const newWords = [...words];
+  async function handleKeyBoardClick(value) {
+    const len = words[curRow].length;
 
-    if (name === "ENTER" && words[curLine].length === 5) {
-      const res = await check_wordle(words[curLine]);
+    if (value === "ENTER" && len === 5) {
+      const res = await check_wordle(words[curRow]);
       const data = res.data;
 
-      setRes(data.result);
+      // setRes(data.result);
+      setRes((prevRes) =>
+        prevRes.map((res, i) => (i === curRow ? data.result : res))
+      );
       setKeyboard(data.keyboard);
-      setTimeout(() => (curLine < 5 ? setCurLine(curLine + 1) : null), 2000);
-    } else if (name === "BACKSPACE" && words[curLine].length > 0) {
-      document.getElementById(curLine).children[
-        words[curLine].length - 1
-      ].children[0].textContent = "";
-      newWords[curLine] = newWords[curLine].slice(0, -1);
-    } else if (name.length === 1 && words[curLine].length < 5) {
-      document.getElementById(curLine).children[
-        words[curLine].length
-      ].children[0].textContent = value;
-      newWords[curLine] = newWords[curLine].concat(value);
+      setTimeout(() => (curRow < 5 ? setCurRow(curRow + 1) : null), 1000);
+    } else if (value === "BACKSPACE" && len > 0) {
+      setWord((prevWords) =>
+        prevWords.map((word, i) => (i === curRow ? word.slice(0, -1) : word))
+      );
+    } else if (value.length === 1 && len < 5) {
+      setWord((prevWords) =>
+        prevWords.map((word, i) => (i === curRow ? word + value : word))
+      );
     }
-    setWord(newWords);
   }
 
   useEffect(() => {
-    if (curLine > 5) alert("run out of today's chance! Try tomorrow");
-  }, [curLine]);
+    console.log("所有单词", words);
+    console.log("完成了一行，上一行是：", words[curRow - 1]);
+    if (curRow > 5) alert("run out of today's chance! Try tomorrow");
+  }, [curRow]);
 
-  useEffect(() => {
-    if (res) {
-      for (let i = 0; i < res.length; i++) {
-        const element = document.getElementById(curLine).children[i];
-        const child = element.children[0].style;
-        const container = element.style;
+  // useEffect(() => {
+  //   if (res) {
+  //     for (let i = 0; i < res.length; i++) {
+  //       const element = document.getElementById(curRow).children[i];
+  //       const child = element.children[0].style;
+  //       const container = element.style;
 
-        const animationType = res[i] === 1 ? "gn" : res[i] === -1 ? "gy" : "yw";
-        container.animation = `reverse-board-${animationType} 2s forwards`;
-        child.animation = "reverse-letter 2s forwards";
-      }
-    }
-  }, [res]);
+  //       const animationType = res[i] === 1 ? "gn" : res[i] === -1 ? "gy" : "yw";
+  //       container.animation = `reverse-board-${animationType} 1s forwards`;
+  //       child.animation = "reverse-letter 1s forwards";
+  //     }
+  //   }
+  // }, [res]);
 
-  useEffect(() => {
-    if (keyboard) {
-      const prev = "rgb(162, 201, 251)";
+  // useEffect(() => {
+  //   if (keyboard) {
+  //     const prev = "rgb(162, 201, 251)";
 
-      Object.entries(keyboard).forEach(([key, value]) => {
-        const element = document.getElementById(key.toUpperCase());
-        const bg_color = window.getComputedStyle(element).backgroundColor;
-        if (value === 1) element.className = "keyboard-button gn";
-        else if (value === 0 && bg_color === prev)
-          element.className = "keyboard-button yw";
-        else if (value === -1 && bg_color === prev)
-          element.className = "keyboard-button gy";
-      });
-    }
-  }, [keyboard]);
+  //     Object.entries(keyboard).forEach(([key, value]) => {
+  //       const element = document.getElementById(key.toUpperCase());
+  //       const bg_color = window.getComputedStyle(element).backgroundColor;
+  //       if (value === 1) element.className = "keyboard-button gn";
+  //       else if (value === 0 && bg_color === prev)
+  //         element.className = "keyboard-button yw";
+  //       else if (value === -1 && bg_color === prev)
+  //         element.className = "keyboard-button gy";
+  //     });
+  //   }
+  // }, [keyboard]);
 
   function closeWarning() {
     setSummary(null);
@@ -78,14 +80,11 @@ export default function Wordle() {
   return (
     <div className="wordle-page" id="wordle">
       <div className="input">
-        <SingleLine line={0} />
-        <SingleLine line={1} />
-        <SingleLine line={2} />
-        <SingleLine line={3} />
-        <SingleLine line={4} />
-        <SingleLine line={5} />
+        {Array.from({ length: 6 }, (_, row) => (
+          <SingleLine key={row} row={row} word={words[row]} res={res[row]} />
+        ))}
       </div>
-      <Keyboard handleLetterClick={handleKeyBoardClick} />
+      <Keyboard handleLetterClick={handleKeyBoardClick} update={keyboard}/>
       {summary && (
         <Summary
           closeWarning={closeWarning}

@@ -1,32 +1,54 @@
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./style.css";
 
 export default function Keyboard(props) {
-  const keyboard = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+  const letters = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+  const [color, setColor] = useState(
+    letters
+      .join("")
+      .split("")
+      .reduce((acc, letter) => {
+        acc[letter] = undefined;
+        return acc;
+      }, {})
+  );
+
+  useEffect(() => {
+    if (props.update) {
+      for (let [l, newColor] of Object.entries(props.update)) {
+        console.log(l, newColor); // 输出键和值
+        if (
+          newColor === 1 ||
+          (newColor === 0 && color[l] != 1) ||
+          (newColor === -1 && color[l] === undefined)
+        ) {
+          setColor((prevColor) => ({
+            ...prevColor,
+            [l]: newColor,
+          }));
+        }
+      }
+    }
+  }, [props.update]);
+
+  useEffect(() => {
+    console.log(color);
+  }, [color]);
 
   const handleClick = useCallback(
     (e) => {
-      let name, value;
+      let value;
 
       // Handle real keyboard (keydown) event
-      if (e.key) {
-        name = e.key.toUpperCase();
-        value = e.key.toUpperCase();
-      }
-      // Handle virtual keyboard (onClick) event
-      else {
-        name = e.target.name;
-        value = e.target.value;
-      }
+      value = e.key ? e.key : e.target.value;
 
       // Allow only letters, Enter, and Backspace
       if (
-        (/[A-Z]/.test(name) && name.length === 1) ||
-        name === "ENTER" ||
-        name === "BACKSPACE"
-      ) {
-        props.handleLetterClick(name, value);
-      }
+        (/[A-Z]/.test(value) && value.length === 1) ||
+        value === "ENTER" ||
+        value === "BACKSPACE"
+      )
+        props.handleLetterClick(value);
     },
     [props]
   );
@@ -41,102 +63,48 @@ export default function Keyboard(props) {
     window.addEventListener("keydown", handleKeyDown);
 
     // Cleanup listener when the component unmounts
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleClick]);
 
-  const renderButton = (letter, name = letter) => (
+  const renderButton = (letter) => (
     <button
-      className={`keyboard-button + ${
-        name.length > 1 ? name.toLowerCase() : ""
+      className={`keyboard-button ${
+        letter.length > 1 ? letter.toLowerCase() : ""
+      } ${
+        color[letter] === 1
+          ? "gn"
+          : color[letter] === 0
+          ? "yw"
+          : color[letter] === -1
+          ? "gy"
+          : ""
       }`}
       id={letter}
       key={letter}
-      name={letter.length > 1 ? letter.toUpperCase() : letter}
+      name={letter}
       value={letter}
       onClick={handleClick}
     >
-      <p>{name}</p>
+      {letter === "BACKSPACE" ? (
+        <p className="fa fa-window-close-o" />
+      ) : (
+        <p>{letter}</p>
+      )}
     </button>
   );
 
   return (
     <div className="keyboard">
-      {keyboard.slice(0, 2).map((row, i) => (
+      {letters.slice(0, 2).map((row, i) => (
         <div className="keyboard-row" key={i}>
           {row.split("").map((letter) => renderButton(letter))}
         </div>
       ))}
       <div className="keyboard-row">
-        {renderButton("Enter", "Enter")}
-        {keyboard[2].split("").map((letter) => renderButton(letter))}
-        {renderButton("Backspace", "Del")}
+        {renderButton("ENTER")}
+        {letters[2].split("").map((letter) => renderButton(letter))}
+        {renderButton("BACKSPACE")}
       </div>
     </div>
-    // return (
-    //   <div className="keyboard">
-    //     <div className="keyboard-row" id="row1" key="row1">
-    //       {keyboard[0].split("").map((letter) => (
-    //         <button
-    //           className="keyboard-button"
-    //           type="button"
-    //           id={letter}
-    //           key={letter}
-    //           name={letter}
-    //           value={letter}
-    //           onClick={handleClick}
-    //         >
-    //           {letter}
-    //         </button>
-    //       ))}
-    //     </div>
-    //     <div className="keyboard-row" id="row2" key="row2">
-    //       {keyboard[1].split("").map((letter) => (
-    //         <button
-    //           className="keyboard-button"
-    //           type="button"
-    //           id={letter}
-    //           key={letter}
-    //           name={letter}
-    //           value={letter}
-    //           onClick={handleClick}
-    //         >
-    //           {letter}
-    //         </button>
-    //       ))}
-    //     </div>
-    //     <div className="keyboard-row" id="row3" key="row3">
-    //       <button
-    //         className="keyboard-button submit"
-    //         name="Enter"
-    //         value="Enter"
-    //         onClick={handleClick}
-    //       >
-    //         Enter
-    //       </button>
-    //       {keyboard[2].split("").map((letter) => (
-    //         <button
-    //           className="keyboard-button"
-    //           type="button"
-    //           id={letter}
-    //           key={letter}
-    //           name={letter}
-    //           value={letter}
-    //           onClick={handleClick}
-    //         >
-    //           {letter}
-    //         </button>
-    //       ))}
-    //       <button
-    //         className="keyboard-button delete"
-    //         name="Backspace"
-    //         value=""
-    //         onClick={handleClick}
-    //       >
-    //         Del
-    //       </button>
-    //     </div>
-    //   </div>
   );
 }

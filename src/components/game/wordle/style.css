@@ -1,7 +1,7 @@
 :root {
   --wordle-primary-color: white;
   --wordle-secondary-color: rgb(232, 232, 232);
-  --wordle-third-color: ;
+  --wordle-third-color: rgb(113, 211, 253);
   --wordle-green: rgb(198, 231, 90);
   --wordle-yellow: rgb(243, 216, 65);
   --wordle-grey: rgb(171, 171, 171);
@@ -19,14 +19,14 @@
 
 /* ---------------------------Input------------------------- */
 #wordle > .input {
-  min-height: calc((100vh - var(--nav-height)) * 2 / 3);
-
+  /* min-height: calc((100vh - var(--nav-height)) * 2 / 3); */
+  /* height:fit-content; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   gap: 0.3rem;
-  padding: 0.5rem 0;
+  padding: 1rem 0 0 0;
 }
 
 #wordle > .input > .words {
@@ -63,21 +63,22 @@
 /*----------------------Keyboard-----------------------------*/
 #wordle .keyboard {
   min-height: calc((100vh - var(--nav-height)) * 1 / 3);
+  max-width: 100vw;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 0 0;
 }
 
 #wordle .keyboard-row {
-  /* width: 100%; */
+  padding: 0 1rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 
   gap: 0.3rem;
 }
@@ -94,12 +95,14 @@
 }
 
 .keyboard-button:hover {
-  background-color: var(--wordle-grey);
+  background-color: var(--wordle-third-color);
 }
 
 .keyboard-button > p {
-  width: 1.5rem;
+  min-width: 1rem;
+  font-size: 1rem;
   pointer-events: none;
+  color: black;
 }
 
 .del,
@@ -241,6 +244,29 @@
 /*--------------------------------Responsive Deisig--------------------------------*/
 /* Styles for potrait mobile devices 竖屏*/
 @media screen and (min-width: 0px) and (max-width: 576px) {
+  #wordle > .input {
+    padding: 4rem 0 0 0;
+  }
+  #wordle > .input > .words > .word {
+    height: 5rem;
+    width: 5rem;
+  }
+  #wordle > .input > .words > .word > .letter-text {
+    font-size: 3rem;
+  }
+  .keyboard-row {
+    height: 5rem;
+  }
+  .keyboard-button {
+    padding: 0 1rem;
+  }
+  .keyboard-button > p {
+    font-size: 2rem;
+  }
+  .del > p,
+  .enter > p {
+    font-size: 1rem;
+  }
 }
 
 /* Styles for landscape mobile devices 横屏*/
@@ -258,4 +284,4 @@
 /* Styles for Large PC devices */
 @media screen and (min-width: 1201px) {
 }
-/*--------------------------------Responsive Deisig--------------------------------*/
+/*--------------------------------Responsive Design--------------------------------*/
