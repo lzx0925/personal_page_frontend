@@ -181,22 +181,22 @@
 @keyframes fadeInUp {
   0% {
     transform: translate(-50%, 50%); /* 从屏幕下方开始 */
-    opacity: 0; /* 完全透明 */
+    /* opacity: 0;  */
   }
   100% {
     transform: translate(-50%, -50%); /* 回到居中的位置 */
-    opacity: 1; /* 完全不透明 */
+    /* opacity: 1;  */
   }
 }
 
 @keyframes fadeOutDown {
   0% {
     transform: translate(-50%, -50%); /* 回到居中的位置 */
-    opacity: 1; /* 完全不透明 */
+    /* opacity: 1;  */
   }
   100% {
     transform: translate(-50%, 50%); /* 从屏幕下方开始 */
-    opacity: 0; /* 完全透明 */
+    /* opacity: 0;  */
   }
 }
 
@@ -212,7 +212,7 @@
 
   padding: 4rem 0;
 
-  opacity: 0; /* 初始为透明 */
+  /* opacity: 0; */
   animation: fadeInUp 0.2s ease-in forwards 2s; /* 1秒淡入动画 */
 
   /* display: flex;
