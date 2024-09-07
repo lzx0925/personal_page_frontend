@@ -110,17 +110,21 @@ export default function Wordle() {
     );
 
     if (correct) {
-      setMessage({
-        correct: true,
-        times: curRow + 1,
-      });
-      setComplete(true);
+      setTimeout(() => {
+        setMessage({
+          correct: true,
+          times: curRow + 1,
+        });
+        setComplete(true);
+      }, 1000);
     } else if (curRow >= 5) {
-      setMessage({
-        correct: false,
-        times: curRow + 1,
-      });
-      setComplete(true);
+      setTimeout(() => {
+        setMessage({
+          correct: false,
+          times: curRow + 1,
+        });
+        setComplete(true);
+      }, 1000);
     }
   }, [res]);
 
