@@ -10,6 +10,9 @@
 #wordle {
   width: 100vw;
   min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* ---------------------------Input------------------------- */
@@ -187,47 +190,69 @@
 
   padding: 4rem 0;
 
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  justify-content: center;
+  align-items: center; */
+
+  border: solid 1px red;
 }
 #wordle .summary-container > * {
-  /* border: solid 1px black; */
+  flex: 1;
 }
 #wordle .summary-container > .real-space {
-  /* border: solid 1px red; */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  /* border: solid 1px blue; */
   width: 33%;
-  /* height: auto; */
-  height: calc(100% - var(--nav-height));
+  height: auto;
+  /* height: calc(100% - var(--nav-height)); */
 
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
+/*summary的每一行*/
 #wordle .summary-container > .real-space > * {
   /* border: solid 1px blue; */
   margin: 1.5rem 0 0 0;
 }
+/* #wordle .summary-container > .real-space > * {
+  border: solid 1px red;
+} */
+#wordle .summary-container > .real-space > * > .title {
+  /* color: blue;
+  border: solid 1px blue;
+  text-align: center; */
+}
 
 #wordle #close-wordle-summary {
-  /* border: solid 1px black; */
-  height: calc(100% - var(--nav-height));
+  position: absolute;
+  top: -1.5em;
+  right: -1.5em;
+  /* border: solid 1px yellow; */
+  width: fit-content;
+  /* height: calc(100% - var(--nav-height)); */
   /* transform: scale(0.8); */
 }
 
 #wordle .summary-container > * > .title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
-#wordle .summary-container .stats-summary {
+/* #wordle .summary-container .stats-summary {
+  display: flex;
+  flex-direction: row;
+} */
+
+#wordle .summary-container .stats-content {
   display: flex;
   flex-direction: row;
 }
 
-#wordle .stats-summary > * {
+#wordle .stats-content > * {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -235,12 +260,13 @@
 
 #wordle .subtitle {
   text-align: center;
-  font-size: 0.5rem;
+  font-size: 0.8rem;
+  text-wrap: nowrap;
 }
 
 #wordle .stats {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: bolder;
 }
 
@@ -248,34 +274,35 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  padding-left: 1rem;
 }
 
 #wordle .histogram-row {
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  padding-left: 1rem;
 }
 
 #wordle .histogram-row > .title {
   /* border: solid red 1px; */
   width: 1rem;
   text-align: center;
-
+  font-size: 1.5rem;
   font-weight: bolder;
 }
 
 .bar {
   bottom: 0;
   width: 200px;
-  height: 1rem;
-  margin-left: 0.2rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
 }
 
 .percent {
   position: relative;
   width: 0px;
-  height: 1rem;
+  height: 1.5rem;
   background-color: var(--wordle-grey);
 
   display: flex;
@@ -288,7 +315,7 @@
 }
 
 .percent .win-times {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   color: white;
   font-weight: bolder;
   margin-right: 0.2rem;
@@ -335,7 +362,7 @@
   }
   /*-----Summary--------*/
   #wordle .summary-container > .real-space {
-    width: 60%;
+    width: 80%;
   }
 }
 
@@ -365,26 +392,29 @@
     font-size: 1rem;
   }
   /*-----Summary--------*/
+  #wordle .summary-container > .real-space {
+    width: 60%;
+  }
 }
 
 /* Styles for ipad devices */
 @media screen and (min-width: 768px) and (max-width: 992px) {
   #wordle > .input > .words > .word {
-    height: 4rem;
-    width: 4rem;
+    height: 6rem;
+    width: 6rem;
   }
   #wordle > .input > .words > .word > .letter-text {
-    font-size: 3rem;
+    font-size: 5rem;
   }
   .keyboard-row {
-    height: 4rem;
+    height: 6rem;
   }
   .keyboard-button {
-    width: 5vw;
+    width: 8vw;
   }
   .keyboard-button.enter,
   .keyboard-button.backspace {
-    width: 8vw;
+    width: 12vw;
   }
   .keyboard-button > p {
     font-size: 1.5rem;
@@ -393,10 +423,11 @@
     font-size: 1rem;
   }
 
-/* summary */
+  /* summary */
   #wordle .summary-container > .real-space {
     /* border: solid 1px red; */
-    width: 50%;}
+    width: 60%;
+  }
 }
 
 /* Styles for PC devices */
@@ -417,13 +448,17 @@
 
   .keyboard-button.enter,
   .keyboard-button.backspace {
-    width: 10vw;
+    width: 8vw;
   }
   .keyboard-button > p {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   .keyboard-button.enter > p {
     font-size: 1rem;
+  }
+  /*-----Summary--------*/
+  #wordle .summary-container > .real-space {
+    width: 60%;
   }
 }
 
@@ -445,7 +480,7 @@
 
   .keyboard-button.enter,
   .keyboard-button.backspace {
-    width: 10vw;
+    width: 8vw;
   }
   .keyboard-button > p {
     font-size: 1.5rem;

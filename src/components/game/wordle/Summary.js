@@ -12,7 +12,7 @@ export default function Summary({ correct, times, clearMessage }) {
   // console.log(user);
   // useEffect(() => {
   //   if (user) {
-  console.log(123, correct, times);
+
   //   }
   // }, []);
   const localStats = JSON.parse(localStorage.getItem("gameStats")) || {
@@ -34,7 +34,6 @@ export default function Summary({ correct, times, clearMessage }) {
 
   useEffect(() => {
     if (correct === undefined || times === undefined) return;
-    console.log("times:", times, "win?", correct);
 
     let updatedStats = { ...localStats };
 
@@ -60,7 +59,6 @@ export default function Summary({ correct, times, clearMessage }) {
   }, []);
 
   const getAnimation = (win, total) => {
-    console.log(win, total);
     const percent = Math.floor((100 * win) / total);
 
     return {
@@ -78,27 +76,33 @@ export default function Summary({ correct, times, clearMessage }) {
         <div className="real-space">
           <div className="title">{correct ? "Congrats" : "Sorry"}</div>
           <div className="stats-summary">
-            <div>
-              <div className="stats">{gameStats.totalGames}</div>
-              <div className="subtitle">Played</div>
-            </div>
-            <div>
-              <div className="stats">
-                {Math.round((gameStats.totalWins / gameStats.totalGames) * 100)}
-                %
+            <div className="title"> STATISTICS</div>
+            <div className="stats-content">
+              <div>
+                <div className="stats">{gameStats.totalGames}</div>
+                <div className="subtitle">Played</div>
               </div>
-              <div className="subtitle">Win %</div>
-            </div>
-            <div>
-              <div className="stats">{gameStats.maxStreak}</div>
-              <div className="subtitle">Current Streak</div>
-            </div>
-            <div>
-              <div className="stats">{gameStats.maxStreak}</div>
-              <div className="subtitle">Max Streak</div>
+              <div>
+                <div className="stats">
+                  {Math.round(
+                    (gameStats.totalWins / gameStats.totalGames) * 100
+                  )}
+                  %
+                </div>
+                <div className="subtitle">Win %</div>
+              </div>
+              <div>
+                <div className="stats">{gameStats.maxStreak}</div>
+                <div className="subtitle">Current Streak</div>
+              </div>
+              <div>
+                <div className="stats">{gameStats.maxStreak}</div>
+                <div className="subtitle">Max Streak</div>
+              </div>
             </div>
           </div>
           <div className="histogram">
+            <div className="title"> GUESS DISTRIBUTION</div>
             {Array.from({ length: 6 }, (_, i) => {
               return (
                 <div className="histogram-row" key={i}>
@@ -125,9 +129,9 @@ export default function Summary({ correct, times, clearMessage }) {
               );
             })}
           </div>
-        </div>
-        <div id="close-wordle-summary">
-          <CloseButton color="var(--wordle-grey)" handleClose={handleClose} />
+          <div id="close-wordle-summary">
+            <CloseButton color="var(--wordle-grey)" handleClose={handleClose} />
+          </div>
         </div>
       </div>
     )
