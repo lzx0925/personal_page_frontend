@@ -178,23 +178,46 @@
 /*--------------------Animation for Input--------------------*/
 
 /*-------------------------Summary---------------------------*/
+@keyframes fadeInUp {
+  0% {
+    transform: translate(-50%, 50%); /* 从屏幕下方开始 */
+    opacity: 0; /* 完全透明 */
+  }
+  100% {
+    transform: translate(-50%, -50%); /* 回到居中的位置 */
+    opacity: 1; /* 完全不透明 */
+  }
+}
+
+@keyframes fadeOutDown {
+  0% {
+    transform: translate(-50%, -50%); /* 回到居中的位置 */
+    opacity: 1; /* 完全不透明 */
+  }
+  100% {
+    transform: translate(-50%, 50%); /* 从屏幕下方开始 */
+    opacity: 0; /* 完全透明 */
+  }
+}
+
 #wordle .summary-container {
   position: absolute;
   background-color: var(--wordle-primary-color);
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%, -50%);
 
   height: calc(100% - var(--nav-height));
   width: 100%;
 
   padding: 4rem 0;
 
+  opacity: 0; /* 初始为透明 */
+  animation: fadeInUp 0.2s ease-in forwards 2s; /* 1秒淡入动画 */
+
   /* display: flex;
   justify-content: center;
   align-items: center; */
-
-  border: solid 1px red;
 }
 #wordle .summary-container > * {
   flex: 1;

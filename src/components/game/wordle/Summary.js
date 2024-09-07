@@ -63,16 +63,18 @@ export default function Summary({ correct, times, clearMessage }) {
 
     return {
       "--progress-percent": percent.toString() + "%",
-      animation: "progress-change 2s ease-in-out forwards",
+      animation: "progress-change 2s ease-in-out forwards 1.5s",
     };
   };
 
+  const [closeAnimation, setCloseAnimation] = useState();
   const handleClose = () => {
-    clearMessage();
+    setCloseAnimation({ animation: "fadeOutDown 0.2s ease-in-out forwards" });
+    setTimeout(() => clearMessage(), 300);
   };
   return (
     gameStats && (
-      <div className="summary-container">
+      <div className="summary-container" style={closeAnimation}>
         <div className="real-space">
           <div className="title">{correct ? "Congrats" : "Sorry"}</div>
           <div className="stats-summary">
