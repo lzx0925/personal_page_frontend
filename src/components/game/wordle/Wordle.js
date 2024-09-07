@@ -12,6 +12,7 @@ export default function Wordle() {
   const [message, setMessage] = useState();
   const [res, setRes] = useState(["", "", "", "", "", ""]);
   const [keyboard, setKeyboard] = useState();
+  const [complete, setComplete] = useState(false);
 
   // const [curRow, setCurRow] = useState(() => {
   //   return localStorage.getItem("curRow")
@@ -69,6 +70,7 @@ export default function Wordle() {
   // }, [curRow, words, res, keyboard]);
 
   async function handleKeyBoardClick(value) {
+    if (complete) return;
     const len = words[curRow].length;
 
     if (value === "ENTER" && len === 5) {
@@ -112,11 +114,13 @@ export default function Wordle() {
         correct: true,
         times: curRow + 1,
       });
+      setComplete(true);
     } else if (curRow >= 5) {
       setMessage({
         correct: false,
         times: curRow + 1,
       });
+      setComplete(true);
     }
   }, [res]);
 
