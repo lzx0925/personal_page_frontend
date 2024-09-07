@@ -9,7 +9,7 @@ import { check_wordle } from "../../../services/wordle.js";
 export default function Wordle() {
   const [curRow, setCurRow] = useState(0);
   const [words, setWord] = useState(["", "", "", "", "", ""]);
-  const [summary, setSummary] = useState(null);
+  const [message, setMessage] = useState();
   const [res, setRes] = useState(["", "", "", "", "", ""]);
   const [keyboard, setKeyboard] = useState();
 
@@ -36,15 +36,34 @@ export default function Wordle() {
     }
   }
 
-  useEffect(() => {
-    console.log("所有单词", words);
-    console.log("完成了一行，上一行是：", words[curRow - 1]);
-    if (curRow > 5) alert("run out of today's chance! Try tomorrow");
-  }, [curRow]);
+  // useEffect(() => {
+  //   console.log("所有单词", words);
+  //   console.log("完成了一行，上一行是：", words[curRow - 1]);
 
-  function closeWarning() {
-    setSummary(null);
-  }
+  // }, [curRow]);
+
+  useEffect(() => {
+    const noValue = Object.values(res[curRow]).every(
+      (element) => element === undefined
+    );
+    if (noValue) return;
+
+    const correct = Object.values(res[curRow]).every(
+      (element) => element === 1
+    );
+
+    if (correct) {
+      setMessage({
+        correct: true,
+        times: curRow + 1,
+      });
+    } else if (curRow >= 5) {
+      setMessage({
+        correct: false,
+        times: curRow + 1,
+      });
+    }
+  }, [res]);
 
   return (
     <div className="wordle-page" id="wordle">
@@ -55,12 +74,11 @@ export default function Wordle() {
       </div>
 
       <Keyboard handleLetterClick={handleKeyBoardClick} update={keyboard} />
-      {summary && (
+      {message && (
         <Summary
-          closeWarning={closeWarning}
-          status={summary.status}
-          message={summary.message}
-          stage={summary.stage}
+          correct={message.correct}
+          times={message.times}
+          clearMessage={() => setMessage()}
         />
       )}
     </div>

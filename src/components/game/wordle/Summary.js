@@ -1,87 +1,135 @@
 import "./style.css";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import axios from "axios";
-const {backend_url} = require("../../../config")
-export default function Summary(props) {
-  const { user } = useSelector((state) => ({ ...state }));
-  const { stage, setStage } = useState();
-  console.log(user);
+import CloseButton from "../../icon/CloseButton";
+
+// import axios from "axios";
+// const {backend_url} = require("../../../config")
+
+export default function Summary({ correct, times, clearMessage }) {
+  // const { user } = useSelector((state) => ({ ...state }));
+  // const { stage, setStage } = useState();
+  // console.log(user);
+  // useEffect(() => {
+  //   if (user) {
+  console.log(123, correct, times);
+  //   }
+  // }, []);
+  const localStats = JSON.parse(localStorage.getItem("gameStats")) || {
+    totalGames: 0,
+    totalWins: 0,
+    perTimesStats: {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+    }, //[win,lose]
+    curStreak: 0,
+    maxStreak: 0,
+  };
+
+  const [gameStats, setGameStats] = useState(localStats);
+
   useEffect(() => {
-    if (user) {
-      axios
-        .post(backend_url+"/save_wordle", {
-          email: user.email,
-          stage: props.stage,
-        })
-        .then((response) => {
-          console.log(response.data);
-          showProgress(response.data.total, JSON.parse(response.data.record));
-        })
-        .catch((error) => {
-          return error;
-        });
+    if (correct === undefined || times === undefined) return;
+    console.log("times:", times, "win?", correct);
+
+    let updatedStats = { ...localStats };
+
+    //加入此次数据
+    updatedStats.totalGames += 1;
+
+    if (correct) {
+      updatedStats.totalWins += 1;
+      updatedStats.perTimesStats[times] += 1;
+      updatedStats.maxStreak += 1;
+      updatedStats.curStreak += 1;
+    } else {
+      updatedStats.curStreak = 0;
+      updatedStats.maxStreak = Math.max(
+        updatedStats.maxStreak,
+        updatedStats.curStreak
+      );
     }
+
+    // 更新状态和 localStorage
+    setGameStats(updatedStats);
+    localStorage.setItem("gameStats", JSON.stringify(updatedStats));
   }, []);
 
-  function showProgress(total, record) {
-    console.log(total, record);
+  const getAnimation = (win, total) => {
+    console.log(win, total);
+    const percent = Math.floor((100 * win) / total);
 
-    for (const key in record) {
-      const percent = Math.floor((100 * record[key]) / total);
-      const last = 100 - percent;
-      const progressBar = document.getElementById(`stage${key}`);
-      progressBar.style.setProperty(
-        "--progress-percent",
-        percent.toString() + "%"
-      );
-      progressBar.style.animation = "progress-change 4s forwards";
-      progressBar.style.animationName = "progress-change";
-    }
-  }
+    return {
+      "--progress-percent": percent.toString() + "%",
+      animation: "progress-change 2s ease-in-out forwards",
+    };
+  };
 
-  function closeMessage() {
-    props.closeWarning();
-  }
+  const handleClose = () => {
+    clearMessage();
+  };
   return (
-    <div className="summary-container wordle">
-      <div className="close-button" onClick={closeMessage}>
-        &#9447;
+    gameStats && (
+      <div className="summary-container">
+        <div className="real-space">
+          <div className="title">{correct ? "Congrats" : "Sorry"}</div>
+          <div className="stats-summary">
+            <div>
+              <div className="stats">{gameStats.totalGames}</div>
+              <div className="subtitle">Played</div>
+            </div>
+            <div>
+              <div className="stats">
+                {Math.round((gameStats.totalWins / gameStats.totalGames) * 100)}
+                %
+              </div>
+              <div className="subtitle">Win %</div>
+            </div>
+            <div>
+              <div className="stats">{gameStats.maxStreak}</div>
+              <div className="subtitle">Current Streak</div>
+            </div>
+            <div>
+              <div className="stats">{gameStats.maxStreak}</div>
+              <div className="subtitle">Max Streak</div>
+            </div>
+          </div>
+          <div className="histogram">
+            {Array.from({ length: 6 }, (_, i) => {
+              return (
+                <div className="histogram-row" key={i}>
+                  <div className="title">{`${i + 1}`}</div>
+                  <div className="bar" key={`${i + 1}`}>
+                    <div
+                      className={
+                        "percent" +
+                        (correct && i + 1 === times ? " current" : "")
+                      }
+                      style={getAnimation(
+                        gameStats.perTimesStats[i + 1],
+                        gameStats.totalGames
+                      )}
+                    >
+                      <div className="win-times">
+                        {gameStats.perTimesStats[i + 1] !== 0
+                          ? gameStats.perTimesStats[i + 1]
+                          : ""}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div id="close-wordle-summary">
+          <CloseButton color="var(--wordle-grey)" handleClose={handleClose} />
+        </div>
       </div>
-      <div className="title">{props.status ? props.status : ""}</div>
-      <div className="message">{props.message ? props.message : ""}</div>
-      <div className="history">
-        <div className="stage">
-          1
-          <div className="progress-bar">
-            <div className="percent" id="stage1"></div>
-          </div>
-        </div>
-        <div className="stage">
-          2
-          <div className="progress-bar">
-            <div className="percent" id="stage2"></div>
-          </div>
-        </div>
-        <div className="stage">
-          3
-          <div className="progress-bar">
-            <div className="percent" id="stage3"></div>
-          </div>
-        </div>
-        <div className="stage">
-          4
-          <div className="progress-bar">
-            <div className="percent" id="stage4"></div>
-          </div>
-        </div>
-        <div className="stage">
-          5
-          <div className="progress-bar">
-            <div className="percent" id="stage5"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    )
   );
 }

@@ -105,6 +105,7 @@
 }
 /*----------------------Keyboard-----------------------------*/
 
+/*--------------------Animation for Input--------------------*/
 .gn {
   background-color: var(--wordle-green);
   border-color: var(--wordle-green);
@@ -122,118 +123,175 @@
 
 @keyframes reverse-board-gn {
   from {
-    transform: rotate(0) ;
-    -webkit-transform: rotateY(0) ;
-    
+    transform: rotate(0);
+    -webkit-transform: rotateY(0);
   }
   to {
-    transform: rotateY(180deg) ;
-    -webkit-transform: rotateY(180deg) ;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
     background-color: var(--wordle-green);
     border-color: var(--wordle-green);
-    
   }
 }
 
 @keyframes reverse-board-gy {
   from {
-    transform: rotate(0) ;
-    -webkit-transform: rotateY(0) ;
-    
+    transform: rotate(0);
+    -webkit-transform: rotateY(0);
   }
   to {
-    transform: rotateY(180deg) ;
-    -webkit-transform: rotateY(180deg) ;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
     background-color: var(--wordle-grey);
     border-color: var(--wordle-grey);
-    
   }
 }
 
 @keyframes reverse-board-yw {
   from {
-    transform: rotate(0) ;
-    -webkit-transform: rotateY(0) ;
-    
+    transform: rotate(0);
+    -webkit-transform: rotateY(0);
   }
   to {
-    transform: rotateY(180deg) ;
-    -webkit-transform: rotateY(180deg) ;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
     background-color: var(--wordle-yellow);
     border-color: var(--wordle-yellow);
-    
   }
 }
 
 @keyframes reverse-letter {
   from {
-    transform: rotate(0) ;
+    transform: rotate(0);
     /* -webkit-transform: rotateY(0) ; */
     color: black;
-    
   }
   to {
-    transform: rotateY(180deg) ;
+    transform: rotateY(180deg);
     /* -webkit-transform: rotateY(180deg) ; */
     color: white;
-    
   }
 }
+/*--------------------Animation for Input--------------------*/
 
-.summary-container.wordle {
+/*-------------------------Summary---------------------------*/
+#wordle .summary-container {
   position: absolute;
+  background-color: var(--wordle-primary-color);
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  background-color: rgb(254, 255, 241);
-  height: 500px;
-  width: 400px;
-  border-radius: 10px;
+
+  height: calc(100% - var(--nav-height));
+  width: 100%;
+
+  padding: 4rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+#wordle .summary-container > * {
+  /* border: solid 1px black; */
+}
+#wordle .summary-container > .real-space {
+  /* border: solid 1px red; */
+  width: 33%;
+  /* height: auto; */
+  height: calc(100% - var(--nav-height));
+
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#wordle .summary-container > .real-space > * {
+  /* border: solid 1px blue; */
+  margin: 1.5rem 0 0 0;
+}
+
+#wordle #close-wordle-summary {
+  /* border: solid 1px black; */
+  height: calc(100% - var(--nav-height));
+  /* transform: scale(0.8); */
+}
+
+#wordle .summary-container > * > .title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+#wordle .summary-container .stats-summary {
+  display: flex;
+  flex-direction: row;
+}
+
+#wordle .stats-summary > * {
   display: flex;
   flex-direction: column;
-  box-shadow: 5px 5px 10px #8d8d8d6d;
+  flex: 1;
 }
 
-.summary-container .wordle .close-button {
-  text-align: right;
-  font-size: 30px;
-  font-weight: bolder;
-  padding-right: 5px;
-}
-
-.summary-container .wordle .close-button:hover {
-  cursor: pointer;
-  color: #0e75fb;
-}
-
-.title {
-  font-weight: bolder;
-}
-
-.message {
-  font-size: 20px;
+#wordle .subtitle {
   text-align: center;
+  font-size: 0.5rem;
 }
 
-.stage {
+#wordle .stats {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+#wordle .histogram {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-left: 1rem;
+}
+
+#wordle .histogram-row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding: 5px 0px;
 }
 
-.progress-bar {
-  border: 3px solid black;
+#wordle .histogram-row > .title {
+  /* border: solid red 1px; */
+  width: 1rem;
+  text-align: center;
+
+  font-weight: bolder;
+}
+
+.bar {
+  bottom: 0;
   width: 200px;
-  height: 20px;
-  margin-left: 10px;
+  height: 1rem;
+  margin-left: 0.2rem;
 }
 
 .percent {
+  position: relative;
   width: 0px;
-  height: 20px;
-  background-color: hotpink;
+  height: 1rem;
+  background-color: var(--wordle-grey);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.percent.current {
+  background-color: var(--wordle-green);
+}
+
+.percent .win-times {
+  font-size: 0.6rem;
+  color: white;
+  font-weight: bolder;
+  margin-right: 0.2rem;
 }
 
 @keyframes progress-change {
@@ -244,6 +302,7 @@
     width: var(--progress-percent);
   }
 }
+/*-------------------------Summary---------------------------*/
 
 /*--------------------------------Responsive Design--------------------------------*/
 /* Styles for potrait mobile devices 竖屏*/
@@ -274,6 +333,10 @@
   .keyboard-button.enter > p {
     font-size: 1rem;
   }
+  /*-----Summary--------*/
+  #wordle .summary-container > .real-space {
+    width: 60%;
+  }
 }
 
 /* Styles for landscape mobile devices 横屏*/
@@ -301,26 +364,27 @@
   .keyboard-button.enter > p {
     font-size: 1rem;
   }
+  /*-----Summary--------*/
 }
 
 /* Styles for ipad devices */
 @media screen and (min-width: 768px) and (max-width: 992px) {
   #wordle > .input > .words > .word {
-    height: 3rem;
-    width: 3rem;
+    height: 4rem;
+    width: 4rem;
   }
   #wordle > .input > .words > .word > .letter-text {
-    font-size: 2rem;
+    font-size: 3rem;
   }
   .keyboard-row {
-    height: 3rem;
+    height: 4rem;
   }
   .keyboard-button {
-    width: 3vw;
+    width: 5vw;
   }
   .keyboard-button.enter,
   .keyboard-button.backspace {
-    width: 10vw;
+    width: 8vw;
   }
   .keyboard-button > p {
     font-size: 1.5rem;
@@ -328,6 +392,11 @@
   .keyboard-button.enter > p {
     font-size: 1rem;
   }
+
+/* summary */
+  #wordle .summary-container > .real-space {
+    /* border: solid 1px red; */
+    width: 50%;}
 }
 
 /* Styles for PC devices */

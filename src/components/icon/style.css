@@ -1,0 +1,41 @@
+/*---------------------------Close Button-------------------------------------*/
+/*---------------------------Close Button-------------------------------------*/
+#close-button {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+#close-button .bar1,
+#close-button .bar2 {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--icon-color);
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+#close-button .bar1 {
+  transform: rotate(45deg);
+  top: 50%;
+  left: 0;
+  transform-origin: center;
+}
+
+#close-button .bar2 {
+  transform: rotate(-45deg);
+  top: 50%;
+  left: 0;
+  transform-origin: center;
+}
+
+/* Hover effect to change color or animation */
+#close-button:hover .bar1,
+#close-button:hover .bar2 {
+  filter: brightness(0.9);
+}
+/*---------------------------Close Button-------------------------------------*/
+
+/*---------------------------Close Button-------------------------------------*/

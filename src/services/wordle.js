@@ -53,6 +53,21 @@ export async function check_wordle(word) {
   });
 }
 
+export async function save_wordle() {
+  // axios
+  //   .post(backend_url + "/save_wordle", {
+  //     email: user.email,
+  //     stage: props.stage,
+  //   })
+  //   .then((response) => {
+  //     console.log(response.data);
+  //     showProgress(response.data.total, JSON.parse(response.data.record));
+  //   })
+  //   .catch((error) => {
+  //     return error;
+  //   });
+}
+
 export function uploadFiles(city, files) {
   const formData = new FormData();
   formData.append("folderName", city);

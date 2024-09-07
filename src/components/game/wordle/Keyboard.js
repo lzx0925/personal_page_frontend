@@ -16,7 +16,7 @@ export default function Keyboard(props) {
   useEffect(() => {
     if (props.update) {
       for (let [l, newColor] of Object.entries(props.update)) {
-        console.log(l, newColor); // 输出键和值
+  
         if (
           newColor === 1 ||
           (newColor === 0 && color[l] != 1) ||
@@ -31,9 +31,6 @@ export default function Keyboard(props) {
     }
   }, [props.update]);
 
-  useEffect(() => {
-    console.log(color);
-  }, [color]);
 
   const handleClick = useCallback(
     (e) => {
@@ -86,7 +83,6 @@ export default function Keyboard(props) {
       onClick={handleClick}
     >
       {letter === "BACKSPACE" ? (
-        // <p className="fa fa-window-close-o" />
         <p className="fa fa-delete-left" />
       ) : (
         <p>{letter}</p>
