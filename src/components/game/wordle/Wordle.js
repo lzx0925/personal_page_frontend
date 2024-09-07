@@ -13,62 +13,8 @@ export default function Wordle() {
   const [res, setRes] = useState(["", "", "", "", "", ""]);
   const [keyboard, setKeyboard] = useState();
   const [complete, setComplete] = useState(false);
+  const [openSummary, setOpenSummary] = useState();
   const reverseDuration = 1;
-
-  // const [curRow, setCurRow] = useState(() => {
-  //   return localStorage.getItem("curRow")
-  //     ? JSON.parse(localStorage.getItem("curRow"))
-  //     : 0;
-  // });
-
-  // const [words, setWord] = useState(() => {
-  //   return localStorage.getItem("words")
-  //     ? JSON.parse(localStorage.getItem("words"))
-  //     : ["", "", "", "", "", ""];
-  // });
-
-  // const [message, setMessage] = useState("");
-
-  // const [res, setRes] = useState(() => {
-  //   return localStorage.getItem("res")
-  //     ? JSON.parse(localStorage.getItem("res"))
-  //     : ["", "", "", "", "", ""];
-  // });
-
-  // const [keyboard, setKeyboard] = useState(() => {
-  //   return localStorage.getItem("keyboard")
-  //     ? JSON.parse(localStorage.getItem("keyboard"))
-  //     : {};
-  // });
-
-  // // Save to localStorage on component unload or page hide
-  // useEffect(() => {
-  //   const handleSaveToLocalStorage = () => {
-  //     localStorage.setItem("curRow", JSON.stringify(curRow));
-  //     localStorage.setItem("words", JSON.stringify(words));
-  //     localStorage.setItem("res", JSON.stringify(res));
-  //     localStorage.setItem("keyboard", JSON.stringify(keyboard));
-  //   };
-
-  //   // Save on page unload
-  //   window.addEventListener("beforeunload", handleSaveToLocalStorage);
-
-  //   // Save when page is hidden (user switches tab)
-  //   document.addEventListener("visibilitychange", () => {
-  //     if (document.visibilityState === "hidden") {
-  //       handleSaveToLocalStorage();
-  //     }
-  //   });
-
-  //   // Clean up event listeners on component unmount
-  //   return () => {
-  //     window.removeEventListener("beforeunload", handleSaveToLocalStorage);
-  //     document.removeEventListener(
-  //       "visibilitychange",
-  //       handleSaveToLocalStorage
-  //     );
-  //   };
-  // }, [curRow, words, res, keyboard]);
 
   async function handleKeyBoardClick(value) {
     if (complete) return;
@@ -116,8 +62,9 @@ export default function Wordle() {
           correct: true,
           times: curRow + 1,
         });
-      }, (reverseDuration)*1000);
-
+        setOpenSummary(true);
+      }, reverseDuration * 1000);
+      
       setComplete(true);
     } else if (curRow >= 5) {
       setTimeout(() => {
@@ -125,11 +72,22 @@ export default function Wordle() {
           correct: false,
           times: curRow + 1,
         });
-      }, (reverseDuration)*1000);
-
+        setOpenSummary(true);
+      }, reverseDuration * 1000);
+      
       setComplete(true);
     }
   }, [res]);
+
+  useEffect(
+    () => console.log("summary open?", openSummary, "message?", message),
+    [openSummary]
+  );
+
+  const handleOpenSummary = () => {
+    setOpenSummary(!openSummary);
+    setMessage();
+  };
 
   return (
     <div className="wordle-page" id="wordle">
@@ -146,11 +104,18 @@ export default function Wordle() {
       </div>
 
       <Keyboard handleLetterClick={handleKeyBoardClick} update={keyboard} />
-      {message && (
+      {openSummary && (
         <Summary
-          correct={message.correct}
-          times={message.times}
-          clearMessage={() => setMessage()}
+          correct={message && message.correct}
+          times={message && message.times}
+          handleOpen={handleOpenSummary}
+        />
+      )}
+
+      {!openSummary && (
+        <button
+          className="fa fa-chart-bar"
+          onClick={() => setOpenSummary(true)}
         />
       )}
     </div>

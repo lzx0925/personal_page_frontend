@@ -5,8 +5,8 @@ import CloseButton from "../../icon/CloseButton";
 
 // import axios from "axios";
 // const {backend_url} = require("../../../config")
-
-export default function Summary({ correct, times, clearMessage }) {
+//clearMessage
+export default function Summary({ correct, times, handleOpen }) {
   // const { user } = useSelector((state) => ({ ...state }));
   // const { stage, setStage } = useState();
   // console.log(user);
@@ -36,8 +36,9 @@ export default function Summary({ correct, times, clearMessage }) {
   const runDuration = 0.7;
 
   useEffect(() => {
+    console.log(correct, times);
     if (correct === undefined || times === undefined) return;
-
+    console.log(111);
     let updatedStats = { ...localStats };
 
     //加入此次数据
@@ -60,7 +61,6 @@ export default function Summary({ correct, times, clearMessage }) {
     setGameStats(updatedStats);
 
     localStorage.setItem("gameStats", JSON.stringify(updatedStats));
-
   }, []);
 
   const getAnimation = (win, total) => {
@@ -72,26 +72,23 @@ export default function Summary({ correct, times, clearMessage }) {
     };
   };
 
-
   useEffect(() => {
     const animationName = close ? "fadeOutDown" : "fadeInUp";
     setWindowAnimation({
       animation: `${animationName} ${runDuration}s ease-in-out forwards`,
     });
 
-    //
-    close && setTimeout(() => clearMessage(), runDuration * 1000);
+    // close && setTimeout(() => clearMessage(), runDuration * 1000);
+    close && setTimeout(() => handleOpen(), runDuration * 1000);
   }, [close]);
 
   return (
     gameStats && (
-      <div
-        className="summary-container"
-        // style={openAnimation || closeAnimation}
-        style={windowAnimation}
-      >
+      <div className="summary-container" style={windowAnimation}>
         <div className="real-space">
-          <div className="title">{correct ? "Congrats" : "Sorry"}</div>
+          <div className="title">
+            {correct ? "Congrats" : correct === "false" ? "Sorry" : "History"}
+          </div>
           <div className="stats-summary">
             <div className="title"> STATISTICS</div>
             <div className="stats-content">
