@@ -31,6 +31,9 @@ export default function Summary({ correct, times, clearMessage }) {
   };
 
   const [gameStats, setGameStats] = useState(localStats);
+  const [windowAnimation, setWindowAnimation] = useState({});
+  const [close, setClose] = useState();
+  const runDuration = 0.7;
 
   useEffect(() => {
     if (correct === undefined || times === undefined) return;
@@ -55,7 +58,9 @@ export default function Summary({ correct, times, clearMessage }) {
 
     // 更新状态和 localStorage
     setGameStats(updatedStats);
+
     localStorage.setItem("gameStats", JSON.stringify(updatedStats));
+
   }, []);
 
   const getAnimation = (win, total) => {
@@ -63,18 +68,28 @@ export default function Summary({ correct, times, clearMessage }) {
 
     return {
       "--progress-percent": percent.toString() + "%",
-      animation: "progress-change 2s ease-in-out forwards 1.5s",
+      animation: `progress-change 2s ease-in-out forwards ${runDuration}s`,
     };
   };
 
-  const [closeAnimation, setCloseAnimation] = useState();
-  const handleClose = () => {
-    setCloseAnimation({ animation: "fadeOutDown 0.2s ease-in-out forwards" });
-    setTimeout(() => clearMessage(), 300);
-  };
+
+  useEffect(() => {
+    const animationName = close ? "fadeOutDown" : "fadeInUp";
+    setWindowAnimation({
+      animation: `${animationName} ${runDuration}s ease-in-out forwards`,
+    });
+
+    //
+    close && setTimeout(() => clearMessage(), runDuration * 1000);
+  }, [close]);
+
   return (
     gameStats && (
-      <div className="summary-container" style={closeAnimation}>
+      <div
+        className="summary-container"
+        // style={openAnimation || closeAnimation}
+        style={windowAnimation}
+      >
         <div className="real-space">
           <div className="title">{correct ? "Congrats" : "Sorry"}</div>
           <div className="stats-summary">
@@ -132,7 +147,10 @@ export default function Summary({ correct, times, clearMessage }) {
             })}
           </div>
           <div id="close-wordle-summary">
-            <CloseButton color="var(--wordle-grey)" handleClose={handleClose} />
+            <CloseButton
+              color="var(--wordle-grey)"
+              handleClose={() => setClose(!close)}
+            />
           </div>
         </div>
       </div>

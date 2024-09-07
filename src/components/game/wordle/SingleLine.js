@@ -1,7 +1,7 @@
 import "./style.css";
 import { useEffect, useState } from "react";
 
-export default function SingleLine({ row, word, res }) {
+export default function SingleLine({ row, word, res, reverseDuration }) {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function SingleLine({ row, word, res }) {
     return {
       animation: `reverse-board-${
         res[i] === 1 ? "gn" : res[i] === -1 ? "gy" : "yw"
-      } 1s forwards ${i * 0.1}s`,
+      } ${reverseDuration}s forwards ${i * 0.1}s`,
     };
   };
 

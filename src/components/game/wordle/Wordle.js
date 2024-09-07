@@ -13,6 +13,7 @@ export default function Wordle() {
   const [res, setRes] = useState(["", "", "", "", "", ""]);
   const [keyboard, setKeyboard] = useState();
   const [complete, setComplete] = useState(false);
+  const reverseDuration = 1;
 
   // const [curRow, setCurRow] = useState(() => {
   //   return localStorage.getItem("curRow")
@@ -110,16 +111,22 @@ export default function Wordle() {
     );
 
     if (correct) {
-      setMessage({
-        correct: true,
-        times: curRow + 1,
-      });
+      setTimeout(() => {
+        setMessage({
+          correct: true,
+          times: curRow + 1,
+        });
+      }, (reverseDuration)*1000);
+
       setComplete(true);
     } else if (curRow >= 5) {
-      setMessage({
-        correct: false,
-        times: curRow + 1,
-      });
+      setTimeout(() => {
+        setMessage({
+          correct: false,
+          times: curRow + 1,
+        });
+      }, (reverseDuration)*1000);
+
       setComplete(true);
     }
   }, [res]);
@@ -128,7 +135,13 @@ export default function Wordle() {
     <div className="wordle-page" id="wordle">
       <div className="input">
         {Array.from({ length: 6 }, (_, row) => (
-          <SingleLine key={row} row={row} word={words[row]} res={res[row]} />
+          <SingleLine
+            key={row}
+            row={row}
+            word={words[row]}
+            res={res[row]}
+            reverseDuration={reverseDuration}
+          />
         ))}
       </div>
 
