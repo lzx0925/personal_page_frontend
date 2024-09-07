@@ -124,14 +124,14 @@
   from {
     transform: rotate(0) translateZ(0);
     -webkit-transform: rotateY(0) translateZ(0);
-    backface-visibility: hidden;
+    /*backface-visibility: hidden;*/
   }
   to {
-    transform: rotateY(360deg) translateZ(0);
-    -webkit-transform: rotateY(360deg) translateZ(0);
+    transform: rotateY(180deg) translateZ(0);
+    -webkit-transform: rotateY(180deg) translateZ(0);
     background-color: var(--wordle-green);
     border-color: var(--wordle-green);
-    backface-visibility: hidden;
+    /*backface-visibility: hidden;*/
   }
 }
 
@@ -139,14 +139,14 @@
   from {
     transform: rotate(0) translateZ(0);
     -webkit-transform: rotateY(0) translateZ(0);
-    backface-visibility: hidden;
+    /*backface-visibility: hidden;*/
   }
   to {
-    transform: rotateY(360deg) translateZ(0);
-    -webkit-transform: rotateY(360deg) translateZ(0);
+    transform: rotateY(180deg) translateZ(0);
+    -webkit-transform: rotateY(180deg) translateZ(0);
     background-color: var(--wordle-grey);
     border-color: var(--wordle-grey);
-    backface-visibility: hidden;
+    /*backface-visibility: hidden;*/
   }
 }
 
@@ -154,29 +154,29 @@
   from {
     transform: rotate(0) translateZ(0);
     -webkit-transform: rotateY(0) translateZ(0);
-    backface-visibility: hidden;
+    /*backface-visibility: hidden;*/
   }
   to {
-    transform: rotateY(360deg) translateZ(0);
-    -webkit-transform: rotateY(360deg) translateZ(0);
+    transform: rotateY(180deg) translateZ(0);
+    -webkit-transform: rotateY(180deg) translateZ(0);
     background-color: var(--wordle-yellow);
     border-color: var(--wordle-yellow);
-    backface-visibility: hidden;
+    /*backface-visibility: hidden;*/
   }
 }
 
 @keyframes reverse-letter {
   from {
     transform: rotate(0) translateZ(0);
-    -webkit-transform: rotateY(0) translateZ(0);
+    /* -webkit-transform: rotateY(0) translateZ(0); */
     color: black;
-    backface-visibility: hidden;
+    /*backface-visibility: hidden;*/
   }
   to {
-    transform: rotateY(360deg) translateZ(0);
-    -webkit-transform: rotateY(360deg) translateZ(0);
+    transform: rotateY(180deg) translateZ(0);
+    /* -webkit-transform: rotateY(180deg) translateZ(0); */
     color: white;
-    backface-visibility: hidden;
+    /*backface-visibility: hidden;*/
   }
 }
 
