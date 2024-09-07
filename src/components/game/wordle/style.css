@@ -122,61 +122,61 @@
 
 @keyframes reverse-board-gn {
   from {
-    transform: rotate(0) translateZ(0);
-    -webkit-transform: rotateY(0) translateZ(0);
-    /*backface-visibility: hidden;*/
+    transform: rotate(0) ;
+    -webkit-transform: rotateY(0) ;
+    
   }
   to {
-    transform: rotateY(180deg) translateZ(0);
-    -webkit-transform: rotateY(180deg) translateZ(0);
+    transform: rotateY(180deg) ;
+    -webkit-transform: rotateY(180deg) ;
     background-color: var(--wordle-green);
     border-color: var(--wordle-green);
-    /*backface-visibility: hidden;*/
+    
   }
 }
 
 @keyframes reverse-board-gy {
   from {
-    transform: rotate(0) translateZ(0);
-    -webkit-transform: rotateY(0) translateZ(0);
-    /*backface-visibility: hidden;*/
+    transform: rotate(0) ;
+    -webkit-transform: rotateY(0) ;
+    
   }
   to {
-    transform: rotateY(180deg) translateZ(0);
-    -webkit-transform: rotateY(180deg) translateZ(0);
+    transform: rotateY(180deg) ;
+    -webkit-transform: rotateY(180deg) ;
     background-color: var(--wordle-grey);
     border-color: var(--wordle-grey);
-    /*backface-visibility: hidden;*/
+    
   }
 }
 
 @keyframes reverse-board-yw {
   from {
-    transform: rotate(0) translateZ(0);
-    -webkit-transform: rotateY(0) translateZ(0);
-    /*backface-visibility: hidden;*/
+    transform: rotate(0) ;
+    -webkit-transform: rotateY(0) ;
+    
   }
   to {
-    transform: rotateY(180deg) translateZ(0);
-    -webkit-transform: rotateY(180deg) translateZ(0);
+    transform: rotateY(180deg) ;
+    -webkit-transform: rotateY(180deg) ;
     background-color: var(--wordle-yellow);
     border-color: var(--wordle-yellow);
-    /*backface-visibility: hidden;*/
+    
   }
 }
 
 @keyframes reverse-letter {
   from {
-    transform: rotate(0) translateZ(0);
-    /* -webkit-transform: rotateY(0) translateZ(0); */
+    transform: rotate(0) ;
+    /* -webkit-transform: rotateY(0) ; */
     color: black;
-    /*backface-visibility: hidden;*/
+    
   }
   to {
-    transform: rotateY(180deg) translateZ(0);
-    /* -webkit-transform: rotateY(180deg) translateZ(0); */
+    transform: rotateY(180deg) ;
+    /* -webkit-transform: rotateY(180deg) ; */
     color: white;
-    /*backface-visibility: hidden;*/
+    
   }
 }
 
