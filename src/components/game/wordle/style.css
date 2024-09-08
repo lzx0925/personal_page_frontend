@@ -26,16 +26,15 @@
   border-radius: 50%;
   background-color: var(--wordle-primary-color);
   color: var(--wordle-secondary-color);
-  font-size:1.5rem;
+  font-size: 1.5rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px 0px;
   transition: all 0.3s ease-in-out;
 }
 
 #wordle .fa.fa-chart-bar:hover {
   color: rgb(185, 185, 185);
-transform: scale(1.05);
-box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 2px 0px;
-
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0) 0px 1px 2px 0px;
 }
 /* ---------------------------Input------------------------- */
 #wordle > .input {
@@ -57,7 +56,7 @@ box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 2px 0px;
 
 #wordle > .input > .words > .word {
   border: solid 0.1rem var(--wordle-secondary-color);
-  background-color: var(--wordle-primary-color);
+  background-color: var(--wordle-primary-theme-color);
 
   display: flex;
   justify-content: center;

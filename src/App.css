@@ -16,7 +16,13 @@ body {
   justify-content: center;
 }
 :root {
-  --primary-color: white;
+  --primary-theme-color: white;
+  --secondary-theme-color: black;
+  --third-theme-color: #ff7f3e;
+  --fourth-theme-color: #fff6e9;
+  --fifth-theme-color: #5abaee;
+  --sixth-theme-color: #604cc3;
+
   --nav-height: 64px;
 
   /*-------- navigation --------*/
@@ -78,11 +84,14 @@ button:hover {
 
 #app-container {
   position: absolute;
+  background-color: var(--primary-theme-color);
   top: var(--nav-height);
   transition: 0.3s ease-in-out;
-  width: 100%;
+  width: 100vw;
+  min-height: calc(100vh - var(--nav-height));
   flex: 1;
 
+  /* 确保内容在正中间 */
   display: flex;
   align-items: center;
   justify-content: center;

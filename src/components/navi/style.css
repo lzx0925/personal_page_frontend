@@ -18,7 +18,7 @@ nav {
   left: 0;
   width: 100vw;
   height: var(--nav-height);
-  background: var(--primary-color);
+  background: var(--primary-theme-color);
 
   display: flex;
   justify-content: space-between;
@@ -42,7 +42,7 @@ nav .right {
 
 nav .mid {
   flex: 1;
-  background: var(--primary-color);
+  background: var(--primary-theme-color);
 }
 nav .right {
   justify-content: flex-end;
@@ -52,7 +52,7 @@ nav .left button,
 nav .right button {
   position: relative;
 
-  background: var(--primary-color);
+  background: var(--primary-theme-color);
   height: var(--nav-height);
 
   font-size: 1rem;
@@ -102,7 +102,7 @@ nav .headshot {
   position: fixed;
   inset: 0;
 
-  background-color: var(--primary-color);
+  background-color: var(--primary-theme-color);
   width: 100vw;
   height: calc(var(--extend-height));
 
@@ -116,7 +116,7 @@ nav .headshot {
 #mobile-mode .extend-nav {
   height: calc(100vh - var(--nav-height)); /*mobile bar高度需要占全屏*/
   flex-direction: column;
-  background-color: var(--primary-color);
+  background-color: var(--primary-theme-color);
 }
 
 #mobile-mode .extend-nav > button {
