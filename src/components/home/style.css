@@ -21,6 +21,7 @@
   width: 90vw;
   background-color: transparent;
   gap: 2rem;
+  margin-top: 2rem;
   /* border: solid 1px black; */
 }
 /*------MainContent----------*/
@@ -91,7 +92,7 @@
   justify-content: flex-start;
   gap: 3em;
   align-items: center;
-  padding-left: 0.5rem;
+  /* padding-left: 0.5rem; */
 
   /* border: solid blue 3px; */
 }
