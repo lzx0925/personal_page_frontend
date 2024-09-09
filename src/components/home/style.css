@@ -16,27 +16,26 @@
   justify-content: center;
   position: relative;
   /* 高度 = 照片大小 + 上下边框 */
-  height: var(--container-height);
-  width: var(--container-width);
-  max-width: 80vw;
+  /* height: var(--container-height);
+  width: var(--container-width); */
+  width: 90vw;
   background-color: transparent;
+  gap: 2rem;
   /* border: solid 1px black; */
 }
 /*------MainContent----------*/
 
 /*------Second Layer---------*/
-
 .intro-content {
   flex: 1;
-  order: 1;
-  position: absolute;
+  /* order: 1; */
+  /* position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%); */
   /* 照片宽度+照片边框宽度+间隔距离 */
   right: calc(var(--photo-size) + 2 * var(--border-size) + 2rem);
-  z-index: 2;
-  width: calc(var(--photo-size) +10vw);
-
+  /* width: calc(var(--photo-size) + 10vw); */
+  margin: auto;
   /* border: solid 1px black; */
 }
 
@@ -46,9 +45,9 @@
   background-image: url("../../../public/zixin.png");
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  right: 0;
+  right: 0; */
   height: var(--photo-size);
   width: var(--photo-size);
 }
@@ -92,6 +91,7 @@
   justify-content: flex-start;
   gap: 3em;
   align-items: center;
+  padding-left: 0.5rem;
 
   /* border: solid blue 3px; */
 }
@@ -157,12 +157,15 @@
 
 /* Styles for landscape mobile devices 横屏*/
 @media screen and (min-width: 577px) and (max-width: 767px) {
+  .intro-content > p:nth-of-type(2) {
+    font-size: 3rem;
+  }
 }
 
 /* Styles for ipad devices */
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .home-page {
-    --photo-size: 40vw;
+    --photo-size: 40vh;
     --photo-border: 50%;
     --container-width: 100vw;
     --container-height: auto;
@@ -213,5 +216,8 @@
 
 /* Styles for Large PC devices */
 @media screen and (min-width: 1201px) {
+  .home-page {
+    --photo-size: 35vw;
+  }
 }
 /*--------------------------------Responsive Deisig--------------------------------*/

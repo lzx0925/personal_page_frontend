@@ -95,6 +95,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: scroll;
 }
 /*------default------*/
 
@@ -130,14 +131,15 @@ button:hover {
 /* Styles for PC devices */
 @media screen and (min-width: 993px) and (max-width: 1200px) {
   :root {
-    --font-size: 14px;
+    --font-size: 1.3vw;
   }
+  
 }
 
 /* Styles for Large PC devices */
 @media screen and (min-width: 1201px) {
   :root {
-    --font-size: 16px;
+    --font-size: 1.5vw;
   }
 }
 /*--------------------------------Responsive Deisig--------------------------------*/
