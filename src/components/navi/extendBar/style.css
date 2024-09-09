@@ -1,8 +1,94 @@
 /*-----------Common-------------*/
 :root {
-  --list-normal-width: 150px;
-  --list-normal-height: 200px;
+  /* --list-normal-width: 150px;
+  --list-normal-height: 200px; */
 }
+
+.extend-nav {
+  --extend-list-height: calc(var(--extend-height) * 0.9);
+  --extend-game-img-height: calc(var(--extend-height) * 0.65);
+  --extend-game-img-width: calc(var(--extend-height) * 0.65 / 11 * 10);
+  --cur-position: 0;
+}
+
+.extend-nav {
+  position: absolute;
+  background-color: var(--primary-theme-color);
+  top: calc(var(--nav-height) - var(--extend-height));
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  width: 100vw;
+  display: flex;
+  height: var(--extend-height);
+
+  z-index: 1;
+}
+
+.extend-nav.vertical {
+  --extend-height: calc(100vh - var(--nav-height));
+  /* height: calc(100vh - var(--nav-height));  */
+  /* flex-direction: column; */
+}
+
+.extend-nav.horizontal {
+  --extend-height: 350px;
+  /* flex-direction: row; */
+}
+/*--------Common-------------*/
+
+/*-----------------Animation-----------------*/
+@keyframes open-extend {
+  from {
+    /* top: calc(var(--nav-height) - var(--extend-height)); */
+    top: var(--current-top);
+    padding-top: 0;
+    /* display: none; */
+  }
+  to {
+    top: var(--nav-height);
+    padding-top: var(--nav-height);
+    /* display: flex; */
+  }
+}
+
+@keyframes close-extend {
+  from {
+    /* top: var(--nav-height); */
+    top: var(--current-top);
+    padding-top: var(--nav-height);
+  }
+  to {
+    top: calc(var(--nav-height) - var(--extend-height));
+    padding-top: 0;
+  }
+}
+
+/*-----------------Animation-----------------*/
+
+#extend-nav. {
+  /* inset: 0; */
+  /* bottom: 0;
+  background-color: rgba(127, 255, 212, 0.436);
+  z-index: 999;
+
+
+  transform: translateY(calc(-100%)); */
+}
+
+/*--------------------------- Button (Vertical)-----------------------------------*/
+.extend-nav.vertical > button {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.extend-nav.vertical > button:focus {
+  background-color: aliceblue;
+}
+/*--------------------------- Button (Vertical)-----------------------------------*/
 
 .extend-content,
 .extend-profile {
@@ -24,7 +110,7 @@
 }
 
 .list .normal {
-  width: var(--list-normal-width);
+  /* width: var(--list-normal-width); */
 }
 /*-----------Common-------------*/
 
@@ -90,7 +176,7 @@
 }
 
 #profile .function-list {
-  width: var(--list-normal-width);
+  /* width: var(--list-normal-width); */
   justify-content: start;
 }
 
