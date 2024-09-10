@@ -1,12 +1,12 @@
-import "./style.css";
-import { useState, useEffect } from "react";
-import Keyboard from "./Keyboard.js";
 
-import Summary from "./Summary";
-import SingleLine from "./SingleLine.js";
+import { useState, useEffect } from "react";
+import Keyboard from "../../game/wordle/Keyboard.js";
+
+import Summary from "../../game/wordle/Summary.js";
+import SingleLine from "../../game/wordle/SingleLine.js";
 import { check_wordle } from "../../../services/wordle.js";
 
-export default function Wordle() {
+export default function WordlePage() {
   const [curRow, setCurRow] = useState(0);
   const [words, setWord] = useState(["", "", "", "", "", ""]);
   const [message, setMessage] = useState();
@@ -64,7 +64,7 @@ export default function Wordle() {
         });
         setOpenSummary(true);
       }, reverseDuration * 1000);
-      
+
       setComplete(true);
     } else if (curRow >= 5) {
       setTimeout(() => {
@@ -74,7 +74,7 @@ export default function Wordle() {
         });
         setOpenSummary(true);
       }, reverseDuration * 1000);
-      
+
       setComplete(true);
     }
   }, [res]);

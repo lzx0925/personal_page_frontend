@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
 import ProfileNav from "./userDashboard/ProfileNav";
-export default function Profile() {
+export default function ProfilePage() {
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
 

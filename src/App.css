@@ -17,11 +17,13 @@ body {
 }
 :root {
   --primary-theme-color: white;
-  --secondary-theme-color: black;
-  --third-theme-color: #ff7f3e;
-  --fourth-theme-color: #fff6e9;
-  --fifth-theme-color: #5abaee;
-  --sixth-theme-color: #604cc3;
+  --second-theme-color: black;
+  --third-theme-color: #b5d1dd;
+  --fourth-theme-color: #b3e3db;
+  --fifth-theme-color: #8b836f;
+  --sixth-theme-color: #547a78;
+  --seven-theme-color: #e6c3aa;
+  --eight-theme-color: #58381e;
 
   --nav-height: 64px;
 
@@ -84,7 +86,7 @@ button:hover {
 
 #app-container {
   position: absolute;
-  background-color: var(--primary-theme-color);
+  background-color: var(--fourth-theme-color);
   top: var(--nav-height);
   transition: 0.3s ease-in-out;
   width: 100vw;
@@ -133,7 +135,6 @@ button:hover {
   :root {
     --font-size: 1.3vw;
   }
-  
 }
 
 /* Styles for Large PC devices */

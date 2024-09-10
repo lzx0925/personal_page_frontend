@@ -97,7 +97,8 @@
   flex-direction: row;
   justify-content: center;
   gap: 0;
-} /* 
+}  
+
 #img1 .left-section {
   display: flex;
   width: 50%;
@@ -347,7 +348,7 @@
     transform: translateY(0);
     opacity: 1;
   }
-} */
+} 
 
 /*--------Projects-----------*/
 

@@ -6,7 +6,7 @@ import Photos from "./Photos";
 import Painting from "./Painting";
 import Crochet from "./Crochet";
 
-export default function IntroductionContent() {
+export default function AboutMePage() {
   const [navi, setNavi] = useState(null);
   const imgRef = useRef(null);
 

@@ -7,7 +7,7 @@ import Symbol from "./Symbol";
 import Card from "./Card";
 import Summary from "./Summary";
 const { backend_url } = require("../../../config");
-export default function FourNums() {
+export default function FourNumsPage() {
   const [expression, setExpression] = useState(["", "", "", "", "", "", ""]);
   const [paranthesis, setParanthesis] = useState(null);
   const [summary, setSummary] = useState(null);

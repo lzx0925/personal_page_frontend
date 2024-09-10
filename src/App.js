@@ -2,17 +2,20 @@
 import "./App.css";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import MessageBoard from "./components/messageBoard/MessageBoard.js";
-import Home from "./components/home/Home.js";
-import Introduction from "./components/introduction/Introduction.js";
-import Wordle from "./components/game/wordle/Wordle.js";
-import { Routes, Route, useLocation } from "react-router-dom";
 import LoggedInRoutes from "./routes/LoggedInRoutes";
 import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
+
+import MessageBoard from "./components/messageBoard/MessageBoard.js";
+import Home from "./components/home/Home.js";
+import AboutMePage from "./components/aboutMe/AboutMePage.js";
+import WordlePage from "./components/pages/wordlePage/WordlePage.js";
+import ProjectsPage from "./components/pages/projectPage/ProjectsPage.js";
+import { Routes, Route, useLocation } from "react-router-dom";
+
 import ActionPage from "./components/profile/ActionPage";
-import Profile from "./components/profile/Profile";
-import Game from "./components/game/Game";
-import FourNums from "./components/game/fourNums/FourNums";
+import ProfilePage from "./components/profile/ProfilePage";
+import GamePage from "./components/game/GamePage.js";
+import FourNumsPage from "./components/game/fourNums/FourNumsPage";
 import NavigationBar from "./components/nav/NavigationBar.js";
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
@@ -49,17 +52,23 @@ function App() {
           <Route
             path="/about-me"
             key={location.pathname}
-            element={<Introduction />}
+            element={<AboutMePage />}
             exact
           />
           <Route
             path="/games"
             key={location.pathname}
-            element={<Game />}
+            element={<GamePage />}
+            exact
+          />
+          <Route
+            path="/my-projects"
+            key={location.pathname}
+            element={<ProjectsPage />}
             exact
           />
           <Route path="/messageboard" element={<MessageBoard />} exact />
-          <Route path="/wordle" element={<Wordle />} exact />
+          <Route path="/wordle" element={<WordlePage />} exact />
           <Route path="/profile" element={<LoggedInRoutes />} exact />
           <Route path="/login" element={<ActionPage action="login" />} exact />
           <Route
@@ -67,7 +76,7 @@ function App() {
             element={<ActionPage action="register" />}
             exact
           />
-          <Route path="/fournums" element={<FourNums />} exact />
+          <Route path="/fournums" element={<FourNumsPage />} exact />
         </Routes>
       </div>
     </>
@@ -76,7 +85,9 @@ function App() {
 /*          <Route path="/about-me" element={<Introduction />} exact />
           <Route path="/messageboard" element={<MessageBoard />} exact />
           <Route path="/wordle" element={<Wordle />} exact />
-          <Route path="/profile" element={<Profile />} exact />
+          <Route path="/profile" element={<Profile 
+          
+          />} exact />
           <Route path="/user" element={<User />} exact /> */
 /*<Route path="/about-me" element={<Introduction />} exact />
           <Route path="/messageboard" element={<MessageBoard />} exact />

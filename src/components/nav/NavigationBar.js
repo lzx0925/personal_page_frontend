@@ -4,7 +4,6 @@ import GameBar from "./extendBar/GameBar";
 import ProfileBar from "./extendBar/ProfileBar";
 import SettingBar from "./extendBar/SettingBar";
 import ExtendBar from "./extendBar/ExtendBar";
-import HrefButton from "../common/HrefButton";
 import "./style.css";
 
 export default function NavigationBar({ blur, unblur }) {

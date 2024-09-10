@@ -1,9 +1,9 @@
 nav {
   --nav-img: calc(var(--nav-height) * 0.7);
   --extend-height: 350px;
-  --extend-list-height: calc(var(--extend-height) * 0.9);
+  /* --extend-list-height: calc(var(--extend-height) * 0.9);
   --extend-game-img-height: calc(var(--extend-height) * 0.65);
-  --extend-game-img-width: calc(var(--extend-height) * 0.65 / 11 * 10);
+  --extend-game-img-width: calc(var(--extend-height) * 0.65 / 11 * 10); */
 }
 /*------NavigationBar----------*/
 nav {
@@ -12,7 +12,7 @@ nav {
   left: 0;
   width: 100vw;
   height: var(--nav-height);
-  background: var(--primary-theme-color);
+  background-color: var(--fifth-theme-color);
 
   display: flex;
   justify-content: space-between;
@@ -38,12 +38,12 @@ nav .right {
 nav button{
   position: relative;
 
-  background: var(--primary-theme-color);
+  background-color: var(--fifth-theme-color);
   height: var(--nav-height);
 
   font-size: 1rem;
   padding: 0 1.5rem;
-  color: black;
+  color: white;
   /* border: solid 2px paleturquoise; */
 }
 
@@ -82,7 +82,7 @@ nav .headshot {
 /* -------------------------- Button Animation (Underline)-------------------------- */
 #nav > * > button::before {
   content: "";
-  background-color: var(--fifth-theme-color);
+  background-color: var(--fourth-theme-color);
   position: absolute;
 
   left: 50%;
@@ -96,7 +96,7 @@ nav .headshot {
 }
 
 #nav > * > button:hover::before {
-  width: 80%;
+  width: 100%;
 }
 /* -------------------------- Button Animation -------------------------- */
 

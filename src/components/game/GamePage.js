@@ -3,6 +3,6 @@ import React from "react";
 import { useState } from "react";
 import NavigationBar from "../nav/NavigationBar";
 
-export default function Game() {
+export default function GamePage() {
   return <div>games</div>;
 }
