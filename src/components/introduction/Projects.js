@@ -8,22 +8,22 @@ export default function Projects() {
   const [detail, setDetail] = useState();
   const spinHandler = (e) => {};
 
-  // useEffect(
-  //   (e) => {
-  //     console.log(666, e);
-  //     const front = document.getElementById("front").style;
-  //     const end = document.getElementById("end").style;
-  //     console.log(spin);
-  //     if (!spin || clicked) {
-  //       front.animationPlayState = "paused";
-  //       end.animationPlayState = "paused";
-  //     } else if (!clicked) {
-  //       front.animationPlayState = "running";
-  //       end.animationPlayState = "running";
-  //     }
-  //   },
-  //   [spin, clicked]
-  // );
+  useEffect(
+    (e) => {
+      console.log(666, e);
+      const front = document.getElementById("front").style;
+      const end = document.getElementById("end").style;
+      console.log(spin);
+      if (!spin || clicked) {
+        front.animationPlayState = "paused";
+        end.animationPlayState = "paused";
+      } else if (!clicked) {
+        front.animationPlayState = "running";
+        end.animationPlayState = "running";
+      }
+    },
+    [spin, clicked]
+  );
 
   return (
     <section id="img1" className="projects">
@@ -31,7 +31,7 @@ export default function Projects() {
         <div className="content">
           <p>Projects</p>
         </div>
-        {/* {clicked && (
+        {clicked && (
           <div className="project-introduction">
             <div className="introduction-title">
               {detail ? detail.name : ""}
@@ -99,7 +99,7 @@ export default function Projects() {
             <div className="project-photo" id="p-photo8"></div>
             <div className="project-name">More... </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   );

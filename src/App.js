@@ -13,7 +13,7 @@ import ActionPage from "./components/profile/ActionPage";
 import Profile from "./components/profile/Profile";
 import Game from "./components/game/Game";
 import FourNums from "./components/game/fourNums/FourNums";
-import NavigationBar from "./components/navi/NavigationBar";
+import NavigationBar from "./components/nav/NavigationBar.js";
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
   const email = user ? user.email : null;

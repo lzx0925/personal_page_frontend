@@ -24,22 +24,15 @@ export default function NavigationBar({ blur, unblur }) {
     clearTimeout(hoverTimeoutRef.current);
     setBar(newBar);
     setOpen(true);
-
-    hoverTimeoutRef.current = setTimeout(() => {
-      blur();
-    }, 200);
   };
 
   const handleMouseLeave = () => {
     clearTimeout(hoverTimeoutRef.current);
     setOpen(false);
-
-    hoverTimeoutRef.current = setTimeout(() => {
-      unblur();
-    }, 200);
   };
 
   useEffect(() => {
+    console.log("bar", bar, "open", open);
     if (extendNavRef.current) {
       const computedStyle = window.getComputedStyle(extendNavRef.current);
       console.log("Computed top value:", computedStyle.top); // Logs the computed top value
@@ -52,9 +45,15 @@ export default function NavigationBar({ blur, unblur }) {
     if (open && bar && extendNavRef.current) {
       extendNavRef.current.style.animation =
         "open-extend 0.6s ease-in-out forwards";
+      hoverTimeoutRef.current = setTimeout(() => {
+        blur();
+      }, 200);
     } else if (open === false && extendNavRef.current) {
       extendNavRef.current.style.animation =
         "close-extend 0.6s ease-in-out forwards";
+      hoverTimeoutRef.current = setTimeout(() => {
+        unblur();
+      }, 200);
       hoverTimeoutRef.current = setTimeout(() => {
         setBar(false);
       }, 600); // Ensure bar content clears after closing animation
@@ -83,37 +82,44 @@ export default function NavigationBar({ blur, unblur }) {
       <div id="vertical"></div>
       <nav className="navigation-bar" id="nav">
         <div className="left">
-          <HrefButton
-            class="home"
-            address="/"
-            buttonName={vertical ? "GWEN LI" : "HOME"}
-          />
+          <button className="home" onClick={() => (window.location.href = "/")}>
+            {vertical ? "GWEN LI" : "HOME"}
+          </button>
+
           {!vertical && (
             <>
+              <button
+                className="aboutme"
+                onClick={() => (window.location.href = "/about-me")}
+              >
+                ABOUT ME
+              </button>
+              <button
+                className="projects"
+                onClick={() => (window.location.href = "/my-projects")}
+              >
+                PROJECTS
+              </button>
               <button
                 className="game"
                 onMouseEnter={() => handleMouseEnter(<GameBar />)}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => (window.location.href = "/games")}
               >
-                PROJECTS
+                GAMES
               </button>
-              <HrefButton
-                class="aboutme"
-                address="/about-me"
-                buttonName="INTERESTS"
-              />
             </>
           )}
         </div>
         <div className="right">
           {!vertical ? (
             <>
-              <HrefButton
-                class="msg"
-                address="/messageboard"
-                buttonName="MESSGAE BOARD"
-              />
+              <button
+                className="msg"
+                onClick={() => (window.location.href = "/messageboard")}
+              >
+                MESSAGE BOARD
+              </button>
 
               <button
                 className="profile"
@@ -152,7 +158,7 @@ export default function NavigationBar({ blur, unblur }) {
           ref={extendNavRef} // Ref attached here
           //onMouseEnter={() => clearTimeout(hoverTimeoutRef.current)}
           onMouseEnter={() => handleMouseEnter(bar)}
-          onMouseLeave={handleMouseLeave}
+          onMouseLeave={!vertical ? handleMouseLeave : null}
         >
           <ExtendBar vertical={vertical} bar={bar} />
         </div>

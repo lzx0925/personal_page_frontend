@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { useState } from "react";
-import NavigationBar from "../navi/NavigationBar";
+import NavigationBar from "../nav/NavigationBar";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 

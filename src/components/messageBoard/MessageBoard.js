@@ -3,7 +3,7 @@ import "./style.css";
 import { useState } from "react";
 import PostForm from "./PostForm";
 import AllPosts from "./AllPosts";
-import NavigationBar from "../navi/NavigationBar";
+import NavigationBar from "../nav/NavigationBar";
 
 export default function MessageBoard() {
   return (
